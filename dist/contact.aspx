@@ -23,12 +23,9 @@
                 <p class="hero-animate-3 mt-6 text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto">Have a question or want to learn more? We&rsquo;d love to hear from you.</p>
             </div>
         </div>
-    </section>
 
-
-    <!-- ==================== CONTACT CONTENT ==================== -->
-    <section class="relative bg-white">
-        <div class="mx-auto max-w-7xl px-6 py-20 sm:py-28 sm:px-8 lg:px-8">
+        <!-- ==================== CONTACT CONTENT ==================== -->
+        <div class="relative z-10 mx-auto max-w-7xl px-6 pb-20 sm:pb-28 sm:px-8 lg:px-8">
             <div class="mx-auto max-w-5xl lg:flex lg:gap-x-16">
 
                 <!-- Company Details Sidebar -->
@@ -53,7 +50,7 @@
                             </div>
                             <div>
                                 <p class="text-sm font-semibold text-navy-900">Email</p>
-                                <p class="mt-1 text-sm text-gray-500">support@ownershq.com</p>
+                                <p class="mt-1 text-sm text-gray-500">info@ownershq.com</p>
                             </div>
                         </div>
 
@@ -107,3 +104,5 @@
     </section>
 
 </asp:Content>
+
+

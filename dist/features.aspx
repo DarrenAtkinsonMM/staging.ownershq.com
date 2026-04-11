@@ -2,7 +2,7 @@
 <%@ MasterType VirtualPath="~/master/main.master" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="cphMainHead" Runat="Server">
-    <title>Features | Owners HQ — Booking & Payment Management</title>
+    <title>Features | Manage Bookings Like A Pro  | Owners HQ</title>
     <meta name="description" content="Everything you need to manage bookings and collect payments for your holiday rental. Booking management, guest portal, Stripe payments, automated reminders, and more.">
 </asp:Content>
 
@@ -93,19 +93,19 @@
                         </svg>
                     </div>
                     <h2 class="mt-4 font-serif text-3xl sm:text-4xl text-navy-900 leading-tight">Secure Guest Portal</h2>
-                    <p class="mt-4 text-lg leading-relaxed text-gray-500">Your guests get a clean, simple booking page accessible via email link. No app to download, no account to create, no password to remember.</p>
+                    <p class="mt-4 text-lg leading-relaxed text-gray-500">Your guests get a clean, simple booking page accessible 24/7 via email link. No app to download, no account to create, no password to remember.</p>
                     <ul class="mt-8 space-y-4">
                         <li class="flex gap-x-3">
                             <svg class="mt-1 h-5 w-5 flex-none text-sky-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
-                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Email-link access</strong> &mdash; one click from their inbox to their booking page</span>
+                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Email-link access</strong> &mdash; Instant one click access from their inbox to their booking page</span>
                         </li>
                         <li class="flex gap-x-3">
                             <svg class="mt-1 h-5 w-5 flex-none text-sky-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
-                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Booking summary</strong> &mdash; property photo, dates, full fee breakdown, and payment schedule</span>
+                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Booking summary</strong> &mdash; Property photo, dates, full fee breakdown, and payment schedule</span>
                         </li>
                         <li class="flex gap-x-3">
                             <svg class="mt-1 h-5 w-5 flex-none text-sky-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
-                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Payment visibility</strong> &mdash; guests see exactly what&rsquo;s due and when, with no surprises</span>
+                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Payment options</strong> &mdash; Guests see exactly what&rsquo;s due and when, and can pay with whatever method you specify</span>
                         </li>
                     </ul>
                 </div>
@@ -122,12 +122,12 @@
                         </div>
                         <div class="space-y-2 border-t border-gray-100 pt-4">
                             <div class="flex justify-between text-sm">
-                                <span class="text-gray-500">Accommodation</span>
-                                <span class="font-medium text-navy-900">&pound;1,400.00</span>
+                                <span class="text-gray-500">Deposit</span>
+                                <span class="font-medium text-navy-900">&pound;295.00</span>
                             </div>
                             <div class="flex justify-between text-sm">
-                                <span class="text-gray-500">Cleaning fee</span>
-                                <span class="font-medium text-navy-900">&pound;75.00</span>
+                                <span class="text-gray-500">Accommodation Balance</span>
+                                <span class="font-medium text-navy-900">&pound;1,180.00</span>
                             </div>
                             <div class="flex justify-between text-sm font-semibold border-t border-gray-100 pt-2">
                                 <span class="text-navy-900">Total</span>
@@ -138,7 +138,7 @@
                                 <span class="font-medium">&pound;0.00</span>
                             </div>
                         </div>
-                        <div class="mt-4 rounded-xl bg-sky-600 py-3 text-center text-sm font-semibold text-white">Pay Deposit &mdash; &pound;425.00</div>
+                        <div class="mt-4 rounded-xl bg-sky-600 py-3 text-center text-sm font-semibold text-white">Pay Deposit &mdash; &pound;295.00</div>
                     </div>
                 </div>
             </div>
@@ -161,19 +161,19 @@
                     <ul class="mt-8 space-y-4">
                         <li class="flex gap-x-3">
                             <svg class="mt-1 h-5 w-5 flex-none text-sky-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
-                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Stripe-powered</strong> &mdash; cards, bank transfers, Apple Pay, and Google Pay accepted securely</span>
+                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Stripe-powered</strong> &mdash; Cards, bank transfers, Apple Pay, and Google Pay accepted securely</span>
                         </li>
                         <li class="flex gap-x-3">
                             <svg class="mt-1 h-5 w-5 flex-none text-sky-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
-                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Automated reminders</strong> &mdash; payment reminders sent at your configured intervals</span>
+                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Automated reminders</strong> &mdash; Payment reminders sent at your configured intervals</span>
                         </li>
                         <li class="flex gap-x-3">
                             <svg class="mt-1 h-5 w-5 flex-none text-sky-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
-                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Manual payment recording</strong> &mdash; log bank transfers and cash payments alongside Stripe</span>
+                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Manual payment recording</strong> &mdash; Log bank transfers and cash payments if you prefer not to use stripe</span>
                         </li>
                         <li class="flex gap-x-3">
                             <svg class="mt-1 h-5 w-5 flex-none text-sky-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
-                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Email receipts</strong> &mdash; guests receive a receipt for every payment automatically</span>
+                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Email receipts</strong> &mdash; Guests receive a receipt for every payment automatically</span>
                         </li>
                     </ul>
                 </div>
@@ -188,7 +188,7 @@
                                 <div class="flex-1">
                                     <div class="flex justify-between">
                                         <p class="text-sm font-medium text-navy-900">Deposit</p>
-                                        <p class="text-sm font-medium text-navy-900">&pound;425.00</p>
+                                        <p class="text-sm font-medium text-navy-900">&pound;295.00</p>
                                     </div>
                                     <p class="text-xs text-emerald-600">Paid 15 Mar 2026</p>
                                 </div>
@@ -200,9 +200,9 @@
                                 <div class="flex-1">
                                     <div class="flex justify-between">
                                         <p class="text-sm font-medium text-navy-900">Balance</p>
-                                        <p class="text-sm font-medium text-navy-900">&pound;1,050.00</p>
+                                        <p class="text-sm font-medium text-navy-900">&pound;1,180.00</p>
                                     </div>
-                                    <p class="text-xs text-amber-600">Due 12 Jun 2026 &bull; Reminder sent</p>
+                                    <p class="text-xs text-amber-600">Due 12 Jun 2026</p>
                                 </div>
                             </div>
                         </div>
@@ -218,64 +218,8 @@
         </div>
     </section>
 
-
-    <!-- ==================== OTA SAVINGS DASHBOARD ==================== -->
-    <section class="relative bg-white">
-        <div class="mx-auto max-w-7xl px-6 py-20 sm:py-28 sm:px-8 lg:px-8">
-            <div class="reveal-on-scroll mx-auto max-w-6xl lg:flex lg:flex-row-reverse lg:items-center lg:gap-x-16">
-                <div class="lg:w-1/2">
-                    <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-100">
-                        <svg class="h-5 w-5 text-sky-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-                        </svg>
-                    </div>
-                    <h2 class="mt-4 font-serif text-3xl sm:text-4xl text-navy-900 leading-tight">OTA Savings Dashboard</h2>
-                    <p class="mt-4 text-lg leading-relaxed text-gray-500">See exactly how much you&rsquo;re saving compared to what Airbnb and other OTAs would charge you in commission fees.</p>
-                    <ul class="mt-8 space-y-4">
-                        <li class="flex gap-x-3">
-                            <svg class="mt-1 h-5 w-5 flex-none text-sky-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
-                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Real-time comparison</strong> &mdash; your Owners HQ fees vs what OTAs would charge</span>
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg class="mt-1 h-5 w-5 flex-none text-sky-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
-                            <span class="text-sm leading-7 text-gray-500"><strong class="text-navy-900 font-semibold">Cumulative savings tracker</strong> &mdash; watch your total savings grow with each booking</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="reveal-on-scroll reveal-delay-2 mt-12 lg:mt-0 lg:w-1/2">
-                    <div class="rounded-2xl bg-white p-5 shadow-elevated">
-                        <p class="text-sm font-semibold text-navy-900 mb-4">Your Savings This Year</p>
-                        <div class="text-center py-4">
-                            <p class="text-4xl font-bold text-emerald-600 font-serif">&pound;2,847</p>
-                            <p class="mt-1 text-sm text-gray-400">saved vs OTA commission fees</p>
-                        </div>
-                        <div class="mt-4 space-y-3 border-t border-gray-100 pt-4">
-                            <div class="flex justify-between text-sm">
-                                <span class="text-gray-500">Total booking value</span>
-                                <span class="font-medium text-navy-900">&pound;18,500</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-gray-500">Airbnb would charge (15%)</span>
-                                <span class="font-medium text-red-500">&pound;2,775</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-gray-500">+ Airbnb guest fees (~14%)</span>
-                                <span class="font-medium text-red-500">&pound;2,590</span>
-                            </div>
-                            <div class="flex justify-between text-sm border-t border-gray-100 pt-2">
-                                <span class="text-gray-500">Owners HQ fees</span>
-                                <span class="font-medium text-emerald-600">&pound;225</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
     <!-- ==================== FEE TRANSPARENCY ==================== -->
-    <section class="relative bg-warm-50">
+    <section class="relative bg-white">
         <div class="mx-auto max-w-7xl px-6 py-20 sm:py-28 sm:px-8 lg:px-8">
             <div class="reveal-on-scroll mx-auto max-w-3xl text-center">
                 <div class="flex h-11 w-11 mx-auto items-center justify-center rounded-xl bg-sky-100">
@@ -289,7 +233,7 @@
                 <div class="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
                     <div class="rounded-2xl bg-white p-6 shadow-card">
                         <p class="text-3xl font-bold text-navy-900 font-serif">1%</p>
-                        <p class="mt-2 text-sm text-gray-500">of booking value<br />(min &pound;10, max &pound;25)</p>
+                        <p class="mt-2 text-sm text-gray-500">of booking value<br />(No min, max &pound;25)</p>
                     </div>
                     <div class="rounded-2xl bg-white p-6 shadow-card">
                         <p class="text-3xl font-bold text-navy-900 font-serif">&pound;0</p>

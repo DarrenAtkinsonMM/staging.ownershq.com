@@ -2,7 +2,7 @@
 <%@ MasterType VirtualPath="~/master/main.master" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="cphMainHead" Runat="Server">
-    <title>Pricing | Owners HQ — Simple, Fair, Outcome-Based</title>
+    <title>Pricing | Simple, Fair, Outcome-Based | Owners HQ</title>
     <meta name="description" content="No subscription fees. Pay only when you take bookings. 1% of booking value with a £25 cap. Every feature included for every user.">
 </asp:Content>
 
@@ -36,7 +36,7 @@
                         </div>
                         <p class="mt-2 text-gray-500">of booking value</p>
                         <div class="mt-4 flex items-center justify-center gap-x-3">
-                            <span class="rounded-full bg-warm-100 px-3.5 py-1.5 text-sm font-medium text-navy-900">&pound;10 minimum</span>
+                            <span class="rounded-full bg-warm-100 px-3.5 py-1.5 text-sm font-medium text-navy-900">No minimum</span>
                             <span class="rounded-full bg-warm-100 px-3.5 py-1.5 text-sm font-medium text-navy-900">&pound;25 cap</span>
                         </div>
                         <p class="mt-6 text-sm leading-relaxed text-gray-500">No booking? No charge. Your fee is capped at &pound;25 regardless of booking size.</p>
@@ -113,7 +113,7 @@
                                 <div>
                                     <p class="text-xs text-emerald-600 mb-1 hidden sm:block">Per Booking Fee</p>
                                     <p class="text-lg font-bold text-emerald-700 font-serif">
-                                        &pound;<span x-text="Math.min(25, Math.max(10, Math.round(bookingValue * 0.01))).toFixed(2)"></span>
+                                        &pound;<span x-text="Math.min(25, bookingValue * 0.01).toFixed(2)"></span>
                                     </p>
                                 </div>
                             </div>
@@ -179,13 +179,13 @@
                             <div class="flex items-center justify-between">
                                 <p class="text-sm text-gray-600">Per booking vs Airbnb</p>
                                 <p class="text-xl font-bold text-emerald-600 font-serif">
-                                    &pound;<span x-text="((bookingValue * 0.15) - Math.min(25, Math.max(10, Math.round(bookingValue * 0.01))) - (bookingValue * 0.015)).toFixed(2)"></span>
+                                    &pound;<span x-text="((bookingValue * 0.15) - Math.min(25, bookingValue * 0.01) - (bookingValue * 0.015)).toFixed(2)"></span>
                                 </p>
                             </div>
                             <div class="flex items-center justify-between">
                                 <p class="text-sm text-gray-600">Per booking vs PMS</p>
                                 <p class="text-xl font-bold text-emerald-600 font-serif">
-                                    <span x-show="Math.max(0, (bookingValue * 0.01) - Math.min(25, Math.max(10, Math.round(bookingValue * 0.01)))) > 0">&pound;<span x-text="Math.max(0, (bookingValue * 0.01) - Math.min(25, Math.max(10, Math.round(bookingValue * 0.01)))).toFixed(2)"></span> &ndash; </span><span x-show="Math.max(0, (bookingValue * 0.01) - Math.min(25, Math.max(10, Math.round(bookingValue * 0.01)))) === 0">Up to </span>&pound;<span x-text="Math.max(0, (bookingValue * 0.03) - Math.min(25, Math.max(10, Math.round(bookingValue * 0.01)))).toFixed(2)"></span>
+                                    <span x-show="Math.max(0, (bookingValue * 0.01) - Math.min(25, bookingValue * 0.01)) > 0">&pound;<span x-text="Math.max(0, (bookingValue * 0.01) - Math.min(25, bookingValue * 0.01)).toFixed(2)"></span> &ndash; </span><span x-show="Math.max(0, (bookingValue * 0.01) - Math.min(25, bookingValue * 0.01)) === 0">Up to </span>&pound;<span x-text="Math.max(0, (bookingValue * 0.03) - Math.min(25, bookingValue * 0.01)).toFixed(2)"></span>
                                 </p>
                             </div>
                             <div class="flex items-center justify-between">
@@ -197,7 +197,8 @@
                 </div>
             </div>
             <div class="reveal-on-scroll mx-auto max-w-3xl text-center">
-                <p class="mt-4 text-base text-gray-500 leading-relaxed">Examples are for automated Stripe payments using Owners HQ. Non-Stripe payments are billed at just &pound;10 no matter the booking value and incur no transaction fees.</p>
+                <p class="mt-4 text-base text-gray-500 leading-relaxed">Examples are for automated Stripe payments using Owners HQ.</p>
+                <p class="mt-4 text-base text-gray-500 leading-relaxed">Bookings that don't use Stripe payments are billed at just &pound;10 no matter the booking value and incur no transaction fees.</p>
             </div>
         </div>
     </section>
@@ -242,7 +243,7 @@
                             </button>
                         </dt>
                         <dd x-show="openItem === 3" x-collapse class="px-6 pb-5">
-                            <p class="text-sm leading-relaxed text-gray-500">Payments are processed securely through Stripe. Your guests can pay by credit/debit card, bank transfer, Apple Pay, or Google Pay. You can also record manual payments (such as bank transfers or cash) alongside Stripe payments.</p>
+                            <p class="text-sm leading-relaxed text-gray-500">Payments are processed securely through Stripe. Your guests can pay by credit/debit card, bank transfer, Apple Pay, or Google Pay. You can also record manual payments (such as bank transfers or cash) instead of using automated Stripe payments if you prefer.</p>
                         </dd>
                     </div>
                     <div class="rounded-2xl bg-white shadow-card mb-3 overflow-hidden">
@@ -253,7 +254,7 @@
                             </button>
                         </dt>
                         <dd x-show="openItem === 4" x-collapse class="px-6 pb-5">
-                            <p class="text-sm leading-relaxed text-gray-500">Stripe&rsquo;s standard processing fees (typically 1.5% + 20p for UK cards) are passed through at cost and shown transparently in your fee breakdown. We don&rsquo;t mark up Stripe&rsquo;s fees.</p>
+                            <p class="text-sm leading-relaxed text-gray-500">Stripe&rsquo;s standard processing fees (typically 1.5% + 20p for UK and EU cards) are passed through at cost and shown transparently in your fee breakdown. We don&rsquo;t mark up Stripe&rsquo;s fees.</p>
                         </dd>
                     </div>
                     <div class="rounded-2xl bg-white shadow-card mb-3 overflow-hidden">

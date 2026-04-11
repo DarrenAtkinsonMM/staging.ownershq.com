@@ -128,8 +128,8 @@
                                 <div class="relative rounded-xl bg-white p-3 sm:p-4 shadow-card border border-gray-100">
                                     <p class="text-[9px] sm:text-[10px] font-semibold text-gray-400 uppercase tracking-wider">No. of Bookings</p>
                                     <div class="flex items-center justify-between mt-1">
-                                        <p class="text-2xl sm:text-3xl font-bold text-navy-900">9</p>
-                                        <div class="hidden sm:flex items-center gap-1 text-gray-400">
+                                        <p class="text-lg lg:text-3xl font-bold text-navy-900">9</p>
+                                        <div class="hidden lg:flex items-center gap-1 text-gray-400">
                                             <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
                                             <span class="text-[10px] font-medium text-gray-500">2026</span>
                                             <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
@@ -143,8 +143,8 @@
                                 <div class="rounded-xl bg-white p-3 sm:p-4 shadow-card border border-gray-100">
                                     <p class="text-[9px] sm:text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Annual Revenue</p>
                                     <div class="flex items-center justify-between mt-1">
-                                        <p class="text-2xl sm:text-3xl font-bold text-navy-900">&euro;12,150</p>
-                                        <div class="hidden sm:flex items-center gap-1 text-gray-400">
+                                        <p class="text-lg lg:text-3xl font-bold text-navy-900">&euro;12,150</p>
+                                        <div class="hidden lg:flex items-center gap-1 text-gray-400">
                                             <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
                                             <span class="text-[10px] font-medium text-gray-500">2026</span>
                                             <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
@@ -155,15 +155,15 @@
                                 <div class="relative rounded-xl bg-red-50/60 p-3 sm:p-4 shadow-card border border-red-200/50">
                                     <div class="flex items-start justify-between">
                                         <p class="text-[9px] sm:text-[10px] font-semibold text-red-600 uppercase tracking-wider">Overdue Payments</p>
-                                        <span class="flex items-center justify-center h-5 w-5 rounded-full bg-red-600 text-[10px] font-bold text-white">2</span>
+                                        <span class="hidden sm:flex items-center justify-center h-5 w-5 rounded-full bg-red-600 text-[10px] font-bold text-white">2</span>
                                     </div>
-                                    <p class="text-2xl sm:text-3xl font-bold text-red-600 mt-1">&euro;275</p>
-                                    <div class="flex items-center gap-1 mt-1">
+                                    <p class="text-lg lg:text-3xl font-bold text-red-600 mt-1">&euro;275</p>
+                                    <div class="hidden sm:flex items-center gap-1 mt-1">
                                         <svg class="h-3 w-3 text-red-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
                                         <span class="text-[9px] sm:text-[10px] font-medium text-red-600">across 2 bookings</span>
                                     </div>
                                     <!-- Circular progress indicator -->
-                                    <div class="absolute bottom-3 right-3 hidden sm:block">
+                                    <div class="absolute bottom-3 right-3 hidden lg:block">
                                         <svg class="h-8 w-8" viewBox="0 0 36 36">
                                             <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#fee2e2" stroke-width="3" />
                                             <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="75, 100" stroke-linecap="round" />
@@ -245,7 +245,7 @@
                                 </div>
 
                                 <!-- Activity Feed -->
-                                <div class="hidden md:flex flex-col w-[38%] flex-shrink-0 rounded-xl bg-white shadow-card border border-gray-100 overflow-hidden">
+                                <div class="hidden lg:flex flex-col w-[38%] flex-shrink-0 rounded-xl bg-white shadow-card border border-gray-100 overflow-hidden">
                                     <div class="px-4 sm:px-5 py-3 border-b border-gray-100">
                                         <h3 class="text-sm font-bold text-navy-900">Activity Feed</h3>
                                     </div>

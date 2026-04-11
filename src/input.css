@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@source "../dist/**/*.master";
+@source "../dist/**/*.aspx";
+@source "../dist/**/*.html";
+
+@theme {
+    /* Brand (teal) palette */
+    --color-brand-50: #f0fdfa;
+    --color-brand-100: #ccfbf1;
+    --color-brand-200: #99f6e4;
+    --color-brand-300: #5eead4;
+    --color-brand-400: #2dd4bf;
+    --color-brand-500: #14b8a6;
+    --color-brand-600: #0d9488;
+    --color-brand-700: #0f766e;
+    --color-brand-800: #115e59;
+    --color-brand-900: #134e4a;
+
+    /* Navy palette */
+    --color-navy-800: #1a2332;
+    --color-navy-900: #0f1724;
+    --color-navy-950: #0a1019;
+
+    /* Warm neutrals */
+    --color-warm-50: #faf9f7;
+    --color-warm-100: #f5f3f0;
+    --color-warm-200: #ebe8e3;
+
+    /* Font families */
+    --font-serif: 'DM Serif Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+
+    /* Custom shadows */
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+    --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-elevated: 0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+
+    /* Custom animations */
+    --animate-float: float 4s ease-in-out infinite;
+    --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+@keyframes fade-up {
+    0% { opacity: 0; transform: translateY(24px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll reveal animations */
+@utility reveal {
+    opacity: 0;
+}
+
+/* Hero gradient mesh background */
+@utility hero-mesh {
+    background:
+        radial-gradient(ellipse 60% 50% at 20% 40%, rgba(20, 184, 166, 0.06), transparent),
+        radial-gradient(ellipse 50% 60% at 80% 20%, rgba(13, 148, 136, 0.04), transparent),
+        radial-gradient(ellipse 40% 40% at 60% 80%, rgba(15, 23, 36, 0.02), transparent);
+}

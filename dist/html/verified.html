@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="flex h-full bg-gray-100">
+    <div class="flex w-full">
+       <div class="fixed inset-0 flex justify-center sm:px-8">
+            <div class="flex w-full max-w-7xl lg:px-8">
+                <div class="w-full bg-white ring-1 ring-zinc-200">
+                </div>
+            </div>
+        </div>
+        <div class="relative flex w-full flex-col">
+            <header class="w-full max-w-7xl mx-auto sm:px-8" x-data="{ open: false }">
+                <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-16" aria-label="Global">
+
+                        <div class="flex lg:flex-1">
+                        <a href="#" class="-m-1.5 p-1.5">
+                            <span class="sr-only">Your Company</span>
+                            <img class="h-8 w-auto sm:h-10" src="../images/ohq-icon-text.png" alt="">
+                        </a>
+                        </div>
+                        <div class="flex lg:hidden">
+                        <button @click="open = !open" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                            <span class="sr-only">Open main menu</span>
+                            <svg x-show="!open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                            <svg x-show="open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        </div>
+                        <div class="hidden lg:flex lg:gap-x-12">
+                        <a href="#" class="text-sm font-semibold leading-6 text-pink-600 transition hover:text-neutral-600">Listing Websites</a>
+                        <a href="#" class="text-sm font-semibold leading-6 text-pink-600 transition hover:text-neutral-600">Articles</a>
+                        <a href="#" class="text-sm font-semibold leading-6 text-pink-600 transition hover:text-neutral-600">About</a>
+                        <a href="#" class="text-sm font-semibold leading-6 text-pink-600 transition hover:text-neutral-600">Contact</a>
+                        </div>
+                        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                        <a href="#" class="text-sm font-semibold leading-6 text-pink-600 transition hover:text-neutral-600">Log in <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+
+                </nav>
+                <!-- Mobile menu, show/hide based on menu open state. -->
+                <div x-cloak x-show="open"
+                    x-transition:enter="transition ease-out duration-100"
+                    x-transition:enter-start="transform opacity-0 translate-y-[-100%]"
+                    x-transition:enter-end="transform opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-100"
+                    x-transition:leave-start="transform opacity-100 translate-y-0"
+                    x-transition:leave-end="transform opacity-0 translate-y-[-100%]"
+                    class="lg:hidden" role="dialog" aria-modal="true">
+                    <!-- Background backdrop, show/hide based on slide-over state. -->
+                    <div class="fixed inset-0 z-10"></div>
+                    <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                    <div class="flex items-center justify-between">
+                        <a href="#" class="-m-1.5 p-1.5">
+                        <span class="sr-only">Your Company</span>
+                        <img class="h-8 w-auto" src="../images/ohq-icon-text.png" alt="">
+                        </a>
+                        <button @click="open = false" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                        <span class="sr-only">Close menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        </button>
+                    </div>
+                    <div class="mt-6 flow-root">
+                        <div class="-my-6 divide-y divide-gray-500/10">
+                        <div class="space-y-2 py-6">
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Listing Websites</a>
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Articles</a>
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">About</a>
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Contact</a>
+                        </div>
+                        <div class="py-6">
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Log in</a>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </header>
+            <div class="flex-none" style="height: var(--content-offset);"></div>
+            <main class="flex-auto">
+                
+                <div class="mx-auto w-full max-w-7xl lg:px-12">
+                    <div class="mx-auto max-w-7xl sm:px-8 lg:px-8 xl:px-2">
+                        <!-- Page Header -->
+                        <div class="relative overflow-hidden bg-white">
+                            <svg class="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" aria-hidden="true">
+                            <defs>
+                                <pattern id="0787a7c5-978c-4f66-83c7-11c213f99cb7" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
+                                <path d="M.5 200V.5H200" fill="none" />
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" stroke-width="0" fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)" />
+                            </svg>
+                            <div class="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-16 lg:flex lg:px-8 lg:pt-32 lg:pb-8">
+                            <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0">
+                                <h2 class="mt-4 text-2xl font-bold tracking-tight text-pink-600 sm:text-3xl">Become a</h2>
+                                <h1 class="mt-4 text-4xl font-bold tracking-tight text-pink-600 sm:text-6xl">Verified Owner</h1>
+                                <h2 class="mt-4 text-2xl font-bold tracking-tight text-pink-600 sm:text-3xl">Build Trust, Get More Bookings</h2>
+                                <div class="flex">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 text-pink-600 mr-3 flex-shrink-0 self-start mt-7">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                                      </svg>
+                                    <p class="mt-6 text-lg leading-8 text-neutral-600">Prove to guests you are who you say you are by showing them we have verified your property ownership and contact details.</p>
+                                </div>
+                                <div class="flex ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 text-pink-600 mr-3 flex-shrink-0 self-start mt-7">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                                      </svg>
+                                      <p class="mt-6 text-lg leading-8 text-neutral-600">Get a Verified Owner online certificate displaying your property and status to your guests.</p>
+                                </div>
+                                <div class="flex">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 text-pink-600 mr-3 flex-shrink-0 self-start mt-7">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                                      </svg>
+                                      <p class="mt-6 text-lg leading-8 text-neutral-600">Use your Verified Owner certificate with all of your marketing efforts, from any source.</p>
+                                </div>                               
+                                <div class="mt-10 flex items-center gap-x-6">
+                                </div>
+                            </div>
+                            <div class="mx-auto mt-6 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
+                                <div class="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
+                                <div class="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+                                    <img src="../images/vo-cert-small.jpg" alt="Verified Owner Certificate" width="759" height="459" class="w-[759px] rounded-md shadow-2xl ring-1 ring-gray-900/10">
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="bg-white">
+                              <div class="px-6 pb-24 sm:px-6 sm:py-24 lg:px-8">
+                                <div class="mx-auto max-w-4xl text-center">
+                                  <h2 class="text-3xl font-bold tracking-tight text-pink-600 sm:text-4xl">Becoming a Verified Owner is an important step in building trust with your guests.</h2>
+                                  <p class="mt-6 text-lg leading-7 text-gray-600">It shows them that you are a real property owner advertising a genuine property. It gives them the confidence to make a booking knowing they are communicating with the right person.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="bg-white py-16 sm:py-24 lg:py-32">
+                              <div class="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 lg:grid-cols-12 lg:gap-8 lg:px-8">
+                                <div class="max-w-xl text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:col-span-7">
+                                  <h2 class="inline sm:block lg:inline xl:block">Want product news and updates?</h2>
+                                  <p class="inline sm:block lg:inline xl:block">Sign up for our newsletter.</p>
+                                </div>
+                                <form class="w-full max-w-md lg:col-span-5 lg:pt-2">
+                                  <div class="flex gap-x-4">
+                                    <label for="email-address" class="sr-only">Email address</label>
+                                    <input id="email-address" name="email" type="email" autocomplete="email" required class="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Enter your email">
+                                    <button type="submit" class="flex-none rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Subscribe</button>
+                                  </div>
+                                  <p class="mt-4 text-sm leading-6 text-gray-900">We care about your data. Read our <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">privacy&nbsp;policy</a>.</p>
+                                </form>
+                              </div>
+                            </div>
+                        </div>
+                        <!-- Page Header -->
+                        
+
+                          <div class="bg-white">
+                            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                              <div class="container mx-auto px-4">
+                                <div class="flex flex-col lg:flex-row lg:justify-between space-y-8 lg:space-y-0 lg:space-x-8">
+                                    <div class="bg-pink-600 shadow-md rounded-lg p-8 flex-1">
+                                      <p class="flex-none text-3xl font-bold tracking-tight text-white mb-8">Get Your Verified Owner Certificate</p>
+                                      <div class="sm:w-auto sm:shrink lg:w-auto lg:flex-none">
+                                        <p class="text-lg font-semibold tracking-tight text-white">Your Verified Owner certificate shows we have verified you, your property ownership, and your contact details.</p>
+                                      </div>
+                                    </div>
+                                    <div class="bg-pink-600 shadow-md rounded-lg p-8 flex-1">
+                                      <p class="flex-none text-3xl font-bold tracking-tight text-white mb-8">Help Guests Avoid Scams</p>
+                                      <div class="sm:w-auto sm:shrink lg:w-auto lg:flex-none">
+                                        <p class="text-lg font-semibold tracking-tight text-white">Verification gives guests peace of mind that they are not dealing with fake property profiles and scammers.</p>
+                                      </div>
+                                    </div>
+                                    <div class="bg-pink-600 shadow-md rounded-lg p-8 flex-1">
+                                      <p class="flex-none text-3xl font-bold tracking-tight text-white mb-8">Boost Your Marketing</p>
+                                      <div class="sm:w-auto sm:shrink lg:w-auto lg:flex-none">
+                                        <p class="text-lg font-semibold tracking-tight text-white">Link to your certificate wherever you deal with guests so it benefits all of your marketing efforts, no matter the source.</p>
+                                      </div>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        <div class="bg-white">
+                            <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
+                              <div class="mx-auto max-w-2xl text-center">
+                                <h2 class="text-3xl font-bold leading-10 tracking-tight text-pink-600">Frequently Asked Questions:</h2>
+                                <p class="mt-6 text-lg leading-7 text-gray-600">If you have a specific question that's not answered on this page or below then just <a href="/contact/" class="font-semibold underline text-pink-600 hover:text-pink-500">send us a message</a> and we’ll get right back to you.</p>
+                              </div>
+                              <div class="mt-20">
+                                <dl class="space-y-16 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-16 sm:space-y-0 lg:gap-x-10">
+                                  <div>
+                                    <dt class="text-lg font-semibold leading-7 text-pink-600">Is getting verified difficult?</dt>
+                                    <dd class="mt-2 text-base leading-7 text-gray-600">Not at all. Simply upload your documents through our secure upload page and we will begin the verification process. If we need any further information we will email you to request it.</dd>
+                                  </div>
+                                  <div>
+                                    <dt class="text-lg font-semibold leading-7 text-pink-600">What documents do you need?</dt>
+                                    <dd class="mt-2 text-base leading-7 text-gray-600">To verify your identity we need a copy of a government ID along with a selfie. For property ownership verification we need to check your land registry certificate and a utility bill.</dd>
+                                  </div>
+                                  <div>
+                                    <dt class="text-lg font-semibold leading-7 text-pink-600">Do you only check documents that I have uploaded?</dt>
+                                    <dd class="mt-2 text-base leading-7 text-gray-600">No, we will also look at other aspects of your property such as map locations, reviews and listings on other websites, and reverse image searches. This helps build a clearer picture of your property status.</dd>
+                                  </div>
+                                  <div>
+                                    <dt class="text-lg font-semibold leading-7 text-pink-600">My property is held in a business name, can I still verify?</dt>
+                                    <dd class="mt-2 text-base leading-7 text-gray-600">Yes, we would simply need to see the business incorporation documents proving your ownership alongside all the standard verification documents.</dd>
+                                  </div>
+                                  <div>
+                                    <dt class="text-lg font-semibold leading-7 text-pink-600">Will my uploaded documents be secure?</dt>
+                                    <dd class="mt-2 text-base leading-7 text-gray-600">Yes, the upload process is fully encrypted and all uploaded files are stored on an encrypted and secure drive. Once we have verified your documents they will be securely deleted from our servers.</dd>
+                                  </div>
+                                  <div>
+                                    <dt class="text-lg font-semibold leading-7 text-pink-600">How long does verification take?</dt>
+                                    <dd class="mt-2 text-base leading-7 text-gray-600">We aim to complete most verifications within a few days however in some cases it may take up to a week to complete.</dd>
+                                  </div>
+                                  <div>
+                                    <dt class="text-lg font-semibold leading-7 text-pink-600">Will guests see my documents?</dt>
+                                    <dd class="mt-2 text-base leading-7 text-gray-600">No, we will never share your documents with guests, they will only be used for initial verification purposes and then deleted once checked.</dd>
+                                  </div>
+                                  <div>
+                                    <dt class="text-lg font-semibold leading-7 text-pink-600">How much does becoming a Verified Owner cost?</dt>
+                                    <dd class="mt-2 text-base leading-7 text-gray-600">Other similar services like this available elsewhere which are priced between £200 - £450 a year however we are offering this free to all of our listing website customers!</dd>
+                                  </div>
+                                  <div>
+                                    <dt class="text-lg font-semibold leading-7 text-pink-600">Do I have to become a Verified Owner?</dt>
+                                    <dd class="mt-2 text-base leading-7 text-gray-600">No, it is not a requirement to list on our websites however we strongly encourage it. Building trust with guests is crucial to securing bookings and become verified shows that you are committed to building that trust.</dd>
+                                  </div>
+                                  <div>
+                                    <dt class="text-lg font-semibold leading-7 text-pink-600">Can I become a Verified Owner if I don't list with you?</dt>
+                                    <dd class="mt-2 text-base leading-7 text-gray-600">If you're not currently a customer of ours then simply <a href="/contact/" class="font-semibold underline text-pink-600 hover:text-pink-500">get in touch</a> with us and we can discuss options to carry out a Verified Owner check for you and your property.</dd>
+                                  </div>
+                                </dl>
+                              </div>
+                            </div>
+                          </div>
+            </div>
+        </div>
+            </main>
+            <footer>
+                <div class="mx-auto w-full max-w-7xl lg:px-12">
+                    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:py-16 lg:px-8">
+                  <nav class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
+                    <div class="pb-6">
+                      <a href="#" class="text-sm leading-6 text-neutral-600 transition hover:text-sky-600">Listing Websites</a>
+                    </div>
+                    <div class="pb-6">
+                      <a href="#" class="text-sm leading-6 text-neutral-600 transition hover:text-sky-600">Articles</a>
+                    </div>
+                    <div class="pb-6">
+                      <a href="#" class="text-sm leading-6 text-neutral-600 transition hover:text-sky-600">About</a>
+                    </div>
+                    <div class="pb-6">
+                      <a href="#" class="text-sm leading-6 text-neutral-600 transition hover:text-sky-600">Contact</a>
+                    </div>
+                  </nav>
+
+                  <p class="mt-10 text-center text-xs leading-5 text-neutral-600">&copy; 2024 OwnersHQ.com, Inc. All rights reserved.</p>
+                </div>
+                </div>
+                </div>
+              </footer>
+       </div>
+    </div>
+    
+</body>
+</html>

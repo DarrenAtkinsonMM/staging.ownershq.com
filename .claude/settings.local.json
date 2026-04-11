@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs wc:*)",
+      "WebFetch(domain:www.smoobu.com)",
+      "WebFetch(domain:www.lodgify.com)",
+      "WebFetch(domain:www.uplisting.io)",
+      "WebFetch(domain:www.guesty.com)",
+      "WebFetch(domain:www.hostaway.com)",
+      "WebFetch(domain:hospitable.com)",
+      "Bash(wc -l \"c:/Private/Sites/Staging.OwnersHQ.com/dist\"/*.aspx)",
+      "Bash(ls -1 \"c:/Private/Sites/Staging.OwnersHQ.com/dist/\"*.aspx)",
+      "WebSearch",
+      "WebFetch(domain:dropinblog.com)",
+      "Bash(bash \"C:\\\\Users\\\\Darren Atkinson\\\\.claude\\\\plugins\\\\cache\\\\superpowers-dev\\\\superpowers\\\\5.0.4\\\\skills\\\\brainstorming\\\\scripts\\\\start-server.sh\" --project-dir \"c:\\\\Private\\\\Sites\\\\Staging.OwnersHQ.com\")",
+      "Bash(npx @tailwindcss/cli -i ./src/input.css -o ./dist/style.css)",
+      "Bash(npx tailwindcss:*)"
+    ]
+  }
+}

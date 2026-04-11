@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<style>
+    .day-cell {
+        position: relative;
+        overflow: hidden;
+    }
+    .booking-start::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(to top left, 
+            rgba(254, 202, 202) calc(50% - 1px), 
+            rgb(163 163 163) calc(50% - 1px), 
+            rgb(163 163 163) calc(50% + 1px), 
+            transparent calc(50% + 1px)
+        );
+        border-bottom: 2px solid rgb(163 163 163);
+    pointer-events: none;
+    }
+    .booking-end::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            linear-gradient(to bottom right, 
+                rgba(254, 202, 202) calc(50% - 1px), 
+                rgb(163 163 163) calc(50% - 1px), 
+                rgb(163 163 163) calc(50% + 1px), 
+                transparent calc(50% + 1px)
+            );
+        border-top: 2px solid rgb(163 163 163);
+        pointer-events: none;
+    }
+    .booking-adjacent::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            linear-gradient(to bottom right, 
+                rgba(254, 202, 202) calc(50% - 1px), 
+                rgb(163 163 163) calc(50% - 1px), 
+                rgb(163 163 163) calc(50% + 1px), 
+                rgb(254, 202, 202) calc(50% + 1px)
+            );
+        border-top: 2px solid rgb(163 163 163);
+        border-bottom: 2px solid rgb(163 163 163);
+        pointer-events: none;
+    }
+    .booking-middle {
+        background-color: rgba(254, 202, 202); /* red-200 with 50% opacity */
+        border-top: 2px solid rgb(163 163 163);
+        border-bottom: 2px solid rgb(163 163 163);
+    }
+</style>
+
+
+</head>
+<body class="flex h-full bg-gray-100">
+    <div class="flex w-full">
+       <div class="fixed inset-0 flex justify-center sm:px-8">
+            <div class="flex w-full max-w-7xl lg:px-8">
+                <div class="w-full bg-white ring-1 ring-zinc-200">
+                </div>
+            </div>
+        </div>
+        <div class="relative flex w-full flex-col">
+
+            <script type="text/javascript">
+            var bookedDays = "(2024-07-11, 2024-07-12, 2024-07-13, 2024-07-14), (2024-07-22, 2024-07-23, 2024-07-24), (2024-07-24, 2024-07-25, 2024-07-26, 2024-07-27, 2024-07-28, 2024-07-29)";
+            </script>
+            
+            <div class="flex-none" style="height: var(--content-offset);"></div>
+            <main class="flex-auto">
+                <div class="mx-auto w-full max-w-7xl lg:px-12">
+                    <div class="mx-auto max-w-7xl sm:px-8 lg:px-8 xl:px-2">
+                        <header class="max-w-2xl px-6 sm:px-0 pt-12">
+                            <h1 class="mb-8 text-4xl sm:text-6xl font-bold tracking-tight text-neutral-600">Calendar</h1>
+                        </header>
+                        <div class="lg:flex lg:h-full lg:flex-col">
+                            <header class="flex items-center justify-between border-b border-gray-200 px-6 py-4 lg:flex-none">
+                                <h1 class="text-base font-semibold leading-6 text-gray-900">
+                                    <span id="current-months-year"></span>
+                                </h1>
+                                <div class="flex items-center">
+                                    <div class="relative flex items-center rounded-md bg-white shadow-sm md:items-stretch">
+                                        <button type="button" id="prev-month" class="flex h-9 w-12 items-center justify-center rounded-l-md border-y border-l border-gray-300 pr-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pr-0 md:hover:bg-gray-50">
+                                            <span class="sr-only">Previous month</span>
+                                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                        <button type="button" id="next-month" class="flex h-9 w-12 items-center justify-center rounded-r-md border-y border-r border-gray-300 pl-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pl-0 md:hover:bg-gray-50">
+                                            <span class="sr-only">Next month</span>
+                                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </header>
+                            <div id="calendar-container" class="shadow ring-1 ring-black ring-opacity-5 mb-12">
+                                <!-- Calendar will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                   document.addEventListener('DOMContentLoaded', function() {
+    const calendarContainer = document.getElementById('calendar-container');
+    const currentMonthYear = document.getElementById('current-months-year');
+    const prevMonthButton = document.getElementById('prev-month');
+    const nextMonthButton = document.getElementById('next-month');
+    
+    let currentDate = new Date();
+    let startDate = null;
+    let endDate = null;
+    let bookedDatesSet = new Set();
+    let bookings = [];
+
+    // Parse booked days from the string
+    function parseBookedDays() {
+        if (typeof bookedDays !== 'undefined' && bookedDays) {
+            const bookingStrings = bookedDays.match(/\(([^)]+)\)/g);
+            if (bookingStrings) {
+                bookings = bookingStrings.map((bookingString, index) => {
+                    const dates = bookingString.slice(1, -1).split(', ');
+                    return {
+                        id: index + 1, // Unique ID for each booking
+                        startDate: parseDate(dates[0]),
+                        endDate: parseDate(dates[dates.length - 1])
+                    };
+                });
+
+                bookings.forEach(booking => {
+                    let currentDate = new Date(booking.startDate);
+                    while (currentDate <= booking.endDate) {
+                        bookedDatesSet.add(formatDate(currentDate));
+                        currentDate.setDate(currentDate.getDate() + 1);
+                    }
+                });
+            }
+            console.log('Parsed bookings:', bookings);
+            console.log('Parsed booked dates:', bookedDatesSet);
+        }
+    }
+
+    function parseDate(dateString) {
+        const [year, month, day] = dateString.split('-').map(Number);
+        return new Date(year, month - 1, day);
+    }
+
+    function formatDate(date) {
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+    }
+
+    parseBookedDays();
+
+    function renderCalendar(date) {
+        const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+        currentMonthYear.textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+
+        let calendarHTML = `
+            <div class="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700">
+                <div class="bg-white py-2">Sun</div>
+                <div class="bg-white py-2">Mon</div>
+                <div class="bg-white py-2">Tue</div>
+                <div class="bg-white py-2">Wed</div>
+                <div class="bg-white py-2">Thu</div>
+                <div class="bg-white py-2">Fri</div>
+                <div class="bg-white py-2">Sat</div>
+            </div>
+            <div class="bg-gray-200 text-xs leading-6 text-gray-700">
+                <div class="grid grid-cols-7 gap-px" id="calendar-days">
+        `;
+
+        calendarHTML += renderMonthDays(date);
+
+        calendarHTML += `
+                </div>
+            </div>
+        `;
+
+        calendarContainer.innerHTML = calendarHTML;
+        addDateClickListeners();
+    }
+
+    function renderMonthDays(date) {
+        const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        const prevMonthLastDay = new Date(date.getFullYear(), date.getMonth(), 0);
+        const daysInMonth = lastDay.getDate();
+        const startDay = firstDay.getDay();
+
+        let monthHTML = '';
+        let dayCount = 1;
+        let totalCells = 0;
+
+        const daysFromPrevMonth = startDay + 7;
+        for (let i = daysFromPrevMonth - 1; i >= 0; i--) {
+            const prevMonthDay = prevMonthLastDay.getDate() - i;
+            const cellDate = new Date(prevMonthLastDay.getFullYear(), prevMonthLastDay.getMonth(), prevMonthDay);
+            monthHTML += renderDayCell(cellDate, 'prev-month');
+            totalCells++;
+        }
+
+        while (dayCount <= daysInMonth) {
+            const cellDate = new Date(date.getFullYear(), date.getMonth(), dayCount);
+            monthHTML += renderDayCell(cellDate, 'current-month');
+            dayCount++;
+            totalCells++;
+        }
+
+        let nextMonthDay = 1;
+        while (totalCells < 49) {
+            const cellDate = new Date(lastDay.getFullYear(), lastDay.getMonth() + 1, nextMonthDay);
+            monthHTML += renderDayCell(cellDate, 'next-month');
+            nextMonthDay++;
+            totalCells++;
+        }
+
+        return monthHTML;
+    }
+
+    function getBookingStatus(dateString) {
+        if (!bookedDatesSet.has(dateString)) {
+            return { status: 'not-booked' };
+        }
+
+        const date = parseDate(dateString);
+        const prevDay = getPreviousDay(dateString);
+        const nextDay = getNextDay(dateString);
+
+        let bookingStatuses = [];
+
+        for (let booking of bookings) {
+            if (isSameDate(date, booking.startDate)) {
+                bookingStatuses.push({
+                    status: 'start',
+                    bookingId: booking.id
+                });
+            }
+            if (isSameDate(date, booking.endDate)) {
+                bookingStatuses.push({
+                    status: 'end',
+                    bookingId: booking.id
+                });
+            }
+            if (date > booking.startDate && date < booking.endDate) {
+                bookingStatuses.push({
+                    status: 'middle',
+                    bookingId: booking.id
+                });
+            }
+        }
+
+        if (bookingStatuses.length > 1) {
+            return {
+                status: 'adjacent',
+                bookingIds: bookingStatuses.map(status => status.bookingId)
+            };
+        } else if (bookingStatuses.length === 1) {
+            return bookingStatuses[0];
+        }
+
+        // This should not happen, but just in case
+        return { status: 'booked', bookingId: null };
+    }
+
+    function renderDayCell(date, monthType) {
+        const isToday = date.toDateString() === new Date().toDateString();
+        const isSelected = (startDate && isSameDate(date, startDate)) || 
+                        (endDate && isSameDate(date, endDate));
+        const isInRange = startDate && endDate && date > startDate && date < endDate;
+        const formattedDate = formatDate(date);
+        const bookingInfo = getBookingStatus(formattedDate);
+
+        let cellClass = 'day-cell px-3 py-2 h-24 sm:h-32 cursor-pointer ';
+        if (monthType === 'current-month') {
+            cellClass += 'bg-white ';
+        } else {
+            cellClass += 'bg-gray-50 text-gray-500 ';
+        }
+
+        if (bookingInfo.status !== 'not-booked') {
+            if (bookingInfo.status === 'adjacent') {
+                cellClass += 'booking-adjacent ';
+                bookingInfo.bookingIds.forEach(id => {
+                    cellClass += `booking-${id} `;
+                });
+            } else {
+                cellClass += `booking-${bookingInfo.bookingId} `;
+                switch (bookingInfo.status) {
+                    case 'start':
+                        cellClass += 'booking-start ';
+                        break;
+                    case 'end':
+                        cellClass += 'booking-end ';
+                        break;
+                    case 'middle':
+                        cellClass += 'booking-middle ';
+                        break;
+                }
+            }
+        }
+
+        if (isSelected) {
+            cellClass += 'bg-blue-200 ';
+        } else if (isInRange) {
+            cellClass += 'bg-blue-100 ';
+        }
+        if (isToday) {
+            cellClass += 'font-semibold text-indigo-600 ';
+        }
+
+        return `
+            <div class="${cellClass}" data-date="${formattedDate}" ${bookingInfo.status !== 'not-booked' ? `data-booked="true" data-booking-id="${bookingInfo.bookingId || bookingInfo.bookingIds.join(',')}"` : ''}>
+                <time datetime="${formattedDate}">
+                    ${monthType !== 'current-month' ? `<span class="text-gray-400">${date.toLocaleString('default', { month: 'short' })} </span>` : ''}${date.getDate()}
+                </time>
+            </div>
+        `;
+    }
+
+    function getPreviousDay(dateString) {
+        const date = new Date(dateString);
+        date.setDate(date.getDate() - 1);
+        return formatDate(date);
+    }
+
+    function getNextDay(dateString) {
+        const date = new Date(dateString);
+        date.setDate(date.getDate() + 1);
+        return formatDate(date);
+    }
+
+    function isSameDate(date1, date2) {
+        return date1.getFullYear() === date2.getFullYear() &&
+               date1.getMonth() === date2.getMonth() &&
+               date1.getDate() === date2.getDate();
+    }
+
+    function addDateClickListeners() {
+        const dayCells = document.querySelectorAll('#calendar-days [data-date]');
+        dayCells.forEach(cell => {
+            cell.addEventListener('click', () => {
+                const clickedDate = parseDate(cell.dataset.date);
+                const isBooked = cell.dataset.booked === 'true';
+                console.log('Clicked date:', clickedDate, 'Is booked:', isBooked);
+                if (!isBooked) {
+                    if (!startDate || (startDate && endDate)) {
+                        startDate = clickedDate;
+                        endDate = null;
+                    } else if (clickedDate < startDate) {
+                        endDate = startDate;
+                        startDate = clickedDate;
+                    } else {
+                        endDate = clickedDate;
+                    }
+                    renderCalendar(currentDate);
+                    console.log('Selected range:', startDate, endDate);
+                } else {
+                    console.log('This date is booked and cannot be selected');
+                }
+            });
+        });
+    }
+
+    renderCalendar(currentDate);
+
+    prevMonthButton.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar(currentDate);
+    });
+
+    nextMonthButton.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar(currentDate);
+    });
+});
+
+
+
+                    </script>
+            </main>
+       </div>
+    </div>
+    
+</body>
+</html>

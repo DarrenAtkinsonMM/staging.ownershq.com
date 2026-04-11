@@ -1,0 +1,12 @@
+# Helicon Ape version 3.0.0.65
+
+RewriteEngine On
+
+#https rewrite
+RewriteCond %{HTTPS} off [NC]
+RewriteCond %{HTTP_HOST} ^(?:staging\.)?ownershq\.com$ [NC]
+RewriteRule (.*) https\://staging.ownershq.com/$1 [R=301]
+
+RewriteBase /
+
+RewriteRule ^([a-zA-Z0-9_-]+)/$ $1.aspx [NC,QSA,L]

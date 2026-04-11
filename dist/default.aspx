@@ -1,0 +1,589 @@
+<%@ Page Language="VB" MasterPageFile="~/master/main.master" AutoEventWireup="false" CodeFile="default.aspx.vb" Inherits="defaultindex" %>
+<%@ MasterType VirtualPath="~/master/main.master" %>
+
+<asp:Content ID="HeadContent" ContentPlaceHolderID="cphMainHead" Runat="Server">
+    <title>Owners HQ | Booking & Payment Management for Holiday Rental Owners</title>
+    <meta name="description" content="Manage direct bookings and accept payments professionally. No subscription fees — you only pay when you earn. Built for holiday rental owners with 1-5 properties.">
+</asp:Content>
+
+<asp:Content ID="BodyContent" ContentPlaceHolderID="cphMainContent" Runat="Server">
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="relative overflow-hidden bg-warm-50 grain">
+        <!-- Background gradient mesh -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-sky-500/10 blur-[120px]"></div>
+            <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-sky-400/5 blur-[100px]"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-sky-600/5 blur-[150px]"></div>
+        </div>
+        <!-- Decorative grid lines -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 64px 64px;"></div>
+
+        <div class="relative z-10 mx-auto max-w-7xl px-6 pt-32 pb-20 sm:px-8 sm:pt-40 sm:pb-28 lg:px-8">
+            <!-- Eyebrow -->
+            <div class="hero-animate-1 flex items-center gap-2 mb-6">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 px-3.5 py-1 text-xs font-medium text-sky-600 tracking-wide">
+                    <span class="h-1.5 w-1.5 rounded-full bg-sky-600 animate-pulse"></span>
+                    Now in early access
+                </span>
+            </div>
+
+            <div class="max-w-3xl">
+                <!-- Headline -->
+                <h1 class="hero-animate-2 font-serif text-4xl sm:text-5xl lg:text-6xl text-navy-900 leading-[1.1] tracking-tight">
+                    Direct bookings,<br>
+                    <span class="text-sky-600">handled professionally.</span>
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="hero-animate-3 mt-6 text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl">
+                    Booking confirmation, payment schedules, automated reminders, and Stripe-powered payments &mdash; all in one place. Your guests get a professional experience. You get paid on time.
+                </p>
+
+                <!-- CTA Group -->
+                <div class="hero-animate-4 mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <a href="https://manage.ownershq.com/register/" class="group inline-flex items-center gap-2 rounded-xl bg-sky-600 px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition hover:bg-sky-700 hover:shadow-sky-700/30 hover:-translate-y-0.5">
+                        Get Started Free
+                        <svg class="h-4 w-4 transition group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                    </a>
+                    <span class="text-sm text-gray-400">No credit card required &middot; Pay only when you earn</span>
+                </div>
+            </div>
+
+            <!-- Dashboard Preview -->
+        <div class="dashboard-animate mt-16 sm:mt-20">
+            <div class="relative rounded-2xl border border-white/10 bg-white/[0.03] p-2 backdrop-blur-sm shadow-2xl shadow-black/20">
+                <div class="rounded-xl bg-warm-50 overflow-hidden shadow-elevated">
+                    <!-- Mock Dashboard Top Bar -->
+                    <div class="flex items-center justify-between border-b border-gray-200/80 bg-white px-6 py-3">
+                        <div class="flex items-center gap-3">
+                            <div class="flex gap-1.5">
+                                <div class="h-3 w-3 rounded-full bg-red-400/70"></div>
+                                <div class="h-3 w-3 rounded-full bg-amber-400/70"></div>
+                                <div class="h-3 w-3 rounded-full bg-emerald-400/70"></div>
+                            </div>
+                            <div class="h-6 w-48 rounded-md bg-gray-100 flex items-center px-2">
+                                <svg class="h-3 w-3 text-gray-400 mr-1.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+                                <span class="text-xs text-gray-400">manage.ownershq.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mock Dashboard Content -->
+                    <div class="flex">
+                        <!-- Sidebar -->
+                        <div class="hidden sm:flex w-48 flex-shrink-0 flex-col bg-navy-800 py-5 px-3 justify-between" style="min-height: 480px;">
+                            <div>
+                                <!-- Logo -->
+                                <div class="flex items-center gap-1 px-2 mb-8">
+                                    <div class="h-8 w-8 rounded-full bg-pink-600/20 flex items-center justify-center">
+                                        <img src="https://smanager.ownershq.com/images/OHQ-icon-lg.png" class="w-6 h-6">
+                                    </div>
+                                    <span class="text-sm font-bold text-white tracking-tight">Owners HQ</span>
+                                </div>
+                                <!-- Nav -->
+                                <div class="space-y-1">
+                                    <div class="flex items-center gap-2.5 rounded-lg bg-sky-600/20 px-3 py-2">
+                                        <svg class="h-4 w-4 text-sky-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
+                                        <span class="text-sm font-medium text-white">Dashboard</span>
+                                    </div>
+                                    <div class="flex items-center gap-2.5 px-3 py-2">
+                                        <svg class="h-4 w-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                                        <span class="text-sm text-white/50">Bookings</span>
+                                    </div>
+                                    <div class="flex items-center gap-2.5 px-3 py-2">
+                                        <svg class="h-4 w-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>
+                                        <span class="text-sm text-white/50">Payments</span>
+                                    </div>
+                                    <div class="flex items-center gap-2.5 px-3 py-2">
+                                        <svg class="h-4 w-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                        <span class="text-sm text-white/50">Settings</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Account Settings (bottom-pinned) -->
+                            <div class="flex items-center gap-2.5 px-3 py-2 border-t border-white/10 pt-3">
+                                <svg class="h-4 w-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.204-.107-.397.165-.71.505-.78.93l-.15.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                <span class="text-sm text-white/50">Account Settings</span>
+                            </div>
+                        </div>
+
+                        <!-- Main Content Area -->
+                        <div class="flex-1 p-4 sm:p-6 bg-warm-50 overflow-hidden">
+                            <!-- Header -->
+                            <div class="flex items-start justify-between mb-5 sm:mb-6">
+                                <div>
+                                    <h2 class="font-serif text-xl sm:text-2xl text-navy-900 leading-tight">Good afternoon, </h2>
+                                    <p class="text-[10px] sm:text-xs font-medium text-sky-600 uppercase tracking-widest mt-1">Here's what's happening today</p>
+                                </div>
+                                <div class="hidden sm:flex items-center gap-1.5 rounded-lg bg-sky-600 px-3 py-2 text-white text-xs font-semibold shadow-sm">
+                                    <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                    New Booking
+                                </div>
+                            </div>
+
+                            <!-- Stats Row -->
+                            <div class="grid grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-5">
+                                <!-- No. of Bookings -->
+                                <div class="relative rounded-xl bg-white p-3 sm:p-4 shadow-card border border-gray-100">
+                                    <p class="text-[9px] sm:text-[10px] font-semibold text-gray-400 uppercase tracking-wider">No. of Bookings</p>
+                                    <div class="flex items-center justify-between mt-1">
+                                        <p class="text-2xl sm:text-3xl font-bold text-navy-900">9</p>
+                                        <div class="hidden sm:flex items-center gap-1 text-gray-400">
+                                            <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+                                            <span class="text-[10px] font-medium text-gray-500">2026</span>
+                                            <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-3 right-3 hidden sm:block text-gray-200">
+                                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" /></svg>
+                                    </div>
+                                </div>
+                                <!-- Annual Revenue -->
+                                <div class="rounded-xl bg-white p-3 sm:p-4 shadow-card border border-gray-100">
+                                    <p class="text-[9px] sm:text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Annual Revenue</p>
+                                    <div class="flex items-center justify-between mt-1">
+                                        <p class="text-2xl sm:text-3xl font-bold text-navy-900">&euro;12,150</p>
+                                        <div class="hidden sm:flex items-center gap-1 text-gray-400">
+                                            <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+                                            <span class="text-[10px] font-medium text-gray-500">2026</span>
+                                            <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Overdue Payments -->
+                                <div class="relative rounded-xl bg-red-50/60 p-3 sm:p-4 shadow-card border border-red-200/50">
+                                    <div class="flex items-start justify-between">
+                                        <p class="text-[9px] sm:text-[10px] font-semibold text-red-600 uppercase tracking-wider">Overdue Payments</p>
+                                        <span class="flex items-center justify-center h-5 w-5 rounded-full bg-red-600 text-[10px] font-bold text-white">2</span>
+                                    </div>
+                                    <p class="text-2xl sm:text-3xl font-bold text-red-600 mt-1">&euro;275</p>
+                                    <div class="flex items-center gap-1 mt-1">
+                                        <svg class="h-3 w-3 text-red-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
+                                        <span class="text-[9px] sm:text-[10px] font-medium text-red-600">across 2 bookings</span>
+                                    </div>
+                                    <!-- Circular progress indicator -->
+                                    <div class="absolute bottom-3 right-3 hidden sm:block">
+                                        <svg class="h-8 w-8" viewBox="0 0 36 36">
+                                            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#fee2e2" stroke-width="3" />
+                                            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="75, 100" stroke-linecap="round" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Section: Arrivals + Activity Feed -->
+                            <div class="flex gap-3 sm:gap-4">
+                                <!-- Upcoming Arrivals -->
+                                <div class="flex-1 min-w-0 rounded-xl bg-white shadow-card border border-gray-100 overflow-hidden">
+                                    <div class="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-gray-100">
+                                        <h3 class="text-sm font-bold text-navy-900">Upcoming Arrivals</h3>
+                                        <span class="text-[10px] sm:text-xs font-medium text-sky-600 cursor-pointer">View All Bookings</span>
+                                    </div>
+                                    <div class="divide-y divide-gray-50">
+                                        <!-- Row 1: APR 12 -->
+                                        <div class="flex items-center gap-3 px-4 sm:px-5 py-2.5">
+                                            <div class="hidden sm:flex shrink-0 w-10 h-10 rounded-xl bg-warm-100  flex-col items-center justify-center border border-warm-200">
+                                                <span class="text-[9px] font-semibold uppercase tracking-wider text-sky-600 leading-none">Apr</span>
+                                                <span class="text-sm font-display text-navy-800 leading-tight">12</span>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-sm font-semibold text-navy-900 truncate">Sunny Villa</p>
+                                                <p class="text-[10px] sm:text-xs text-gray-400 flex items-center gap-1">
+                                                    <svg class="h-3 w-3 text-gray-300" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+                                                    Laura Atkinson &middot; 4 Guests
+                                                </p>
+                                            </div>
+                                            <span class="inline-flex items-center rounded-full bg-red-50 px-2 py-0.5 text-[9px] sm:text-[10px] font-bold text-red-600 uppercase tracking-wide">Overdue</span>
+                                        </div>
+                                        <!-- Row 2: MAY 1 -->
+                                        <div class="flex items-center gap-3 px-4 sm:px-5 py-2.5">
+                                            <div class="hidden sm:flex shrink-0 w-10 h-10 rounded-xl bg-warm-100  flex-col items-center justify-center border border-warm-200">
+                                                <span class="text-[9px] font-semibold uppercase tracking-wider text-sky-600 leading-none">May</span>
+                                                <span class="text-sm font-display text-navy-800 leading-tight">1</span>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-sm font-semibold text-navy-900 truncate">Sunny Villa</p>
+                                                <p class="text-[10px] sm:text-xs text-gray-400 flex items-center gap-1">
+                                                    <svg class="h-3 w-3 text-gray-300" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+                                                    Laura Atkinson &middot; 5 Guests
+                                                </p>
+                                            </div>
+                                            <span class="inline-flex items-center rounded-full bg-emerald-50 px-2 py-0.5 text-[9px] sm:text-[10px] font-bold text-emerald-700 uppercase tracking-wide">Fully Paid</span>
+                                        </div>
+                                        <!-- Row 3: MAY 11 -->
+                                        <div class="flex items-center gap-3 px-4 sm:px-5 py-2.5">
+                                            <div class="hidden sm:flex shrink-0 w-10 h-10 rounded-xl bg-warm-100  flex-col items-center justify-center border border-warm-200">
+                                                <span class="text-[9px] font-semibold uppercase tracking-wider text-sky-600 leading-none">May</span>
+                                                <span class="text-sm font-display text-navy-800 leading-tight">11</span>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-sm font-semibold text-navy-900 truncate">Beach Villa</p>
+                                                <p class="text-[10px] sm:text-xs text-gray-400 flex items-center gap-1">
+                                                    <svg class="h-3 w-3 text-gray-300" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+                                                    Darren Atkinson &middot; 4 Guests
+                                                </p>
+                                            </div>
+                                            <span class="inline-flex items-center rounded-full bg-red-50 px-2 py-0.5 text-[9px] sm:text-[10px] font-bold text-red-600 uppercase tracking-wide">Overdue</span>
+                                        </div>
+                                        <!-- Row 4: JUL 1 -->
+                                        <div class="flex items-center gap-3 px-4 sm:px-5 py-2.5">
+                                            <div class="hidden sm:flex shrink-0 w-10 h-10 rounded-xl bg-warm-100  flex-col items-center justify-center border border-warm-200">
+                                                <span class="text-[9px] font-semibold uppercase tracking-wider text-sky-600 leading-none">Jul</span>
+                                                <span class="text-sm font-display text-navy-800 leading-tight">1</span>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-sm font-semibold text-navy-900 truncate">Sunny Villa</p>
+                                                <p class="text-[10px] sm:text-xs text-gray-400 flex items-center gap-1">
+                                                    <svg class="h-3 w-3 text-gray-300" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+                                                    Laura Atkinson &middot; 6 Guests
+                                                </p>
+                                            </div>
+                                            <span class="inline-flex items-center rounded-full bg-amber-50 px-2 py-0.5 text-[9px] sm:text-[10px] font-bold text-amber-700 uppercase tracking-wide">Deposit Paid</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Activity Feed -->
+                                <div class="hidden md:flex flex-col w-[38%] flex-shrink-0 rounded-xl bg-white shadow-card border border-gray-100 overflow-hidden">
+                                    <div class="px-4 sm:px-5 py-3 border-b border-gray-100">
+                                        <h3 class="text-sm font-bold text-navy-900">Activity Feed</h3>
+                                    </div>
+                                    <div class="divide-y divide-gray-50 flex-1">
+                                        <!-- Activity 1 -->
+                                        <div class="flex gap-3 px-4 sm:px-5 py-3">
+                                            <div class="flex-shrink-0 mt-0.5">
+                                                <div class="h-7 w-7 rounded-full bg-emerald-100 flex items-center justify-center">
+                                                    <svg class="h-3.5 w-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-0">
+                                                <p class="text-xs font-semibold text-navy-900 leading-snug">Payment of &euro;200.00 recorded (Bank Transfer)</p>
+                                                <p class="text-[10px] text-gray-400 mt-0.5 truncate">Sunny Villa &middot; Booking ID: 3 &middot; Laura Atkinson</p>
+                                                <p class="text-[10px] text-gray-300 font-medium mt-0.5 uppercase">6d ago</p>
+                                            </div>
+                                        </div>
+                                        <!-- Activity 2 -->
+                                        <div class="flex gap-3 px-4 sm:px-5 py-3">
+                                            <div class="flex-shrink-0 mt-0.5">
+                                                <div class="h-7 w-7 rounded-full bg-red-100 flex items-center justify-center">
+                                                    <svg class="h-3.5 w-3.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-0">
+                                                <p class="text-xs font-semibold text-navy-900 leading-snug">Manual refund of &euro;100.00 recorded</p>
+                                                <p class="text-[10px] text-gray-400 mt-0.5 truncate">Beach Villa &middot; Booking ID: 3 &middot; Laura Atkinson</p>
+                                                <p class="text-[10px] text-gray-300 font-medium mt-0.5 uppercase">6d ago</p>
+                                            </div>
+                                        </div>
+                                        <!-- Activity 3 -->
+                                        <div class="flex gap-3 px-4 sm:px-5 py-3">
+                                            <div class="flex-shrink-0 mt-0.5">
+                                                <div class="h-7 w-7 rounded-full bg-emerald-100 flex items-center justify-center">
+                                                    <svg class="h-3.5 w-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                                </div>
+                                            </div>
+                                            <div class="min-w-0">
+                                                <p class="text-xs font-semibold text-navy-900 leading-snug">Payment of &euro;650.00 recorded (Card)</p>
+                                                <p class="text-[10px] text-gray-400 mt-0.5 truncate">Sunny Villa &middot; Booking ID: 6 &middot; Laura Atkinson</p>
+                                                <p class="text-[10px] text-gray-300 font-medium mt-0.5 uppercase">11d ago</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== TRUST BAR ==================== -->
+    <section class="relative bg-white border-b border-gray-100">
+        <div class="mx-auto max-w-7xl px-6 py-10 sm:py-12 sm:px-8 lg:px-8">
+            <div class="reveal-on-scroll grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-12 items-center text-center">
+                <div>
+                    <p class="text-3xl sm:text-4xl font-bold text-navy-900 font-serif">0%</p>
+                    <p class="mt-1 text-sm text-gray-500">Guest fees</p>
+                </div>
+                <div>
+                    <p class="text-3xl sm:text-4xl font-bold text-navy-900 font-serif">&pound;0</p>
+                    <p class="mt-1 text-sm text-gray-500">Monthly subscription</p>
+                </div>
+                <div>
+                    <p class="text-3xl sm:text-4xl font-bold text-navy-900 font-serif">1%</p>
+                    <p class="mt-1 text-sm text-gray-500">Per booking fee</p>
+                </div>
+                <div>
+                    <p class="text-3xl sm:text-4xl font-bold text-navy-900 font-serif">&pound;25</p>
+                    <p class="mt-1 text-sm text-gray-500">Fee cap per booking</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== FEATURES SECTION ==================== -->
+    <section class="relative bg-warm-50 overflow-hidden">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-brand-500/[0.02] blur-[100px]"></div>
+        <div class="relative mx-auto max-w-7xl px-6 py-20 sm:py-28 sm:px-8 lg:px-8">
+            <div class="reveal-on-scroll max-w-2xl">
+                <p class="text-sm font-semibold text-sky-600 uppercase tracking-wider">Features</p>
+                <h2 class="mt-3 font-serif text-3xl sm:text-4xl text-navy-900 leading-tight">Everything you need to manage<br class="hidden sm:block"> direct bookings professionally</h2>
+                <p class="mt-4 text-lg text-gray-500 leading-relaxed">Built for owners with 1&ndash;5 properties who want a professional booking experience without the complexity of a full PMS.</p>
+            </div>
+
+            <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="reveal-on-scroll reveal-delay-1 group rounded-2xl bg-white p-6 shadow-card transition hover:shadow-card-hover hover:-translate-y-0.5">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-100">
+                        <svg class="h-5 w-5 text-sky-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" /></svg>
+                    </div>
+                    <h3 class="mt-4 text-base font-semibold text-navy-900">Booking Management</h3>
+                    <p class="mt-2 text-sm text-gray-500 leading-relaxed">Create bookings, add guest details, set payment schedules, and manage everything easily from one simple dashboard.</p>
+                </div>
+
+                <div class="reveal-on-scroll reveal-delay-2 group rounded-2xl bg-white p-6 shadow-card transition hover:shadow-card-hover hover:-translate-y-0.5">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-100">
+                        <svg class="h-5 w-5 text-sky-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" /></svg>
+                    </div>
+                    <h3 class="mt-4 text-base font-semibold text-navy-900">Modern Payment Methods</h3>
+                    <p class="mt-2 text-sm text-gray-500 leading-relaxed">Accept cards, bank transfers, Apple Pay, and Google Pay. Automatic payment reminders chase guests so you don&rsquo;t have to.</p>
+                </div>
+
+                <div class="reveal-on-scroll reveal-delay-3 group rounded-2xl bg-white p-6 shadow-card transition hover:shadow-card-hover hover:-translate-y-0.5">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-100">
+                        <svg class="h-5 w-5 text-sky-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+                    </div>
+                    <h3 class="mt-4 text-base font-semibold text-navy-900">Secure Guest Portal</h3>
+                    <p class="mt-2 text-sm text-gray-500 leading-relaxed">Guests see their booking details, payment schedules, and a pay button. No app download, no account creation, no hassle.</p>
+                </div>
+
+                <div class="reveal-on-scroll reveal-delay-1 group rounded-2xl bg-white p-6 shadow-card transition hover:shadow-card-hover hover:-translate-y-0.5">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-100">
+                        <svg class="h-5 w-5 text-sky-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                    </div>
+                    <h3 class="mt-4 text-base font-semibold text-navy-900">Automated Emails</h3>
+                    <p class="mt-2 text-sm text-gray-500 leading-relaxed">Professional booking confirmations, payment reminders, and receipts sent automatically. Guests stay informed, you stay hands-off.</p>
+                </div>
+
+                <div class="reveal-on-scroll reveal-delay-2 group rounded-2xl bg-white p-6 shadow-card transition hover:shadow-card-hover hover:-translate-y-0.5">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-100">
+                        <svg class="h-5 w-5 text-sky-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" /></svg>
+                    </div>
+                    <h3 class="mt-4 text-base font-semibold text-navy-900">Manual Payment Options</h3>
+                    <p class="mt-2 text-sm text-gray-500 leading-relaxed">Handle payments manually, record bank transfer, cash, and telephone card payments quickly and easily.</p>
+                </div>
+
+                <div class="reveal-on-scroll reveal-delay-3 group rounded-2xl bg-white p-6 shadow-card transition hover:shadow-card-hover hover:-translate-y-0.5">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-100">
+                        <svg class="h-5 w-5 text-sky-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+                    </div>
+                    <h3 class="mt-4 text-base font-semibold text-navy-900">Full Transparency</h3>
+                    <p class="mt-2 text-sm text-gray-500 leading-relaxed">Every receipt shows a full breakdown &mdash; transaction fees, platform fees, net amount. No hidden charges, no surprises. Ever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== HOW IT WORKS ==================== -->
+    <section class="relative bg-white overflow-hidden">
+        <div class="mx-auto max-w-7xl px-6 py-20 sm:py-28 sm:px-8 lg:px-8">
+            <div class="reveal-on-scroll text-center max-w-2xl mx-auto">
+                <p class="text-sm font-semibold text-sky-600 uppercase tracking-wider">How it works</p>
+                <h2 class="mt-3 font-serif text-3xl sm:text-4xl text-navy-900 leading-tight">Up and running in minutes</h2>
+                <p class="mt-4 text-lg text-gray-500">No complex setup. No training required. If you can send an email, you can use Owners HQ.</p>
+            </div>
+
+            <div class="mt-16 grid gap-8 sm:gap-6 lg:grid-cols-3">
+                <div class="reveal-on-scroll reveal-delay-1 relative">
+                    <div class="flex items-start gap-5">
+                        <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-sky-600 text-white font-serif text-xl">1</div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-navy-900">Create a booking</h3>
+                            <p class="mt-2 text-sm text-gray-500 leading-relaxed">Add your guest's details, dates, and pricing. Set a payment schedule with deposit and balance due dates. Your guest receives a professional booking confirmation email instantly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-on-scroll reveal-delay-2 relative">
+                    <div class="flex items-start gap-5">
+                        <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-sky-600 text-white font-serif text-xl">2</div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-navy-900">Guests pay securely</h3>
+                            <p class="mt-2 text-sm text-gray-500 leading-relaxed">Your guest visits their personal booking page. No app, no account needed. They see the full breakdown and pay by whichever payment methods you've enabled.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-on-scroll reveal-delay-3">
+                    <div class="flex items-start gap-5">
+                        <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-sky-600 text-white font-serif text-xl">3</div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-navy-900">Get paid, stay informed</h3>
+                            <p class="mt-2 text-sm text-gray-500 leading-relaxed">Payments go directly to your account, not ours, as soon as you are paid. Both you and your guest get detailed receipts. Your dashboard tracks everything in real time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== PRICING SECTION ==================== -->
+    <section class="relative bg-navy-900 grain overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute bottom-0 left-1/3 w-[500px] h-[500px] rounded-full bg-brand-500/5 blur-[120px]"></div>
+        </div>
+        <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 64px 64px;"></div>
+
+        <div class="relative z-10 mx-auto max-w-7xl px-6 py-20 sm:py-28 sm:px-8 lg:px-8">
+            <div class="reveal-on-scroll text-center max-w-2xl mx-auto">
+                <p class="text-sm font-semibold text-sky-300 uppercase tracking-wider">Pricing</p>
+                <h2 class="mt-3 font-serif text-3xl sm:text-4xl text-white leading-tight">Pay only when you earn</h2>
+                <p class="mt-4 text-lg text-white/60">No monthly subscriptions. No per-property fees. No feature tiers. You pay a small fee per booking &mdash; that&rsquo;s it.</p>
+            </div>
+
+            <div class="reveal-on-scroll mt-14 max-w-lg mx-auto">
+                <div class="rounded-2xl bg-white/[0.05] border border-white/10 backdrop-blur-sm p-8 sm:p-10">
+                    <div class="text-center">
+                        <div class="inline-flex items-center gap-2 rounded-full bg-sky-500/10 border border-sky-500/20 px-4 py-1.5 text-sm font-medium text-sky-300 mb-6">
+                            <span class="h-1.5 w-1.5 rounded-full bg-sky-500 animate-pulse"></span>
+                            Launch pricing &mdash; locked in for early adopters
+                        </div>
+                        <div class="flex items-baseline justify-center gap-1">
+                            <span class="font-serif text-6xl sm:text-7xl text-white">1%</span>
+                        </div>
+                        <p class="mt-2 text-white/60">of booking value</p>
+                    </div>
+
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-center justify-between py-3 border-b border-white/5">
+                            <span class="text-sm text-white/60">Minimum fee</span>
+                            <span class="text-sm font-semibold text-white"><span class="line-through">&pound;10 per booking</span> No Minimum</span>
+                        </div>
+                        <div class="flex items-center justify-between py-3 border-b border-white/5">
+                            <span class="text-sm text-white/60">Maximum fee</span>
+                            <span class="text-sm font-semibold text-white">&pound;25 per booking</span>
+                        </div>
+                        <div class="flex items-center justify-between py-3 border-b border-white/5">
+                            <span class="text-sm text-white/60">Monthly subscription</span>
+                            <span class="text-sm font-semibold text-sky-300">Free, always</span>
+                        </div>
+                        <div class="flex items-center justify-between py-3 border-b border-white/5">
+                            <span class="text-sm text-white/60">Guest fees</span>
+                            <span class="text-sm font-semibold text-sky-300">Zero</span>
+                        </div>
+                        <div class="flex items-center justify-between py-3">
+                            <span class="text-sm text-white/60">Feature access</span>
+                            <span class="text-sm font-semibold text-sky-300">Everything, always</span>
+                        </div>
+                    </div>
+
+                    <a href="https://manage.ownershq.com/register/" class="mt-8 flex items-center justify-center gap-2 rounded-xl bg-sky-600 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand-500/25 transition hover:bg-sky-700 hover:-translate-y-0.5 w-full">
+                        Start Free
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                    </a>
+                    <p class="mt-3 text-center text-xs text-white/50">Stripe processing fees apply separately</p>
+                </div>
+            </div>
+
+         </div>
+    </section>
+
+
+    <!-- ==================== WHY SECTION ==================== -->
+    <section class="relative bg-warm-50">
+        <div class="mx-auto max-w-7xl px-6 py-20 sm:py-28 sm:px-8 lg:px-8">
+            <div class="reveal-on-scroll text-center max-w-2xl mx-auto mb-14">
+                <p class="text-sm font-semibold text-sky-600 uppercase tracking-wider">Why Owners HQ</p>
+                <h2 class="mt-3 font-serif text-3xl sm:text-4xl text-navy-900 leading-tight">Built different, on purpose</h2>
+            </div>
+
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="reveal-on-scroll reveal-delay-1 rounded-2xl bg-white p-6 shadow-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-red-50">
+                            <svg class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>
+                        </div>
+                        <span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Not a bloated PMS</span>
+                    </div>
+                    <h3 class="text-base font-semibold text-navy-900">Simple &amp; straightforward</h3>
+                    <p class="mt-2 text-sm text-gray-500 leading-relaxed">Many property management sytems charge &pound;20 - &pound;100 per month and have 50 features you'll never use. Owners HQ gives you what you actually need, booking management and payments.</p>
+                </div>
+
+                <div class="reveal-on-scroll reveal-delay-2 rounded-2xl bg-white p-6 shadow-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-red-50">
+                            <svg class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>
+                        </div>
+                        <span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Not an OTA</span>
+                    </div>
+                    <h3 class="text-base font-semibold text-navy-900">No guest fees</h3>
+                    <p class="mt-2 text-sm text-gray-500 leading-relaxed">Airbnb, VRBO and similar platforms can charge guests 6 - 20% on top of your price. With Owners HQ, guests pay exactly what you quote. Zero booking fees for guests, ever.</p>
+                </div>
+
+                <div class="reveal-on-scroll reveal-delay-3 rounded-2xl bg-white p-6 shadow-card sm:col-span-2 lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50">
+                            <svg class="h-5 w-5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <span class="text-xs font-medium text-brand-600 uppercase tracking-wider">Just right</span>
+                    </div>
+                    <h3 class="text-base font-semibold text-navy-900">Outcome based pricing</h3>
+                    <p class="mt-2 text-sm text-gray-500 leading-relaxed">You only pay when bookings are processed. No bookings in November? You pay nothing. Every feature included for every user. No tiers, no per property pricing, no lock-in.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== TESTIMONIAL ==================== -->
+    <section class="relative bg-white">
+        <div class="mx-auto max-w-7xl px-6 py-20 sm:py-28 sm:px-8 lg:px-8">
+            <div class="reveal-on-scroll max-w-3xl mx-auto text-center">
+                <svg class="mx-auto h-10 w-10 text-sky-600 mb-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983z"/></svg>
+                <blockquote class="font-serif text-2xl sm:text-3xl text-navy-900 leading-snug">
+                    I was spending hours chasing bank transfers and sending invoices by hand. Now my guests get a proper booking page and I get paid on time.
+                </blockquote>
+                <div class="mt-8 flex items-center justify-center gap-3">
+                    <div class="h-10 w-10 rounded-full bg-warm-200 flex items-center justify-center">
+                        <span class="text-sm font-semibold text-navy-900">SC</span>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-sm font-medium text-navy-900">Sarah Collins</p>
+                        <p class="text-xs text-gray-400">Villa owner, Algarve &middot; 3 properties</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== FINAL CTA ==================== -->
+    <section class="relative bg-navy-900 grain overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-brand-500/10 blur-[120px]"></div>
+        </div>
+        <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 64px 64px;"></div>
+
+        <div class="relative z-10 mx-auto max-w-7xl px-6 py-20 sm:py-28 sm:px-8 lg:px-8 text-center">
+            <div class="reveal-on-scroll max-w-2xl mx-auto">
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">Ready to manage bookings<br class="hidden sm:block"> like a professional?</h2>
+                <p class="mt-5 text-lg text-white/50 max-w-xl mx-auto">Get started today. Lock in 1% launch pricing forever. No credit card required.</p>
+                <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://manage.ownershq.com/register/" class="group inline-flex items-center gap-2 rounded-xl bg-sky-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-brand-500/25 transition hover:bg-sky-700 hover:shadow-sky-400/30 hover:-translate-y-0.5">
+                        Get Started Free
+                        <svg class="h-4 w-4 transition group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                    </a>
+                    <a href="/features/" class="text-sm font-medium text-white/60 transition hover:text-white">Explore all features &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</asp:Content>

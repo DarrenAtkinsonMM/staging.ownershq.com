@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="format-detection" content="telephone=no" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PX862V8');</script>
+<!-- End Google Tag Manager -->
+<title>
+	Casa Amigavel | Villas in Portugal
+</title></head>
+<body class="bg-gray-100">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PX862V8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<form name="aspnetForm" method="post" action="/rental/19/" id="aspnetForm">
+    <style>
+        .booking-start::before,
+        .booking-end::after,
+        .booking-start-end::before,
+        .booking-start-end::after,
+        .selected-start::before,
+        .selected-start-booking-start::after,
+        .selected-end::after,
+        .selected-start-end::before,
+        .selected-start-end::after {
+            content: '';
+            position: relative;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .booking-start::before
+        {
+            border-width: 0 0 36px 36px;
+            border-color: transparent transparent rgba(252, 165, 165, 0.3) transparent;
+        }
+        .booking-end::after {
+            border-width: 36px 36px 0 0;
+            border-color: rgba(252, 165, 165, 0.3) transparent transparent transparent;
+        }
+        .booking-start-end::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 3px !important;
+            border-width: 0 0 38px 43px;  /* Slightly smaller */
+            border-style: solid;
+            border-color: transparent transparent rgba(252, 165, 165, 0.3) transparent;
+        }
+        .booking-start-end::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-width: 38px 43px 0 0;  /* Slightly smaller */
+            border-style: solid;
+            border-color: rgba(252, 165, 165, 0.3) transparent transparent transparent;
+        }
+        .selected-start::before {
+            left: 0;
+            border-width: 0 0 36px 36px;
+            border-color: transparent transparent rgba(252, 165, 165, 0.4) transparent;
+        }
+        .selected-end::after,
+        .selected-start-booking-start::after {
+            right: 0;
+            border-width: 36px 36px 0 0;
+            border-color: rgba(252, 165, 165, 0.4) transparent transparent transparent;
+        }
+        .selected-start-end::before {
+            top: 2px;
+            left: 2px !important;
+            border-width: 0 0 38px 43px;
+            border-color: transparent transparent rgba(252, 165, 165, 0.3) transparent;
+        }
+        .selected-start-end::after {
+            top: 0;
+            left: 0;
+            border-width: 38px 43px 0 0;
+            border-color: rgba(252, 165, 165, 0.3) transparent transparent transparent;
+        }
+        .selected-start::before,
+        .selected-end::after,
+        .selected-start-booking-start::after,
+        .selected-start-end::before,
+        .selected-start-end::after {
+            border-color: rgba(79, 70, 229, 0.3) transparent transparent transparent;
+        }
+        .selected-start::before,
+        .selected-start-end::before {
+            border-color: transparent transparent rgba(79, 70, 229, 0.3) transparent;
+        }
+        .day-cell {
+            position: relative;
+        }
+        .day-cell::before,
+        .day-cell::after {
+            content: '';
+            position: absolute;
+            
+            width: 50%;
+            z-index: 1;
+        }
+        .day-cell::before {
+            left: 0;
+        }
+        .day-cell::after {
+            right: 0;
+        }
+        .selected-date {
+            background-color: rgba(79, 70, 229, 0.2) !important;
+        }
+        
+    </style>
+
+<div>
+     
+     <header>
+        <div class="w-full bg-sky-600 px-4">
+            <div class="max-w-6xl mx-auto py-2 text-right">
+                <a class="text-white text-lg" href="https://listings.ownershq.com/login/">Property Owners Login</a>
+            </div> 
+        </div>
+        
+        <div x-data="navigation" x-init="init">
+            <nav x-ref="nav" 
+            class="bg-white z-10 px-4 border border-gray-200" 
+            :class="{ 'fixed top-0 w-full': isSticky }" 
+            id="nav" 
+            @click.away="closeMenu()">
+                <div class="mx-auto max-w-6xl md:py-4">
+                <div class="relative flex h-16 items-center justify-between">
+                    <div class="absolute inset-y-0 right-0 flex items-center md:hidden">
+                    <!-- Mobile menu button-->
+                    <button 
+                        @click="toggleMenu()" 
+                        type="button" 
+                        class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-pink-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" 
+                        aria-controls="mobile-menu" 
+                        :aria-expanded="isOpen"
+                        >
+                        <span class="absolute -inset-0.5"></span>
+                        <span class="sr-only">Open main menu</span>
+
+                        <svg 
+                        class="h-6 w-6" 
+                        :class="{ 'hidden': isOpen, 'block': !isOpen }"
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke-width="1.5" 
+                        stroke="currentColor" 
+                        aria-hidden="true"
+                        >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+
+                        <svg 
+                        class="h-6 w-6" 
+                        :class="{ 'block': isOpen, 'hidden': !isOpen }"
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke-width="1.5" 
+                        stroke="currentColor" 
+                        aria-hidden="true"
+                        >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    </div>
+                    <div class="flex flex-1 items-center justify-between sm:items-center sm:justify-between">
+                    <div class="flex flex-shrink-0 items-center">
+                        <img class="w-48 h-auto md:w-64 lg:w-auto" src="https://staging.villasinportugal.com/images/villas-logo.png" alt="Villas in Portugal">
+                    </div>
+                    <div class="hidden sm:ml-6 md:block">
+                        <div class="flex space-x-4">
+                        <a href="#" class="rounded-md px-3 py-2 text-base lg:text-lg font-medium text-gray-500 hover:text-pink-600" aria-current="page">Home</a>
+                        <a href="#" class="rounded-md px-3 py-2 text-base lg:text-lg font-medium text-gray-500 hover:text-pink-600">Find a Villa</a>
+                        <a href="#" class="rounded-md px-3 py-2 text-base lg:text-lg font-medium text-gray-500 hover:text-pink-600">Blog</a>
+                        <a href="#" class="rounded-md px-3 py-2 text-base lg:text-lg font-medium text-gray-500 hover:text-pink-600">Advertise <span class="hidden lg:inline">Your Property</span></a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- Mobile menu, show/hide based on menu state. -->
+                <div 
+                x-ref="mobileMenu"
+                class="md:hidden" 
+                id="mobile-menu" 
+                x-show="isOpen" 
+                x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95"
+                >
+                <div class="space-y-1 px-2 pb-3 pt-2">
+                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-pink-600" aria-current="page">Home</a>
+                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-pink-600">Find a Villa</a>
+                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-pink-600">Blog</a>
+                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:text-pink-600">Advertise Your Property</a>
+                </div>
+                </div>
+            </nav>
+        </div>
+     </header> <!-- end header -->
+
+        
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
+        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
+        <script src="https://unpkg.com/imagesloaded@latest/imagesloaded.pkgd.min.js"></script>
+    <style>
+        .splide__pagination__page.is-active {
+            background: #333;
+        }
+    </style>
+
+    <div class="max-w-6xl mx-auto">
+        <div class="pt-12 pb-6 px-4">
+            <h1 class="text-4xl font-normal text-gray-600 uppercase pb-6">Casa Amigavel</h1>
+            <nav class="flex bg-white lg:mr-4 border border-gray-200" aria-label="Breadcrumb">
+                <ol role="list" class="flex space-x-4 bg-white px-6">
+                    <li class="flex">
+                    <div class="flex items-center">
+                        <a href="/" class="text-gray-400 hover:text-gray-500">
+                        <svg class="h-5 w-5 flex-shrink-0 text-pink-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="sr-only">Home</span>
+                        </a>
+                    </div>
+                    </li>
+                    <li class="hidden sm:flex">
+                    <div class="flex items-center">
+                        <svg class="h-full w-6 flex-shrink-0 text-gray-200" viewBox="0 0 24 44" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
+                        <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
+                        </svg>
+                        <a href="/all-rentals/" class="ml-4 text-sm font-medium text-gray-500 hover:text-pink-600">Portugal</a>
+                    </div>
+                    </li>
+                    <li class="hidden sm:flex">
+                    <div class="flex items-center">
+                        <svg class="h-full w-6 flex-shrink-0 text-gray-200" viewBox="0 0 24 44" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
+                        <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
+                        </svg>
+                        <a href="/algarve/" class="ml-4 text-sm font-medium text-gray-500 hover:text-pink-600" aria-current="page">Algarve</a>
+                    </div>
+                    </li>
+                    <li class="flex">
+                        <div class="flex items-center">
+                            <svg class="h-full w-6 flex-shrink-0 text-gray-200" viewBox="0 0 24 44" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
+                            <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
+                            </svg>
+                            <a href="/lagos/" class="ml-4 text-sm font-medium text-gray-500 hover:text-pink-600" aria-current="page">Lagos</a>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+        </div>
+
+        <div class="flex px-4">
+            <div class="w-full lg:w-3/4">
+                <div x-data="imageSlider()" x-init="init()" class="mb-8">
+                    <div id="main-slider" class="splide mb-4">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <template x-for="(image, index) in images" :key="index">
+                                    <li class="splide__slide">
+                                        <img :src="image.full" :alt="'Property image ' + (index + 1)">
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                
+                    <div id="thumbnail-slider" class="splide">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <template x-for="(image, index) in images" :key="index">
+                                    <li class="splide__slide">
+                                        <img :src="image.thumb" :alt="'Thumbnail ' + (index + 1)">
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white flex justify-between p-3 border border-gray-200 mb-8">
+                    <p class="text-gray-600"><span class="text-gray-800 font-semibold">LOCATION:</span> Lagos, Algarve</p>
+                    <p class="text-pink-600 font-medium">From: &pound;6617 p.w.</p>
+                </div> <!-- end propertyLocation-->
+
+                <div class="text-gray-600 leading-6 mb-8 [&>p]:mb-4">
+                <p>Casa Amigavel is a truly remarkable property that offers luxurious accommodation for up to 10 guests across its five lavish bedrooms. This exceptional residence is the result of a collaboration between esteemed local architect Mario Martins, blending the finest Portuguese design with contemporary materials.</p><p>Situated in one of the most sought-after natural locations along the Meia Praia / Lagos coastline, adjacent to the Palmares Golf Course, Casa Amigavel provides breathtaking views of the Atlantic Ocean.</p><p>The villa spans a single level, separated into two main areas known as the west and east wings divided by a beautifully located courtyard.&nbsp;</p><p>The light-filled living and dining areas in the west wing are thoughtfully equipped with all the amenities one could desire, including heated floors, air-conditioning, and tempered glass windows.</p><p>The villa's meticulously maintained gardens showcase native Algarve plants, complementing the 18-meter heated infinity pool and the shaded al-fresco gas BBQ dining area, all just a few steps away from the main living areas.</p><p>There is also a fire pit with ample seating for guests to enjoy the stunning location and relax. For a truly indulgent experience, Casa Amigavel features a hot tub deck, offering the perfect spot to enjoy a sunset drink while savouring uninterrupted views of the Atlantic.</p>
+                </div>
+                
+                <div class="locationMap">
+                    <h1>Location Map</h1>
+                </div>
+
+                <div id="ctl00_ContentPlaceHolder1_pnlReviews" class="reviewpanel">
+
+                    <div class="bg-white border border-gray-200 mb-8">
+                        <h2 class="bg-sky-500 px-4 py-2 text-lg text-white font-semibold">Property Reviews - 6 Reviews - Average Rating: 5 Stars</h2>
+
+                        <div class="reviewInner"
+                            x-data="{
+                                splide: null,
+                                observer: null,
+                                updateHeight: function() {
+                                    // Get the index of the next slide
+                                    let nextSlideIndex = this.splide.index;
+
+                                    // Target the content of the next slide
+                                    let nextSlideContent = this.splide.Components.Elements.list.children[nextSlideIndex].querySelector('.miniReview');
+                                    if (nextSlideContent) {
+                                        let height = nextSlideContent.scrollHeight + 50;
+                                        this.$refs.splide.style.height = height + 'px';
+                                    }
+                                },
+                                init() {
+                                    this.splide = new Splide(this.$refs.splide, {
+                                        perPage: 1,
+                                        autoplay: false, // Initially disable autoplay to control it based on visibility
+                                        rewind: true,
+                                        gap: '0.5rem',
+                                        breakpoints: {
+                                            640: {
+                                                perPage: 1,
+                                            },
+                                        },
+                                    });
+
+                                    this.splide.on('mounted move', () => { this.updateHeight(); });
+                                    this.splide.mount();
+
+                                    // Correctly accessing the autoplay methods
+                                    this.observer = new IntersectionObserver((entries) => {
+                                        entries.forEach(entry => {
+                                            if (entry.isIntersecting) {
+                                                // Correctly enable autoplay when in view
+                                                if (this.splide.Components.Autoplay) {
+                                                    this.splide.Components.Autoplay.play();
+                                                }
+                                            } else {
+                                                // Correctly pause autoplay when not in view
+                                                if (this.splide.Components.Autoplay) {
+                                                    this.splide.Components.Autoplay.pause();
+                                                }
+                                            }
+                                        });
+                                    }, { threshold: 0.1 });
+
+                                    this.observer.observe(this.$refs.splide);
+                                },
+                                destroy() {
+                                    if (this.observer) {
+                                        this.observer.disconnect();
+                                    }
+                                }
+                            }"
+                        >
+                            <section x-ref="splide" class="splide" style="transition: height 0.3s;" aria-label="Splide/Alpine.js Carousel Example">
+                                <div class="splide__track">
+                                    <ul class="splide__list">
+                                        <li class="splide__slide flex flex-col items-center justify-center pb-8">
+                                            <div class="w-4/5 py-2 text-gray-600">
+                                                <h4 class="text-sky-500 font-semibold text-lg mb-2">What a beautiful place! </h4>
+                                                <img src = "https://staging.villasinportugal.com/images/stars5.png" Class="mb-2" />
+                                                <p>Wow what a beautiful place! This stylish holiday retreat is cleverly designed and beautifully furnished. Perfect for a special family holiday or a memorable break with friends. No need to leave the villa if you just want to enjoy the sun, pool, outdoor space and views with family and friends, but authentic bars and restaurants and a lovely beach, within walking distance, or a quick car/taxi ride to the marina for more restaurants and local shopping. What more could you want! Thank you for a wonderful stay in your beautiful holiday home. We will be back!</p><p>Zoey Sheppard - 31/01/2024</p>
+                                            </div>
+                                        </li>
+                                        <li class="splide__slide flex flex-col items-center justify-center pb-8">
+                                            <div class="w-4/5 py-2 text-gray-600">
+                                                <h4 class="text-sky-500 font-semibold text-lg mb-2">Everything is so perfect.</h4>
+                                                <img src = "https://staging.villasinportugal.com/images/stars5.png" Class="mb-2" />
+                                                <p>As soon as you walk into this luxurious villa you instantly relax. Everything is so perfect and brilliantly designed. It’s finished off to an exceptionally high standard with a spectacular view, fantastic kitchen and dining area plus huge amount of outside space with affinity pool, hot tub and even a fire pit for those chill out evenings. It’s really close to Lagos, fantastic beaches and beach bars - we can’t wait to go back again this year.</p>
+                                                <p>E Doniger - 01/08/2023</p>
+                                            </div>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </section>
+                        </div>
+                    </div> <!-- end tabLocation -->
+                              
+                </div>
+
+                <div class="bg-white border border-gray-200 mb-8 pb-4">
+                    <h2 class="bg-sky-500 px-4 py-2 text-lg text-white font-semibold">Local Area Details</h2>
+                    <h3 class="text-pink-600 text-lg font-semibold px-4 pt-4 pb-4">Local Amenities</h3>
+                    <div class="flex w-full flex-wrap">
+                        <div class="flex w-1/2 flex-shrink-0 mb-4">
+                            <p class="text-sky-500 font-semibold w-1/2 ml-4">Beach</p>
+                            <p class="text-gray-500 w-1/2">750 Meters</p>
+                        </div>
+                        <div class="flex w-1/2 flex-shrink-0 mb-4">
+                            <p class="text-sky-500 font-semibold w-1/2 ml-4">Shop</p>
+                            <p class="text-gray-500 w-1/2">750 Meters</p>
+                        </div>
+                        <div class="flex w-1/2 flex-shrink-0 mb-4">
+                            <p class="text-sky-500 font-semibold w-1/2 ml-4">Restaurant</p>
+                            <p class="text-gray-500 w-1/2">750 Meters</p>
+                        </div>
+                        <div class="flex w-1/2 flex-shrink-0 mb-4">
+                            <p class="text-sky-500 font-semibold w-1/2 ml-4">Golf Course</p>
+                            <p class="text-gray-500 w-1/2">750 Meters</p>
+                        </div>
+                        <div class="flex w-1/2 flex-shrink-0 mb-4">
+                            <p class="text-sky-500 font-semibold w-1/2 ml-4">Marina</p>
+                            <p class="text-gray-500 w-1/2">750 Meters</p>
+                        </div>
+                        <div class="flex w-1/2 flex-shrink-0 mb-4">
+                            <p class="text-sky-500 font-semibold w-1/2 ml-4">Bar</p>
+                            <p class="text-gray-500 w-1/2">3.7 Km</p>
+                        </div>
+                        <div class="flex w-1/2 flex-shrink-0 mb-4">
+                            <p class="text-sky-500 font-semibold w-1/2 ml-4">Town</p>
+                            <p class="text-gray-500 w-1/2">750 Meters</p>
+                        </div>
+                    </div>
+                    <h3 class="text-pink-600 text-lg font-semibold px-4 pt-4 pb-4">Airport</h3>
+                    <div class="flex w-full flex-wrap">
+                        <div class="flex w-1/2 flex-shrink-0 mb-4">
+                            <p class="text-sky-500 font-semibold w-1/2 ml-4">Faro International Airport</p>
+                            <p class="text-gray-500 w-1/2">80 Km</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 mb-8 pb-4">
+                    <h2 class="bg-sky-500 px-4 py-2 text-lg text-white font-semibold">Availability</h2>
+                    <div class="container mx-auto mt-8" x-data="calendar()">
+                        <div class="flex flex-col items-center">
+                            <div class="flex flex-wrap justify-center gap-4 mb-6">
+                                <template x-for="(month, index) in months" :key="index">
+                                    <section class="text-center w-64">
+                                        <div class="flex items-center justify-between mb-2 relative">
+                                            <button @click.prevent="navigateMonths(-1)" class="p-2 rounded-full  bg-gray-100 hover:bg-gray-200 flex items-center justify-center absolute left-0" x-show="index === 0">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                                                </svg>
+                                                <span class="sr-only">Previous</span>
+                                            </button>
+                                            <h2 class="text-medium font-semibold text-gray-900 flex-grow text-center" x-text="month.name"></h2>
+                                            <button @click.prevent="navigateMonths(1)" class="p-2 rounded-full  bg-gray-100 hover:bg-gray-200 flex items-center justify-center absolute right-0" x-show="index === months.length - 1">
+                                                <span class="sr-only">Next</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="mt-6 grid grid-cols-7 text-xs leading-6 text-gray-500">
+                                            <div>M</div>
+                                            <div>T</div>
+                                            <div>W</div>
+                                            <div>T</div>
+                                            <div>F</div>
+                                            <div>S</div>
+                                            <div>S</div>
+                                        </div>
+                                        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
+                                            <template x-for="(day, dayIndex) in month.days" :key="dayIndex">
+                                                <div 
+                                                    class="day-cell relative"
+                                                    @click="handleDayClick($event, day)"
+                                                    :data-has-booking="day.isBooked.toString()"
+                                                    :data-is-booking-start="day.isBookingStart.toString()"
+                                                    :data-is-booking-end="day.isBookingEnd.toString()"
+                                                    :data-booking-ids="JSON.stringify(day.bookingIds)"
+                                                    :class="{
+                                                        'relative py-1': true,
+                                                        'hover:bg-gray-100': day.isCurrentMonth && !day.isNotSelectable && !day.highlightLeft && !day.highlightRight,
+                                                        'bg-white': day.isCurrentMonth && (!day.isBooked || day.isBookingStart || day.isBookingEnd),
+                                                        'bg-gray-50 text-gray-400': !day.isCurrentMonth,
+                                                        'bg-red-100': day.isCurrentMonth && day.isBooked && !day.isBookingStart && !day.isBookingEnd && !day.highlightFull,
+                                                        'booking-start': day.isCurrentMonth && day.isBookingStart && !day.isBookingEnd,
+                                                        'booking-end': day.isCurrentMonth && day.isBookingEnd && !day.isBookingStart,
+                                                        'booking-start-end': day.isCurrentMonth && day.isBookingStart && day.isBookingEnd,
+                                                        'selected-start': day.isSelected && day.date === fromDate && day.date !== toDate && !day.isBookingStart,
+                                                        'selected-start-booking-start': day.isSelected && day.date === fromDate && day.date !== toDate && day.isBookingStart,
+                                                        'selected-end': day.isSelected && day.date === toDate && day.date !== fromDate,
+                                                        'selected-start-end': day.isSelected && day.date === fromDate && day.date === toDate,
+                                                        'selected-date': day.isSelected && day.date !== fromDate && day.date !== toDate,
+                                                        'not-selectable': day.isNotSelectable,
+                                                        'rounded-tl-lg': dayIndex === 0,
+                                                        'rounded-tr-lg': dayIndex === 6,
+                                                        'rounded-bl-lg': dayIndex === month.days.length - 7,
+                                                        'rounded-br-lg': dayIndex === month.days.length - 1
+                                                    }">
+                                                    <time :datetime="day.date" 
+                                                        class="mx-auto flex h-7 w-7 items-center justify-center"
+                                                        x-text="day.isCurrentMonth ? day.dayOfMonth : ''"></time>
+                                                    <div x-show="day.isBookingStart && !day.isBookingEnd" class="halfcell absolute inset-y-0 right-0 w-1/2 opacity-50"></div>
+                                                    <div x-show="day.isBookingEnd && !day.isBookingStart" class="halfcell absolute inset-y-0 left-0 w-1/2 opacity-50"></div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </section>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-base px-4">Pink dates are unavailable / booked, white dates are available for bookings.</p>
+                </div>
+
+                <div class="bg-white border border-gray-200 mb-8">
+                    <h2 class="bg-sky-500 px-4 py-2 text-lg text-white font-semibold">Pricing</h2>
+                    <h3 class="text-pink-600 text-lg font-semibold px-4 pt-4 pb-4">Standard Monthly Rates</h3>
+                    <ul class="flex flex-wrap ml-4 text-gray-500">
+                        <li class="w-1/3 text-sky-500 font-semibold">From:</li><li class="w-1/3 text-sky-500 font-semibold">To:</li><li class="w-1/3 text-sky-500 font-semibold">Weekly Rate:</li>
+                        <li class="w-1/3">6 January</li><li class="w-1/3">22 March</li><li class="w-1/3">&pound;6617</li>
+                        <li class="w-1/3">23 March</li><li class="w-1/3">12 April</li><li class="w-1/3">&pound;9926</li>
+                        <li class="w-1/3">13 April</li><li class="w-1/3">24 May</li><li class="w-1/3">&pound;6617</li>
+                        <li class="w-1/3">25 May</li><li class="w-1/3">28 June</li><li class="w-1/3">&pound;9926</li>
+                        <li class="w-1/3">29 June</li><li class="w-1/3">30 August</li><li class="w-1/3">&pound;13235</li>
+                        <li class="w-1/3">31 August</li><li class="w-1/3">27 September</li><li class="w-1/3">&pound;9926</li>
+                        <li class="w-1/3">28 September</li><li class="w-1/3">18 October</li><li class="w-1/3">&pound;6617</li>
+                        <li class="w-1/3">19 October</li><li class="w-1/3">1 November</li><li class="w-1/3">&pound;9926</li>
+                        <li class="w-1/3">2 November</li><li class="w-1/3">20 December</li><li class="w-1/3">&pound;6617</li>
+                        <li class="w-1/3">21 December</li><li class="w-1/3">4 January</li><li class="w-1/3">&pound;9926</li>
+                    </ul>
+                    <h3 class="text-pink-600 text-lg font-semibold px-4 pt-4 pb-4">Payment Notes:</h3>
+                    <div class="text-gray-500 ml-4 [&>p]:mb-4">
+                        <p>Price includes:</p>
+                        <ul class="list-disc [&>li]:ml-8 pb-4">
+                            <li>Air Conditioning</li>
+                            <li>Wifi</li>
+                            <li>Travel Cot</li>
+                            <li>highchair</li>
+                        </ul>
+                        <p>Pool heating costs a supplement of £441 per week.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 mb-8 pb-4">
+                    <h2 class="bg-sky-500 px-4 py-2 text-lg text-white font-semibold">Facilities &amp Amenities</h2>
+                    <h3 class="text-pink-600 text-lg font-semibold px-4 pt-4 pb-4">Outdoor</h3>
+                    <div class="flex flex-wrap ml-4 gap-y-2">
+                        <div class="w-1/4 flex-shrink-0">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 text-sky-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                </svg>
+                                <span>Private Pool</span>
+                            </div>
+                        </div>
+                        <div class="w-1/4 flex-shrink-0">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 text-sky-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                </svg>
+                                <span>Private Pool</span>
+                            </div>
+                        </div>
+                        <div class="w-1/4 flex-shrink-0">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 text-sky-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                </svg>
+                                <span>Private Pool</span>
+                            </div>
+                        </div>
+                        <div class="w-1/4 flex-shrink-0">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 text-sky-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                </svg>
+                                <span>Private Pool</span>
+                            </div>
+                        </div>
+                        <div class="w-1/4 flex-shrink-0">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 text-sky-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                </svg>
+                                <span>Private Pool</span>
+                            </div>
+                        </div>
+                        <div class="w-1/4 flex-shrink-0">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 text-sky-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                </svg>
+                                <span>Private Pool</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <h3 class="text-pink-600 text-lg font-semibold px-4 pt-4 pb-4">Outdoor</h3>
+                    <div class="flex flex-wrap ml-4 gap-y-2">
+                        <div class="w-1/4 flex-shrink-0">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 text-sky-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                </svg>
+                                <span>Private Pool</span>
+                            </div>
+                        </div>
+                        <div class="w-1/4 flex-shrink-0">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 text-sky-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                </svg>
+                                <span>Private Pool</span>
+                            </div>
+                        </div>
+                        <div class="w-1/4 flex-shrink-0">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 text-sky-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                </svg>
+                                <span>Private Pool</span>
+                            </div>
+                        </div>
+                        <div class="w-1/4 flex-shrink-0">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 text-sky-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                </svg>
+                                <span>Private Pool</span>
+                            </div>
+                        </div>
+                        <div class="w-1/4 flex-shrink-0">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 text-sky-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                </svg>
+                                <span>Private Pool</span>
+                            </div>
+                        </div>
+                        <div class="w-1/4 flex-shrink-0">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 text-sky-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                </svg>
+                                <span>Private Pool</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+                <div x-data="contactForm()" class="productInquiryForm mb-8">
+                    <h2 class="text-3xl font-normal text-gray-600 uppercase pb-6">Contact The Owner</h2>
+                    <p class="text-gray-600 mb-4">To ask questions or make a booking enquiry on this property simply get in touch with the owner:</p>
+                    <ul class="text-gray-600 pt-2 pb-4 [&>li]:mb-2">
+                        <li class="flex">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 text-pink-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                                <span>Mike</span>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 text-pink-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                                </svg>
+                                <span>0777 377 6398</span>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 text-pink-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+                                </svg>
+                                <span><a target="_new" href="/link/?id=19" rel="nofollow" class="underline">Owners Website</a> (Opens in new window)</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="text-gray-600 mb-4">You can also send them a message directly using the contact form below:</p>
+
+                    <div class="flex flex-wrap mb-6 justify-center">
+                        <div class="w-1/3">
+                            <div class="mr-2">
+                                <input name="tbName" type="text" id="tbName" x-model="name" @input="validateForm" class="w-full border" :class="{'border-gray-300': !errors.name, 'border-red-500': errors.name}" placeholder="Your Name" />
+                            </div>
+                        </div>
+                        <div class="w-1/3">
+                            <div class="mx-1">
+                                <input name="tbEmail" type="email" id="tbEmail" x-model="email" @input="validateForm" class="w-full border" :class="{'border-gray-300': !errors.email, 'border-red-500': errors.email}" placeholder="Email Address" />
+                            </div>
+                        </div>
+                        <div class="w-1/3">
+                            <div class="ml-2">
+                                <input name="tbTelephone" type="tel" id="tbTelephone" x-model="telephone" @input="validateForm" class="w-full border" :class="{'border-gray-300': !errors.telephone, 'border-red-500': errors.telephone}" placeholder="Telephone Number" />
+                            </div>
+                        </div>
+                        <div class="w-full my-4 flex justify-center">
+                            <textarea name="tbMessage" rows="5" cols="20" id="tbMessage" x-model="message" @input="validateForm" class="w-full border" :class="{'border-gray-300': !errors.message, 'border-red-500': errors.message}" placeholder="Your Message"></textarea>
+                            <input type="hidden" name="tbHidCC" id="tbHidCC" value="171" />
+                        </div>
+                    </div>
+                
+                    <div id="ctl00_ContentPlaceHolder1_UpdatePanel">
+                        <div class="ml-2">
+                            <input type="submit" name="butSendEmail" value="SEND A MESSAGE TO THE OWNER" id="butSendEmail" 
+                                   @click.prevent="submitForm" 
+                                   class="bg-pink-600 text-white px-6 py-3" 
+                                   :disabled="!isFormValid" 
+                                   :class="{'opacity-50 cursor-not-allowed': !isFormValid}" />
+                            <p class="text-red-500 mt-2" x-show="showErrorMessage" x-text="errorMessage"></p>
+                        </div> 
+                    </div>
+                </div>
+                <script>
+                    function contactForm() {
+                        return {
+                            name: '',
+                            email: '',
+                            telephone: '',
+                            message: '',
+                            errors: {
+                                name: false,
+                                email: false,
+                                telephone: false,
+                                message: false
+                            },
+                            isFormValid: false,
+                            showErrorMessage: false,
+                            errorMessage: '',
+                            validateForm() {
+                                this.errors.name = this.name.trim() === '';
+                                this.errors.email = this.email.trim() === '' && this.telephone.trim() === '';
+                                this.errors.telephone = this.email.trim() === '' && this.telephone.trim() === '';
+                                this.errors.message = this.message.trim() === '';
+                    
+                                this.isFormValid = !this.errors.name && !(this.errors.email && this.errors.telephone) && !this.errors.message;
+                    
+                                if (this.name || this.email || this.telephone || this.message) {
+                                    this.showErrorMessage = !this.isFormValid;
+                                    this.errorMessage = this.isFormValid ? '' : '* Name, Message, and either Email or Telephone must be completed.';
+                                } else {
+                                    this.showErrorMessage = false;
+                                }
+                            },
+                            submitForm() {
+                                if (this.isFormValid) {
+                                    // Trigger the ASP.NET postback
+                                    __doPostBack('butSendEmail', '');
+                                }
+                            }
+                        }
+                    }
+                </script>
+            </div>
+
+            <div class="hidden lg:block w-1/4 px-4 ">
+                <div class="bg-white mb-6 border border-gray-200">
+                    <h1 class="bg-sky-500 px-4 py-2 text-lg text-white font-semibold">Property Highlights</h1>
+                    <div class="px-4 py-2">
+                        <ul class="text-gray-600 py-2 [&>li]:mb-1">
+                            <li class="flex">
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 text-sky-600">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                      </svg>
+                                      <span>5 Bedrooms</span>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 text-sky-600">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                      </svg>
+                                      <span>10 Guests Maximum</span>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 text-sky-600">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                      </svg>
+                                      <span>6 Bathrooms</span>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 text-sky-600">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                      </svg>
+                                      <span>Private Pool</span>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 text-sky-600">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                      </svg>
+                                      <span>Sea Views</span>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 text-sky-600">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                      </svg>
+                                    <span>Air Conditioning</span>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 text-sky-600">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                      </svg>
+                                      <span>WiFi / Internet</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div> 
+                </div>
+                <div x-data="stickyContact()" x-init="init()">
+                    <div id="sideContact" class="bg-white border border-gray-200" :class="{ 'fixed top-32': isSticky }" :style="{ width: sideContactWidth + 'px' }">
+                        <h1 class="bg-sky-500 px-4 py-2 text-lg text-white font-semibold">Contact The Owner</h1>
+                        <div class="px-4 py-2">
+                            <ul class="text-gray-600 pt-2 pb-4 [&>li]:mb-2">
+                                <li class="flex">
+                                    <div class="flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 text-sky-600">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                        </svg>
+                                        <span>Mike</span>
+                                    </div>
+                                </li>
+                                <li class="flex">
+                                    <div class="flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 text-sky-600">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                                        </svg>
+                                        <span>0777 377 6398</span>
+                                    </div>
+                                </li>
+                                <li class="flex">
+                                    <div class="flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 text-sky-600">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+                                        </svg>
+                                        <span><a target="_new" href="/link/?id=19" rel="nofollow">Owners Website</a></span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="mx-auto text-center mb-4" x-data="emailformjump()">
+                                <a class="bg-pink-600 text-white px-6 py-2 cursor-pointer" @click.prevent="jump()" target="_self">VIEW CONTACT FORM</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div>
+        <footer>
+            <div class="bg-zinc-800 w-full px-4">
+                <div class="flex flex-col md:flex-row max-w-6xl mx-auto text-gray-300 pt-8 pb-12">
+                    <div class="md:w-1/6 px-2 pb-6 md:pb-0">
+                        <h3 class="text-3xl font-light mb-4 md:mb-6">Site Areas</h3>
+                        <ul class="ml-4 [&>li]:mb-2">
+                        <li><a href="/about/"><i class="fa fa-circle-o" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="/contact/"><i class="fa fa-circle-o" aria-hidden="true"></i> Contact Us</a></li>         
+                        <li><a href="/privacy/"><i class="fa fa-circle-o" aria-hidden="true"></i> Privacy Policy</a></li>
+                        <li><a href="/terms/"><i class="fa fa-circle-o" aria-hidden="true"></i> Terms & Conditions</a></li>
+                        <li><a href="/sitemap/"><i class="fa fa-circle-o" aria-hidden="true"></i> Sitemap</a></li>
+                        </ul>
+                    </div> 
+                    <div class="md:w-1/4 px-2 pb-6 md:pb-0">
+                        <h3 class="text-3xl font-light mb-4 md:mb-6">Information</h3>
+                        <ul class="ml-4 [&>li]:mb-2">
+                        <li><a href="/advertise/"><i class="fa fa-circle-o" aria-hidden="true"></i> Advertise Your Property</a></li>
+                        <li><a href="/how-to-book/"><i class="fa fa-circle-o" aria-hidden="true"></i> How to Book</a></li>
+                        </ul>
+                    </div> 
+                    <div class="md:w-1/3 px-2 pb-6 md:pb-0">
+                        <h3 class="text-3xl font-light mb-4 md:mb-6">Newsletter Sign Up</h3>
+                        <p class="mb-4">Join our newsletter featuring the best travel content from around the web, and new Greece property updates.</p>
+                        <div class="mb-4 ">
+                            <input type="email" class="form-control" placeholder="Email Address">
+                            <button type="submit" class="bg-sky-600 text-white px-6 py-2">Sign Up</button>
+                        </div>
+                        <p><span>(Unsubscribe easily at any time from any email)</span></p>
+                    </div> 
+                    <div class="md:w-1/4 px-2">
+                        <h3 class="text-3xl font-light mb-4 md:mb-6">Address</h3>
+                        <p class="mb-4">3 Melton Park, Redcliff Road, Melton, HU14 3RS</p>
+                        <p class="mb-4">Telephone: 0330 223 55 77</p> 
+                        <p class="mb-4">Email: info@villahunters.com</p> 
+                    </div>
+                </div>
+            </div> 
+            <div class="bg-black w-full">
+                <div class="text-center p-4 top-32">
+                    <p class="text-gray-100">&copy; Copyright 2024 - VillasInPortugal.com</p>
+                </div>
+            </div>
+         </footer>
+    </div>
+     
+     
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('navigation', () => ({
+            isSticky: false,
+            isOpen: false,
+            navTop: 0,
+            init() {
+                this.$nextTick(() => {
+                    if (this.$refs.nav) {
+                        this.navTop = this.$refs.nav.offsetTop;
+                        this.checkSticky();
+                        window.addEventListener('scroll', () => this.checkSticky());
+                    }
+                });
+            },
+            checkSticky() {
+                if (this.$refs.nav) {
+                    this.isSticky = window.pageYOffset > this.navTop;
+                }
+            },
+            toggleMenu() {
+                this.isOpen = !this.isOpen;
+            },
+            closeMenu() {
+                this.isOpen = false;
+            }
+        }));
+    });
+</script>
+
+<script>
+    function imageSlider() {
+        return {
+            images: [
+                { full: "img/prop2-sm.jpg", thumb: "img/prop2-sm.jpg" },
+                { full: "img/prop3-sm.jpg", thumb: "img/prop3-sm.jpg" },
+                { full: "img/prop4-sm.jpg", thumb: "img/prop4-sm.jpg" },
+                { full: "img/prop5-sm.jpg", thumb: "img/prop5-sm.jpg" }
+            ],
+            init() {
+                this.$nextTick(() => {
+                    var main = new Splide('#main-slider', {
+                        type       : 'fade',
+                        heightRatio: 0.5,
+                        pagination : false,
+                        arrows     : true,
+                        cover      : true,
+                    });
+    
+                    var thumbnails = new Splide('#thumbnail-slider', {
+                        rewind          : true,
+                        fixedWidth      : 104,
+                        fixedHeight     : 58,
+                        isNavigation    : true,
+                        gap             : 10,
+                        focus           : 'center',
+                        pagination      : false,
+                        cover           : true,
+                        dragMinThreshold: {
+                            mouse: 4,
+                            touch: 10,
+                        },
+                        breakpoints : {
+                            640: {
+                                fixedWidth  : 66,
+                                fixedHeight : 38,
+                            },
+                        },
+                    });
+    
+                    main.sync(thumbnails);
+                    main.mount();
+                    thumbnails.mount();
+                });
+            }
+        }
+    }
+</script>
+
+<script>
+    function emailformjump() {
+        return {
+            jump() {
+                const target = document.querySelector('.productInquiryForm');
+                if (target) {
+                    const start = window.scrollY;
+                    const end = target.getBoundingClientRect().top + window.scrollY - 100; // Adjust for offset
+                    const distance = end - start;
+                    const duration = 2000; // Duration in milliseconds
+                    let startTime = null;
+
+                    function animation(currentTime) {
+                        if (!startTime) startTime = currentTime;
+                        const timeElapsed = currentTime - startTime;
+                        const progress = Math.min(timeElapsed / duration, 1); // Ensure progress does not exceed 1
+                        window.scrollTo(0, start + distance * progress);
+
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        } else {
+                            setTimeout(() => {
+                                document.getElementById('tbName').focus();
+                            }, 100);
+                        }
+                    }
+
+                    requestAnimationFrame(animation);
+                }
+            }
+        };
+    }
+
+    function trustjump() {
+        return {
+            jump() {
+                const target = document.querySelector('.tabTrust');
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 200,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        };
+    }
+</script>
+	
+    <script>
+        function stickyContact() {
+            return {
+                isSticky: false,
+                sideContactWidth: 0,
+                offsetTop: 0,
+                init() {
+                    const sideContact = document.getElementById('sideContact');
+                    this.offsetTop = sideContact.offsetTop;
+                    this.sideContactWidth = sideContact.offsetWidth;
+
+                    window.addEventListener('scroll', () => this.checkSticky());
+                    window.addEventListener('resize', () => this.updateWidth());
+                },
+                checkSticky() {
+                    this.isSticky = window.pageYOffset > this.offsetTop;
+                },
+                updateWidth() {
+                    const sideContact = document.getElementById('sideContact');
+                    this.sideContactWidth = sideContact.offsetWidth;
+                }
+            }
+        }
+    </script>
+	
+    <script>
+        function calendar() {
+            return {
+                months: [],
+                startDate: new Date(),
+                bookings: [],
+                fromDate: '',
+                toDate: '',
+                selectedDates: [],
+                errorMessage: '',
+                init() {
+                    this.parseBookings();
+                    this.generateMonths();
+                },
+                parseBookings() {
+                    const bookingsString = "({455}, 2024-08-11, 2024-08-12, 2024-08-13, 2024-08-14, 2024-08-15), ({461}, 2024-08-21, 2024-08-22, 2024-08-23, 2024-08-24, 2024-08-25, 2024-08-26, 2024-08-27, 2024-08-28, 2024-08-29, 2024-08-30, 2024-08-31, 2024-09-01, 2024-09-02, 2024-09-03), ({475}, 2024-09-11, 2024-09-12, 2024-09-13, 2024-09-14, 2024-09-15)";
+                    const bookingsArray = bookingsString.match(/\((.*?)\)/g);
+                    if (bookingsArray) {
+                        this.bookings = bookingsArray.map(booking => {
+                            const [idPart, ...dateParts] = booking.slice(1, -1).split(', ');
+                            const id = idPart.match(/\{(\d+)\}/)[1];
+                            const dates = dateParts.sort();
+                            return {
+                                id: id,
+                                dates: new Set(dates.map(date => this.toLocalDate(date))),
+                                start: this.toLocalDate(dates[0]),
+                                end: this.toLocalDate(dates[dates.length - 1])
+                            };
+                        });
+                    }
+                },
+                generateMonths() {
+                    this.months = [];
+                    for (let i = 0; i < 3; i++) {
+                        const monthDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth() + i, 1);
+                        this.months.push(this.generateMonth(monthDate));
+                    }
+                },
+                generateMonth(date) {
+                    const month = {
+                        name: date.toLocaleString('default', { month: 'long', year: 'numeric' }),
+                        days: []
+                    };
+                    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+                    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+                    // Add days from previous month
+                    for (let i = 1; i < firstDay.getDay() || i === 7; i++) {
+                        const prevDate = new Date(date.getFullYear(), date.getMonth(), 1 - i);
+                        month.days.unshift(this.createDayObject(prevDate, false));
+                    }
+
+                    // Add days of current month
+                    for (let i = 1; i <= lastDay.getDate(); i++) {
+                        const currentDate = new Date(date.getFullYear(), date.getMonth(), i);
+                        month.days.push(this.createDayObject(currentDate, true));
+                    }
+
+                    // Add days from next month
+                    const daysToAdd = 42 - month.days.length;
+                    for (let i = 1; i <= daysToAdd; i++) {
+                        const nextDate = new Date(date.getFullYear(), date.getMonth() + 1, i);
+                        month.days.push(this.createDayObject(nextDate, false));
+                    }
+
+                    return month;
+                },
+                createDayObject(date, isCurrentMonth) {
+                    const dateString = this.formatDate(date);
+                    const relevantBookings = this.bookings.filter(b => b.dates.has(dateString));
+                    const isBookingStart = isCurrentMonth && relevantBookings.some(b => dateString === b.start);
+                    const isBookingEnd = isCurrentMonth && relevantBookings.some(b => dateString === b.end);
+                    const isBooked = isCurrentMonth && relevantBookings.length > 0;
+                    const isNotSelectable = isBooked && !(isBookingStart || isBookingEnd) || (isBookingStart && isBookingEnd) || (!isCurrentMonth);
+                    
+                    return {
+                        date: dateString,
+                        dayOfMonth: date.getDate(),
+                        isCurrentMonth: isCurrentMonth,
+                        isToday: this.isSameDay(date, new Date()),
+                        isBooked: isBooked,
+                        bookingIds: isCurrentMonth ? relevantBookings.map(b => b.id) : [],
+                        isBookingStart: isBookingStart,
+                        isBookingEnd: isBookingEnd,
+                        bookingStartIds: isCurrentMonth ? relevantBookings.filter(b => dateString === b.start).map(b => b.id) : [],
+                        bookingEndIds: isCurrentMonth ? relevantBookings.filter(b => dateString === b.end).map(b => b.id) : [],
+                        highlightLeft: false,
+                        highlightRight: false,
+                        highlightFull: false,
+                        isSelected: false,
+                        isNotSelectable: isNotSelectable
+                    };
+                },
+                formatDate(date) {
+                    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                },
+                toLocalDate(dateString) {
+                    const [year, month, day] = dateString.split('-').map(Number);
+                    return this.formatDate(new Date(year, month - 1, day));
+                },
+                isSameDay(d1, d2) {
+                    return this.formatDate(d1) === this.formatDate(d2);
+                },
+                navigateMonths(direction) {
+                    this.startDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth() + direction, 1);
+                    this.generateMonths();
+                    this.$nextTick(() => {
+                        this.applySelectedStyles();
+                    });
+                },
+                selectDate(day) {
+                    if (day.isNotSelectable) {
+                        return;
+                    }
+
+                    if (this.selectedDates.length === 2) {
+                        this.resetSelection();
+                    }
+                    
+                    this.selectedDates.push(day.date);
+                    
+                    if (this.selectedDates.length === 2) {
+                        this.selectedDates.sort();
+                        
+                        if (this.hasBookingConflict(this.selectedDates[0], this.selectedDates[1])) {
+                            this.errorMessage = "Selected range overlaps with an existing booking. Please choose a different range.";
+                            this.resetSelection();
+                        } else {
+                            this.fromDate = this.selectedDates[0];
+                            this.toDate = this.selectedDates[1];
+                            this.errorMessage = '';
+                            this.applySelectedStyles();
+                        }
+                    } else if (this.selectedDates.length === 1) {
+                        this.fromDate = day.date;
+                        this.toDate = '';
+                        this.errorMessage = '';
+                        this.applySelectedStyles();
+                    }
+                },
+                resetSelection() {
+                    this.selectedDates = [];
+                    this.fromDate = '';
+                    this.toDate = '';
+                    this.applySelectedStyles();
+                },
+                clearSelection() {
+                    this.selectedDates = [];
+                    this.fromDate = '';
+                    this.toDate = '';
+                    this.errorMessage = '';
+                    this.applySelectedStyles();
+                },
+                applySelectedStyles() {
+                    this.months.forEach(month => {
+                        month.days.forEach(day => {
+                            if (day.isCurrentMonth) {
+                                if (this.selectedDates.length === 1) {
+                                    day.isSelected = day.date === this.fromDate;
+                                } else if (this.selectedDates.length === 2) {
+                                    day.isSelected = day.date >= this.fromDate && day.date <= this.toDate && !day.isNotSelectable;
+                                } else {
+                                    day.isSelected = false;
+                                }
+                            }
+                        });
+                    });
+                },
+                handleDayClick(event, day) {
+                    const rect = event.target.getBoundingClientRect();
+                    const x = event.clientX - rect.left;
+                    const isRightSide = x > rect.width / 2;
+                    const dayCell = event.target.closest('.day-cell');
+                    const isHalfcell = event.target.classList.contains('halfcell');
+                    const bookingIds = isHalfcell 
+                        ? JSON.parse(event.target.dataset.bookingIds || '[]')
+                        : JSON.parse(dayCell.dataset.bookingIds || '[]');
+
+                    if (day.isBookingStart && day.isBookingEnd) {
+                        this.handleBookingStartEndDay(event, day, isRightSide);
+                    } else if (day.isBookingStart) {
+                        if (isRightSide) {
+                            this.clearSelection();
+                        } else {
+                            this.selectDate(day);
+                        }
+                    } else if (day.isBookingEnd) {
+                        if (!isRightSide) {
+                            this.clearSelection();
+                        } else {
+                            this.selectDate(day);
+                        }
+                    } else if (day.isBooked) {
+                        this.clearSelection();
+                    } else if (!day.isCurrentMonth) {
+                        this.clearSelection();
+                    } else if (day.isSelected) {
+                        this.clearSelection();
+                    } else {
+                        this.selectDate(day);
+                    }
+                },
+                handleBookingStartEndDay(event, day, isRightSide) {
+                    const dayCell = event.target.closest('.day-cell');
+                    const bookingIds = JSON.parse(dayCell.dataset.bookingIds || '[null,null]');
+                    const selectedBookingId = isRightSide ? bookingIds[1] : bookingIds[0];
+                    this.selectedBookingId = this.getBookingIdForDate(day.date, isRightSide ? 'start' : 'end');
+                },
+                handleBookingStartDay(day, isRightSide) {
+                    if (isRightSide) {
+                        this.selectedBookingId = this.getBookingIdForDate(day.date, 'start');
+                    } else {
+                        this.selectDate(day);
+                    }
+                },
+                handleBookingEndDay(day, isRightSide) {
+                    if (isRightSide) {
+                        this.selectDate(day);
+                    } else {
+                        this.selectedBookingId = this.getBookingIdForDate(day.date, 'end');
+                    }
+                },
+                getBookingIdForDate(date, type) {
+                    const booking = this.bookings.find(b => 
+                        (type === 'start' && b.start === date) || 
+                        (type === 'end' && b.end === date)
+                    );
+                    return booking ? booking.id : null;
+                },
+                hasBookingConflict(startDate, endDate) {
+                    return this.bookings.some(booking => {
+                        const bookingStart = new Date(booking.start);
+                        const bookingEnd = new Date(booking.end);
+                        const selectionStart = new Date(startDate);
+                        const selectionEnd = new Date(endDate);
+
+                        return (
+                            (selectionStart >= bookingStart && selectionStart < bookingEnd) ||
+                            (selectionEnd > bookingStart && selectionEnd <= bookingEnd) ||
+                            (selectionStart <= bookingStart && selectionEnd >= bookingEnd)
+                        );
+                    });
+                },
+            };
+        }
+    </script>
+
+
+</form>
+</body>
+</html>

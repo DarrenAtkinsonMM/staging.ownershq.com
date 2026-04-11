@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="flex h-full bg-gray-100">
+    <div class="flex w-full">
+       <div class="fixed inset-0 flex justify-center sm:px-8">
+            <div class="flex w-full max-w-7xl lg:px-8">
+                <div class="w-full bg-white ring-1 ring-zinc-200">
+                </div>
+            </div>
+        </div>
+        <div class="relative flex w-full flex-col">
+            <header class="w-full max-w-7xl mx-auto sm:px-8" x-data="{ open: false }">
+                <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-16" aria-label="Global">
+
+                        <div class="flex lg:flex-1">
+                        <a href="#" class="-m-1.5 p-1.5">
+                            <span class="sr-only">Your Company</span>
+                            <img class="h-8 w-auto sm:h-10" src="images/ohq-icon-text.png" alt="">
+                        </a>
+                        </div>
+                        <div class="flex lg:hidden">
+                        <button @click="open = !open" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                            <span class="sr-only">Open main menu</span>
+                            <svg x-show="!open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                            <svg x-show="open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        </div>
+                        <div class="hidden lg:flex lg:gap-x-12">
+                            <a href="#" class="text-sm font-semibold leading-6 text-neutral-600 transition hover:text-sky-600">Listing Websites</a>
+                            <a href="#" class="text-sm font-semibold leading-6 text-neutral-600 transition hover:text-sky-600">Articles</a>
+                            <a href="#" class="text-sm font-semibold leading-6 text-neutral-600 transition hover:text-sky-600">About</a>
+                            <a href="#" class="text-sm font-semibold leading-6 text-neutral-600 transition hover:text-sky-600">Contact</a>
+                            </div>
+                            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                            <a href="#" class="text-sm font-semibold leading-6 text-neutral-600 transition hover:text-sky-600">Log in <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+
+                </nav>
+                <!-- Mobile menu, show/hide based on menu open state. -->
+                <div x-show="open" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"  class="lg:hidden" role="dialog" aria-modal="true">
+                    <!-- Background backdrop, show/hide based on slide-over state. -->
+                    <div class="fixed inset-0 z-10"></div>
+                    <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                    <div class="flex items-center justify-between">
+                        <a href="#" class="-m-1.5 p-1.5">
+                        <span class="sr-only">Your Company</span>
+                        <img class="h-8 w-auto" src="images/ohq-icon-text.png" alt="">
+                        </a>
+                        <button @click="open = false" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                        <span class="sr-only">Close menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        </button>
+                    </div>
+                    <div class="mt-6 flow-root">
+                        <div class="-my-6 divide-y divide-gray-500/10">
+                            <div class="space-y-2 py-6">
+                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Listing Websites</a>
+                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Articles</a>
+                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">About</a>
+                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Contact</a>
+                            </div>
+                            <div class="py-6">
+                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Log in</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </header>
+            <div class="flex-none" style="height: var(--content-offset);"></div>
+            <main class="flex-auto">
+                
+                <div class="mx-auto w-full max-w-7xl lg:px-12">
+                    <div class="mx-auto max-w-7xl px-8 lg:px-8">
+                        <! -- Article -->
+                        <div class="xl:relative pt-12 px-6 sm:pt-28">
+                            <div class="mx-auto max-w-2xl">
+                                <article>
+                                    <header class="flex flex-col">
+                                        <h1 class="mt-6 mb-5 text-4xl sm:text-6xl font-bold tracking-tight text-neutral-600 ">Crafting a design system for a multiplanetary future</h1>
+                                        <p class="order-first flex items-center text-base text-pink-600"><span class="h-4 w-0.5 rounded-full bg-zinc-200"></span><span class="ml-3"><a class="hover:underline hover:underline-offset-2" href="/listing-websites/">Listing Websites</a></span></p>
+                                    </header>
+                                    <div class="bg-gray-200 shadow sm:rounded-lg mt-8 mb-12">
+                                        <div class="px-4 py-5 sm:p-6">
+                                            <div>
+                                              <h3 class="text-base font-semibold leading-6 text-gray-900">Historical Blog Post</h3>
+                                              <div class="mt-2 max-w-xl text-sm text-gray-700">
+                                                <p>This post was originally published on the Owners HQ Blog way back in 2014, many points are still valid however some stats, links or facts may not be current.</p>
+                                              </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    <div class="mt-8 text-lg leading-7 text-neutral-600">
+                                        <p class="mb-6">Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.</p>
+                                        <div class="pt-5 pb-12">
+                                            <img class="rounded-lg shadow-2xl" alt="" loading="lazy" src="https://spotlight.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fplanetaria-design-system.d4cfce90.png&w=1920&q=75"/>
+                                        </div>
+                                        <p class="mb-6">I knew that to get it right I was going to have to replicate the viewing conditions of someone from the future, so I grabbed my space helmet from the closet, created a new Figma document, and got to work.</p>
+                                        <h2 class="font-semibold mt-12 mb-8">Sermone fata</h2>
+                                        <p class="mb-6">Lorem markdownum, bracchia in redibam! Terque unda puppi nec, linguae posterior in utraque respicere candidus Mimasque formae; quae conantem cervice. Parcite variatus, redolentia adeunt. Tyrioque dies, naufraga sua adit partibus celanda torquere temptata, erit maneat et ramos, <a href="#">iam</a> ait dominari potitus! Tibi litora matremque fumantia condi radicibus opusque.</p>
+                                        <ol class="list-decimal ml-12 mb-6">
+                                            <li>to be able to compete against the likes of AirBnb</li>
+                                            <li>to grow the VR market overall</li>
+                                            <li>to grow their own market share</li>
+                                            <li>to battle legislation against the home sharing economy</li>
+                                        </ol>
+                                        <p class="mb-6">Deus feram verumque, fecit, ira tamen, terras per alienae victum. Mutantur levitate quas ubi arcum ripas oculos abest. Adest <a class="font-semibold underline underline-offset-2 text-pink-600 hover:text-sky-600" href="/where-listings-come-from/">commissaque victae</a> in gemitus nectareis ire diva dotibus ora, et findi huic invenit; fatis? Fractaque dare superinposita nimiumque simulatoremque sanguine, at voce aestibus diu! Quid veterum hausit tu nil utinam paternos ima, commentaque.</p>
+                                        <p class="mb-6 text-pink-600 font-semibold italic mx-6">The price you pay when you sign up as an advertiser will never increase for as long as you remain a customer.</p>
+                                        <p class="mb-6">Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.</p>
+                                        <a href="https://www.villasingreece.co.uk/">
+                                        <div class="bg-pink-600 shadow rounded-md sm:rounded-lg mt-8 mb-12 hover:bg-sky-600">
+                                            <div class="px-4 py-5 sm:p-6">
+                                                <div>
+                                                  <h3 class="text-lg font-semibold leading-6 text-white">Villas in Greece <span class="text-base font-normal text-white">// Launched October 2009</span> <span aria-hidden="true"> &rarr;</span></h3>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </a>
+                                        <p class="mb-6">Sit volat naturam; motu Cancri. Erat pro simul quae valuit quoque timorem quam proelia: illo patrio <em>esse summus</em>, enim sua serpentibus, Hyleusque. Est coniuge recuso; refert Coroniden ignotos manat, adfectu.</p>
+                                    </div>
+                                    <a href="/listing-websites/">
+                                    <div class="bg-pink-600 shadow rounded-md sm:rounded-lg mt-8 mb-12 group">
+                                        <div class="px-4 py-5 sm:p-6">
+                                            <div>
+                                                
+                                              <h3 class="text-lg font-semibold leading-6 text-white">Learn More <span aria-hidden="true"> &rarr;</span></h3>
+                                              <div class="mt-2 max-w-xl text-base text-white group-hover:underline group-hover:underline-offset-2">
+                                                <p>Discover more advantages of advertising your property with us here.</p>
+                                              </div>
+                                            
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </a>
+                                </article>
+                            </div>
+                        </div>
+                        <! -- Article -->
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <div class="mx-auto w-full max-w-7xl lg:px-12">
+                    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:py-16 lg:px-8">
+                    <nav class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
+                        <div class="pb-6">
+                          <a href="#" class="text-sm leading-6 text-neutral-600 transition hover:text-sky-600">Listing Websites</a>
+                        </div>
+                        <div class="pb-6">
+                          <a href="#" class="text-sm leading-6 text-neutral-600 transition hover:text-sky-600">Articles</a>
+                        </div>
+                        <div class="pb-6">
+                          <a href="#" class="text-sm leading-6 text-neutral-600 transition hover:text-sky-600">About</a>
+                        </div>
+                        <div class="pb-6">
+                          <a href="#" class="text-sm leading-6 text-neutral-600 transition hover:text-sky-600">Contact</a>
+                        </div>
+                      </nav>
+
+                  <p class="mt-10 text-center text-xs leading-5 text-neutral-600">&copy; 2024 OwnersHQ.com, Inc. All rights reserved.</p>
+                </div>
+                </div>
+                </div>
+              </footer>
+       </div>
+    </div>
+    
+</body>
+</html>

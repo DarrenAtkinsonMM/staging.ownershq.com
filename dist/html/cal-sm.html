@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Month Calendar with Overlapping Booking Indicators</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <style>
+        .booking-start::before,
+        .booking-end::after,
+        .booking-start-end::before,
+        .booking-start-end::after,
+        .selected-start::before,
+        .selected-start-booking-start::after,
+        .selected-end::after,
+        .selected-start-end::before,
+        .selected-start-end::after {
+            content: '';
+            position: relative;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .booking-start::before
+        {
+            border-width: 0 0 40px 45px;
+            border-color: transparent transparent rgba(252, 165, 165, 0.3) transparent;
+        }
+        .booking-end::after {
+            border-width: 40px 45px 0 0;
+            border-color: rgba(252, 165, 165, 0.3) transparent transparent transparent;
+        }
+        .booking-start-end::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px !important;
+            border-width: 0 0 38px 43px;  /* Slightly smaller */
+            border-style: solid;
+            border-color: transparent transparent rgba(252, 165, 165, 0.3) transparent;
+        }
+
+        .booking-start-end::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-width: 38px 43px 0 0;  /* Slightly smaller */
+            border-style: solid;
+            border-color: rgba(252, 165, 165, 0.3) transparent transparent transparent;
+        }
+        .selected-start::before {
+            left: 0;
+            border-width: 0 0 40px 45px;
+            border-color: transparent transparent rgba(252, 165, 165, 0.4) transparent;
+        }
+        .selected-end::after,
+        .selected-start-booking-start::after {
+            right: 0;
+            border-width: 40px 45px 0 0;
+            border-color: rgba(252, 165, 165, 0.4) transparent transparent transparent;
+        }
+        .selected-start-end::before {
+            top: 2px;
+            left: 2px !important;
+            border-width: 0 0 38px 43px;
+            border-color: transparent transparent rgba(252, 165, 165, 0.3) transparent;
+        }
+        .selected-start-end::after {
+            top: 0;
+            left: 0;
+            border-width: 38px 43px 0 0;
+            border-color: rgba(252, 165, 165, 0.3) transparent transparent transparent;
+        }
+        .selected-start::before,
+        .selected-end::after,
+        .selected-start-booking-start::after,
+        .selected-start-end::before,
+        .selected-start-end::after {
+            border-color: rgba(79, 70, 229, 0.3) transparent transparent transparent;
+        }
+        .selected-start::before,
+        .selected-start-end::before {
+            border-color: transparent transparent rgba(79, 70, 229, 0.3) transparent;
+        }
+        .highlighted.booking-start::before,
+        .highlighted.booking-start-end::before {
+            border-color: transparent transparent rgba(248, 113, 113, 0.4) transparent;
+        }
+        .highlighted.booking-end::after,
+        .highlighted.booking-start-end::after {
+            border-color: rgba(248, 113, 113, 0.4) transparent transparent transparent;
+        }
+        .highlight-left::before {
+            border-color: transparent transparent rgba(248, 113, 113, 0.6) transparent;
+        }
+        .highlight-right::after {
+            border-color: rgba(248, 113, 113, 0.6) transparent transparent transparent;
+        }
+        .highlight-full {
+            background-color: rgba(248, 113, 113, 0.5);
+        }
+        .day-cell {
+            position: relative;
+        }
+        .day-cell::before,
+        .day-cell::after {
+            content: '';
+            position: absolute;
+            
+            width: 50%;
+            z-index: 1;
+        }
+        .day-cell::before {
+            left: 0;
+        }
+        .day-cell::after {
+            right: 0;
+        }
+        .selected-date {
+            background-color: rgba(79, 70, 229, 0.2) !important;
+        }
+        .not-selectable {
+        }
+        .error-message {
+            color: red;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+        .tippy-box {
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tippy-content {
+            padding: 10px;
+        }
+
+        .booking-info {
+            font-size: 14px;
+        }
+
+        .booking-info-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="container mx-auto" x-data="calendar()">
+        <div class="flex flex-col items-center">
+            <div class="flex flex-wrap justify-center gap-8 mb-6">
+                <template x-for="(month, index) in months" :key="index">
+                    <section class="text-center w-80">
+                        <h2 class="text-sm font-bold text-gray-900" x-text="month.name"></h2>
+                        <div class="mt-6 grid grid-cols-7 text-xs leading-6 text-gray-500">
+                            <div>M</div>
+                            <div>T</div>
+                            <div>W</div>
+                            <div>T</div>
+                            <div>F</div>
+                            <div>S</div>
+                            <div>S</div>
+                        </div>
+                        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
+                            <template x-for="(day, dayIndex) in month.days" :key="dayIndex">
+                                <div 
+                                    class="day-cell relative"
+                                    @mousemove="day.isCurrentMonth && handleDayHover($event, day)"
+                                    @mouseleave="day.isCurrentMonth && clearHighlight()"
+                                    @click="handleDayClick($event, day)"
+                                    :data-has-booking="day.isBooked.toString()"
+                                    :data-is-booking-start="day.isBookingStart.toString()"
+                                    :data-is-booking-end="day.isBookingEnd.toString()"
+                                    :data-booking-ids="JSON.stringify(day.bookingIds)"
+                                    :class="{
+                                        'relative py-1.5': true,
+                                        'hover:bg-gray-100': day.isCurrentMonth && !day.isNotSelectable && !day.highlightLeft && !day.highlightRight,
+                                        'bg-white': day.isCurrentMonth && (!day.isBooked || day.isBookingStart || day.isBookingEnd),
+                                        'bg-gray-50 text-gray-400': !day.isCurrentMonth,
+                                        'bg-red-100': day.isCurrentMonth && day.isBooked && !day.isBookingStart && !day.isBookingEnd && !day.highlightFull,
+                                        'booking-start': day.isCurrentMonth && day.isBookingStart && !day.isBookingEnd,
+                                        'booking-end': day.isCurrentMonth && day.isBookingEnd && !day.isBookingStart,
+                                        'booking-start-end': day.isCurrentMonth && day.isBookingStart && day.isBookingEnd,
+                                        'selected-start': day.isSelected && day.date === fromDate && day.date !== toDate && !day.isBookingStart,
+                                        'selected-start-booking-start': day.isSelected && day.date === fromDate && day.date !== toDate && day.isBookingStart,
+                                        'selected-end': day.isSelected && day.date === toDate && day.date !== fromDate,
+                                        'selected-start-end': day.isSelected && day.date === fromDate && day.date === toDate,
+                                        'selected-date': day.isSelected && day.date !== fromDate && day.date !== toDate,
+                                        'highlight-left': day.highlightLeft,
+                                        'highlight-right': day.highlightRight,
+                                        'highlight-full': day.highlightFull,
+                                        'not-selectable': day.isNotSelectable,
+                                        'rounded-tl-lg': dayIndex === 0,
+                                        'rounded-tr-lg': dayIndex === 6,
+                                        'rounded-bl-lg': dayIndex === month.days.length - 7,
+                                        'rounded-br-lg': dayIndex === month.days.length - 1
+                                    }">
+                                    <time :datetime="day.date" 
+                                        class="mx-auto flex h-7 w-7 items-center justify-center"
+                                        :class="{
+                                            'font-semibold': day.isToday,
+                                            'text-indigo-600': day.isToday && !day.isBooked && day.isCurrentMonth
+                                        }"
+                                        x-text="day.isCurrentMonth ? day.dayOfMonth : ''"></time>
+                                    <div x-show="day.isBookingStart && !day.isBookingEnd" class="halfcell absolute inset-y-0 right-0 w-1/2 opacity-50"></div>
+                                    <div x-show="day.isBookingEnd && !day.isBookingStart" class="halfcell absolute inset-y-0 left-0 w-1/2 opacity-50"></div>
+                                </div>
+                            </template>
+                        </div>
+                    </section>
+                </template>
+            </div>
+            <div class="flex justify-center space-x-4">
+                <button @click="navigateMonths(-1)" class="p-2 rounded-full hover:bg-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                </button>
+                <button @click="navigateMonths(1)" class="p-2 rounded-full hover:bg-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="mt-4 flex justify-center space-x-4">
+            <div>
+                <label for="FromDate" class="block text-sm font-medium leading-6 text-gray-900">From Date</label>
+                <div class="mt-2">
+                    <input type="text" name="FromDate" id="FromDate" x-model="fromDate" readonly
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6">
+                </div>
+            </div>
+            <div>
+                <label for="ToDate" class="block text-sm font-medium leading-6 text-gray-900">To Date</label>
+                <div class="mt-2">
+                    <input type="text" name="ToDate" id="ToDate" x-model="toDate" readonly
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6">
+                </div>
+            </div>
+            <div>
+                <div class="mt-8">
+                    <button type="button" @click="clearSelection()" class="inline-flex items-center rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500">Clear Selection</button>
+                </div>
+            </div>
+        </div>
+        <div class="mt-2 text-center">
+            <p x-show="errorMessage" x-text="errorMessage" class="error-message"></p>
+        </div>
+        
+    </div>
+
+    <script>
+        function calendar() {
+            return {
+                months: [],
+                startDate: new Date(),
+                bookings: [],
+                fromDate: '',
+                toDate: '',
+                selectedDates: [],
+                errorMessage: '',
+                init() {
+                    this.parseBookings();
+                    this.generateMonths();
+                    this.$nextTick(() => this.initTippy());
+                },
+                parseBookings() {
+                    const bookingsString = "({455}, 2024-08-11, 2024-08-12, 2024-08-13, 2024-08-14, 2024-08-15), ({461}, 2024-08-21, 2024-08-22, 2024-08-23, 2024-08-24), ({465}, 2024-08-24, 2024-08-25, 2024-08-26, 2024-08-27, 2024-08-28, 2024-08-29, 2024-08-30, 2024-08-31, 2024-09-01, 2024-09-02, 2024-09-03), ({475}, 2024-09-11, 2024-09-12, 2024-09-13), ({535}, 2024-09-13, 2024-09-14, 2024-09-15)";
+                    const bookingsArray = bookingsString.match(/\((.*?)\)/g);
+                    if (bookingsArray) {
+                        this.bookings = bookingsArray.map(booking => {
+                            const [idPart, ...dateParts] = booking.slice(1, -1).split(', ');
+                            const id = idPart.match(/\{(\d+)\}/)[1];
+                            const dates = dateParts.sort();
+                            return {
+                                id: id,
+                                dates: new Set(dates.map(date => this.toLocalDate(date))),
+                                start: this.toLocalDate(dates[0]),
+                                end: this.toLocalDate(dates[dates.length - 1])
+                            };
+                        });
+                    }
+                },
+                generateMonths() {
+                    this.months = [];
+                    for (let i = 0; i < 3; i++) {
+                        const monthDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth() + i, 1);
+                        this.months.push(this.generateMonth(monthDate));
+                    }
+                },
+                generateMonth(date) {
+                    const month = {
+                        name: date.toLocaleString('default', { month: 'long', year: 'numeric' }),
+                        days: []
+                    };
+                    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+                    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+                    // Add days from previous month
+                    for (let i = 1; i < firstDay.getDay() || i === 7; i++) {
+                        const prevDate = new Date(date.getFullYear(), date.getMonth(), 1 - i);
+                        month.days.unshift(this.createDayObject(prevDate, false));
+                    }
+
+                    // Add days of current month
+                    for (let i = 1; i <= lastDay.getDate(); i++) {
+                        const currentDate = new Date(date.getFullYear(), date.getMonth(), i);
+                        month.days.push(this.createDayObject(currentDate, true));
+                    }
+
+                    // Add days from next month
+                    const daysToAdd = 42 - month.days.length;
+                    for (let i = 1; i <= daysToAdd; i++) {
+                        const nextDate = new Date(date.getFullYear(), date.getMonth() + 1, i);
+                        month.days.push(this.createDayObject(nextDate, false));
+                    }
+
+                    return month;
+                },
+                createDayObject(date, isCurrentMonth) {
+                    const dateString = this.formatDate(date);
+                    const relevantBookings = this.bookings.filter(b => b.dates.has(dateString));
+                    const isBookingStart = isCurrentMonth && relevantBookings.some(b => dateString === b.start);
+                    const isBookingEnd = isCurrentMonth && relevantBookings.some(b => dateString === b.end);
+                    const isBooked = isCurrentMonth && relevantBookings.length > 0;
+                    const isNotSelectable = isBooked && !(isBookingStart || isBookingEnd) || (isBookingStart && isBookingEnd) || (!isCurrentMonth);
+                    
+                    return {
+                        date: dateString,
+                        dayOfMonth: date.getDate(),
+                        isCurrentMonth: isCurrentMonth,
+                        isToday: this.isSameDay(date, new Date()),
+                        isBooked: isBooked,
+                        bookingIds: isCurrentMonth ? relevantBookings.map(b => b.id) : [],
+                        isBookingStart: isBookingStart,
+                        isBookingEnd: isBookingEnd,
+                        bookingStartIds: isCurrentMonth ? relevantBookings.filter(b => dateString === b.start).map(b => b.id) : [],
+                        bookingEndIds: isCurrentMonth ? relevantBookings.filter(b => dateString === b.end).map(b => b.id) : [],
+                        highlightLeft: false,
+                        highlightRight: false,
+                        highlightFull: false,
+                        isSelected: false,
+                        isNotSelectable: isNotSelectable
+                    };
+                },
+                initTippy() {
+                        const bookedDays = document.querySelectorAll('.day-cell[data-has-booking="true"][data-is-booking-start="false"][data-is-booking-end="false"]');
+                        bookedDays.forEach(day => {
+                            const bookingIds = JSON.parse(day.dataset.bookingIds || '[]');
+                            
+                            tippy(day, {
+                                content: this.generateTooltipContent(bookingIds),
+                                allowHTML: true,
+                                interactive: true,
+                                placement: 'top',
+                                trigger: 'click',
+                                appendTo: () => document.body
+                            });
+                        });
+                    },
+                generateTooltipContent(bookingIds) {
+                    let content = '<div class="booking-info">';
+                    content += '<div class="booking-info-title">Booking Information</div>';
+                    content += `<div>Booking ID(s): ${bookingIds.join(', ')}</div>`;
+                    content += '</div>';
+                    return content;
+                },
+                formatDate(date) {
+                    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                },
+                toLocalDate(dateString) {
+                    const [year, month, day] = dateString.split('-').map(Number);
+                    return this.formatDate(new Date(year, month - 1, day));
+                },
+                isSameDay(d1, d2) {
+                    return this.formatDate(d1) === this.formatDate(d2);
+                },
+                navigateMonths(direction) {
+                    this.startDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth() + direction, 1);
+                    this.generateMonths();
+                    this.$nextTick(() => this.initTippy());
+                },
+                handleDayHover(event, day) {
+                    if (day.bookingIds.length === 0) return;
+                    
+                    const rect = event.target.getBoundingClientRect();
+                    const x = event.clientX - rect.left;
+                    const isRightSide = x > rect.width / 2;
+                    
+                    this.clearHighlight();
+                    
+                    if (day.isBookingStart && day.isBookingEnd) {
+                        if (isRightSide) {
+                            this.highlightBooking([day.bookingIds[day.bookingIds.length - 1]], day.date, 'start-right');
+                        } else {
+                            this.highlightBooking([day.bookingIds[0]], day.date, 'end-left');
+                        }
+                    } else if (day.isBookingStart) {
+                        if (isRightSide) {
+                            this.highlightBooking(day.bookingIds, day.date, 'start-right');
+                        }
+                    } else if (day.isBookingEnd) {
+                        if (!isRightSide) {
+                            this.highlightBooking(day.bookingIds, day.date, 'end-left');
+                        }
+                    } else {
+                        this.highlightBooking(day.bookingIds, day.date, 'middle');
+                    }
+                },
+                highlightBooking(bookingIds, hoverDate, hoverType) {
+                    if (bookingIds.length === 0) return;
+                    this.months.forEach(month => {
+                        month.days.forEach(day => {
+                            if (day.isCurrentMonth) {
+                                const isPartOfBooking = day.bookingIds.some(id => bookingIds.includes(id));
+                                const isBookingStart = day.bookingStartIds.some(id => bookingIds.includes(id));
+                                const isBookingEnd = day.bookingEndIds.some(id => bookingIds.includes(id));
+
+                                
+                                if (isPartOfBooking) {
+                                    // Reset highlights for this day
+                                    day.highlightLeft = false;
+                                    day.highlightRight = false;
+                                    day.highlightFull = false;
+
+                                    if (day.date === hoverDate) {
+                                        if (hoverType === 'start-right') {
+                                            day.highlightLeft = true;
+                                        } else if (hoverType === 'end-left') {
+                                            day.highlightRight = true;
+                                        } else if (hoverType === 'middle') {
+                                            day.highlightFull = true;
+                                        }
+                                    } else if (day.date < hoverDate && !isBookingStart) {
+                                        day.highlightFull = true;
+                                    } else if (day.date < hoverDate && isBookingStart) {
+                                        day.highlightLeft = true;
+                                    } else if (day.date > hoverDate && !isBookingEnd) {
+                                        day.highlightFull = true;
+                                    } else if (day.date > hoverDate && isBookingEnd) {
+                                        day.highlightRight = true;
+                                    }
+
+                                    
+                                }
+                            }
+                        });
+                    });
+                },
+                clearHighlight() {
+                    this.months.forEach(month => {
+                        month.days.forEach(day => {
+                            day.highlightLeft = false;
+                            day.highlightRight = false;
+                            day.highlightFull = false;
+                        });
+                    });
+                },
+                selectDate(day) {
+                    if (day.isNotSelectable) {
+                        return;
+                    }
+
+                    if (this.selectedDates.length === 2) {
+                        this.resetSelection();
+                    }
+                    
+                    this.selectedDates.push(day.date);
+                    
+                    if (this.selectedDates.length === 2) {
+                        this.selectedDates.sort();
+                        
+                        if (this.hasBookingConflict(this.selectedDates[0], this.selectedDates[1])) {
+                            this.errorMessage = "Selected range overlaps with an existing booking. Please choose a different range.";
+                            this.resetSelection();
+                        } else {
+                            this.fromDate = this.selectedDates[0];
+                            this.toDate = this.selectedDates[1];
+                            this.errorMessage = '';
+                            this.highlightSelectedRange();
+                        }
+                    } else if (this.selectedDates.length === 1) {
+                        this.fromDate = day.date;
+                        this.toDate = '';
+                        this.errorMessage = '';
+                        this.highlightSelectedRange();
+                    }
+                },
+                resetSelection() {
+                    this.selectedDates = [];
+                    this.fromDate = '';
+                    this.toDate = '';
+                    this.highlightSelectedRange();
+                },
+                clearSelection() {
+                    this.selectedDates = [];
+                    this.fromDate = '';
+                    this.toDate = '';
+                    this.errorMessage = '';
+                    this.months.forEach(month => {
+                        month.days.forEach(day => {
+                            day.isSelected = false;
+                        });
+                    });
+                },
+                highlightSelectedRange() {
+                    this.months.forEach(month => {
+                        month.days.forEach(day => {
+                            if (day.isCurrentMonth) {
+                                if (this.selectedDates.length === 1) {
+                                    day.isSelected = day.date === this.fromDate;
+                                } else if (this.selectedDates.length === 2) {
+                                    day.isSelected = day.date >= this.fromDate && day.date <= this.toDate && !day.isNotSelectable;
+                                } else {
+                                    day.isSelected = false;
+                                }
+                            }
+                        });
+                    });
+                },
+                handleDayClick(event, day) {
+                    const rect = event.target.getBoundingClientRect();
+                    const x = event.clientX - rect.left;
+                    const isRightSide = x > rect.width / 2;
+                    //used for tippy stuff
+                    const dayCell = event.target.closest('.day-cell');
+                    const isHalfcell = event.target.classList.contains('halfcell');
+                    const bookingIds = isHalfcell 
+                        ? JSON.parse(target.dataset.bookingIds || '[]')
+                        : JSON.parse(dayCell.dataset.bookingIds || '[]');
+
+                    if (day.isBookingStart && day.isBookingEnd) {
+                        this.handleBookingStartEndDay(day, isRightSide);
+                    } else if (day.isBookingStart && isRightSide) {
+                        this.clearSelection();
+                        tippy(dayCell, {
+                            content: this.generateTooltipContent(bookingIds),
+                            allowHTML: true,
+                            interactive: true,
+                            placement: 'top',
+                            trigger: 'manual',
+                            appendTo: () => document.body
+                        });
+
+                        // Show the tippy
+                        dayCell._tippy.show();
+                    } else if (day.isBookingStart) {
+                        this.handleBookingStartDay(day, isRightSide);
+                    } else if (day.isBookingEnd && !isRightSide) {
+                        this.clearSelection();
+                        tippy(dayCell, {
+                            content: this.generateTooltipContent(bookingIds),
+                            allowHTML: true,
+                            interactive: true,
+                            placement: 'top',
+                            trigger: 'manual',
+                            appendTo: () => document.body
+                        });
+
+                        // Show the tippy
+                        dayCell._tippy.show();
+                    } else if (day.isBookingEnd) {
+                        this.handleBookingEndDay(day, isRightSide);
+                    } else if (day.isBooked) {
+                        this.clearSelection();
+                    } else if (!day.isCurrentMonth) {
+                        this.clearSelection();
+                    } else if (day.isSelected) {
+                        this.clearSelection();
+                    } else {
+                        this.selectDate(day);
+                    }
+                },
+                handleBookingStartEndDay(day, isRightSide) {
+                    //used for tippy stuff
+                    const dayCell = event.target.closest('.day-cell');
+                    const isHalfcell = event.target.classList.contains('halfcell');
+                    const bookingIds = isHalfcell 
+                        ? JSON.parse(target.dataset.bookingIds || '[]')
+                        : JSON.parse(dayCell.dataset.bookingIds || '[]');
+
+                        // Need code to select either left or right ID only
+
+                    if (isRightSide) {
+                        this.selectedBookingId = this.getBookingIdForDate(day.date, 'start');
+                        tippy(dayCell, {
+                            content: this.generateTooltipContent(bookingIds),
+                            allowHTML: true,
+                            interactive: true,
+                            placement: 'top',
+                            trigger: 'manual',
+                            appendTo: () => document.body
+                        });
+
+                        // Show the tippy
+                        dayCell._tippy.show();
+                    } else {
+                        this.selectedBookingId = this.getBookingIdForDate(day.date, 'end');
+                        tippy(dayCell, {
+                            content: this.generateTooltipContent(bookingIds),
+                            allowHTML: true,
+                            interactive: true,
+                            placement: 'top',
+                            trigger: 'manual',
+                            appendTo: () => document.body
+                        });
+
+                        // Show the tippy
+                        dayCell._tippy.show();
+                    }
+                },
+                handleBookingStartDay(day, isRightSide) {
+                    if (isRightSide) {
+                        this.selectedBookingId = this.getBookingIdForDate(day.date, 'start');
+                    } else {
+                        this.selectDate(day);
+                    }
+                },
+                handleBookingEndDay(day, isRightSide) {
+                    if (isRightSide) {
+                        this.selectDate(day);
+                    } else {
+                        this.selectedBookingId = this.getBookingIdForDate(day.date, 'end');
+                    }
+                },
+                getBookingIdForDate(date, type) {
+                    const booking = this.bookings.find(b => 
+                        (type === 'start' && b.start === date) || 
+                        (type === 'end' && b.end === date)
+                    );
+                    return booking ? booking.id : null;
+                },
+                hasBookingConflict(startDate, endDate) {
+                    return this.bookings.some(booking => {
+                        const bookingStart = new Date(booking.start);
+                        const bookingEnd = new Date(booking.end);
+                        const selectionStart = new Date(startDate);
+                        const selectionEnd = new Date(endDate);
+
+                        return (
+                            (selectionStart >= bookingStart && selectionStart < bookingEnd) ||
+                            (selectionEnd > bookingStart && selectionEnd <= bookingEnd) ||
+                            (selectionStart <= bookingStart && selectionEnd >= bookingEnd)
+                        );
+                    });
+                }
+            };
+        }
+    </script>
+</body>
+</html>

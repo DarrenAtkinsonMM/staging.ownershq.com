@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="flex h-full bg-gray-100">
+    <div class="flex w-full">
+       <div class="fixed inset-0 flex justify-center sm:px-8">
+            <div class="flex w-full max-w-7xl lg:px-8">
+                <div class="w-full bg-white ring-1 ring-zinc-200">
+                </div>
+            </div>
+        </div>
+        <div class="relative flex w-full flex-col">
+            <header class="w-full max-w-7xl mx-auto sm:px-8" x-data="{ open: false }">
+                <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-16" aria-label="Global">
+
+                        <div class="flex lg:flex-1">
+                        <a href="#" class="-m-1.5 p-1.5">
+                            <span class="sr-only">Your Company</span>
+                            <img class="h-8 w-auto sm:h-10" src="../images/ohq-icon-text.png" alt="">
+                        </a>
+                        </div>
+                        <div class="flex lg:hidden">
+                        <button @click="open = !open" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                            <span class="sr-only">Open main menu</span>
+                            <svg x-show="!open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                            <svg x-show="open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        </div>
+                        <div class="hidden lg:flex lg:gap-x-12">
+                        <a href="#" class="text-sm font-semibold leading-6 text-neutral-600 transition hover:text-sky-600">Listing Websites</a>
+                        <a href="#" class="text-sm font-semibold leading-6 text-neutral-600 transition hover:text-sky-600">Articles</a>
+                        <a href="#" class="text-sm font-semibold leading-6 text-neutral-600 transition hover:text-sky-600">About</a>
+                        <a href="#" class="text-sm font-semibold leading-6 text-neutral-600 transition hover:text-sky-600">Contact</a>
+                        </div>
+                        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                        <a href="#" class="text-sm font-semibold leading-6 text-neutral-600 transition hover:text-sky-600">Log in <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+
+                </nav>
+                <!-- Mobile menu, show/hide based on menu open state. -->
+                <div x-cloak x-show="open"
+                    x-transition:enter="transition ease-out duration-100"
+                    x-transition:enter-start="transform opacity-0 translate-y-[-100%]"
+                    x-transition:enter-end="transform opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-100"
+                    x-transition:leave-start="transform opacity-100 translate-y-0"
+                    x-transition:leave-end="transform opacity-0 translate-y-[-100%]"
+                    class="lg:hidden" role="dialog" aria-modal="true">
+                    <!-- Background backdrop, show/hide based on slide-over state. -->
+                    <div class="fixed inset-0 z-10"></div>
+                    <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                    <div class="flex items-center justify-between">
+                        <a href="#" class="-m-1.5 p-1.5">
+                        <span class="sr-only">Your Company</span>
+                        <img class="h-8 w-auto" src="../images/ohq-icon-text.png" alt="">
+                        </a>
+                        <button @click="open = false" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                        <span class="sr-only">Close menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        </button>
+                    </div>
+                    <div class="mt-6 flow-root">
+                        <div class="-my-6 divide-y divide-gray-500/10">
+                        <div class="space-y-2 py-6">
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Listing Websites</a>
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Articles</a>
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">About</a>
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Contact</a>
+                        </div>
+                        <div class="py-6">
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Log in</a>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </header>
+            <div class="flex-none" style="height: var(--content-offset);"></div>
+            <main class="flex-auto">
+                
+                <div class="mx-auto w-full max-w-7xl lg:px-12">
+                    <div class="mx-auto max-w-7xl sm:px-8 lg:px-8 xl:px-2">
+                        <!-- Top Section -->
+                        <div class="max-w-3xl pt-16 sm:pt-28 px-6 lg:px-8">
+                            <h2 class="text-3xl font-bold tracking-tight text-pink-600 sm:text-5xl">Our Listing Websites Put Your Property In Front Of Thousands Of Guests</h2>
+                            <p class="mt-6 text-lg leading-8 text-neutral-600">Our advertisers enjoy commission free enquiries and bookings which saves them thousands each year compared with using sites like AirBnB, VRBO, and Booking.com.</p>
+                            <p class="mt-6 text-lg leading-8 text-neutral-600">You get many benefits when you choose to list your property with us:</p>
+                        </div>
+                        <div class="bg-white pb-12">
+                            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                              <div class="mx-auto flex max-w-2xl flex-col items-end justify-between gap-16 lg:mx-0 lg:max-w-none lg:flex-row">
+                                <div class="w-full lg:max-w-lg lg:flex-auto">
+                                  
+                                  <img src="../images/vig-listings-sm.png" alt="Property listings" class="mt-16 aspect-[6/5] w-full rounded-2xl bg-gray-50 object-cover lg:aspect-auto lg:h-[34.5rem] border border-pink-600/10 p-3">
+                                </div>
+                                <div class="w-full lg:max-w-xl lg:flex-auto">
+                                  <h3 class="sr-only">Job openings</h3>
+                                  <ul class="-my-6 divide-y divide-gray-200">
+                                    <li class="py-8">
+                                      <dl class="relative flex flex-wrap gap-x-3 group">
+                                        <dt class="sr-only">Article Title</dt>
+                                        <dd class="w-full flex-none text-lg font-semibold tracking-tight text-pink-600 group-hover:text-sky-600">
+                                          <a href="#">
+                                            Savings Calculator
+                                            <span class="absolute inset-0" aria-hidden="true"></span>
+                                          </a>
+                                        </dd>
+                                        <dt class="sr-only">Description</dt>
+                                        <dd class="mt-2 w-full flex-none text-base leading-7 text-neutral-600">Save hundreds or thousands a year, enter your average weekly rate and see how much a listing with us will save you.</dd>
+                                        <dt class="sr-only">Description 2</dt>
+                                        <dd class="mt-4 text-base  leading-7 text-neutral-600"><a class="underline-offset-2 underline text-sky-600" href="#">See how much you could save</a></dd>
+                                      </dl>
+                                    </li>
+                                    <li class="py-8">
+                                      <dl class="relative flex flex-wrap gap-x-3 group">
+                                        <dt class="sr-only">Role</dt>
+                                        <dd class="w-full flex-none text-lg font-semibold tracking-tight text-pink-600 group-hover:text-sky-600">
+                                          <a href="#">
+                                            Hassle Free Guest Communication
+                                            <span class="absolute inset-0" aria-hidden="true"></span>
+                                          </a>
+                                        </dd>
+                                        <dt class="sr-only">Description</dt>
+                                        <dd class="mt-2 w-full flex-none text-base leading-7 text-neutral-600">Speak to your guests however and whenever you want, we do not block communication between you and your guests.</dd>
+                                        <dt class="sr-only">Description 2</dt>
+                                        <dd class="mt-4 text-base  leading-7 text-neutral-600"><a class="underline-offset-2 underline text-sky-600" href="#">Discover how this helps you</a></dd>
+                                      </dl>
+                                    </li>
+                                    <li class="py-8">
+                                      <dl class="relative flex flex-wrap gap-x-3 group">
+                                        <dt class="sr-only">Role</dt>
+                                        <dd class="w-full flex-none text-lg font-semibold tracking-tight text-pink-600 group-hover:text-sky-600">
+                                          <a href="#">
+                                            Prime Positioning On a Busy Website
+                                            <span class="absolute inset-0" aria-hidden="true"></span>
+                                          </a>
+                                        </dd>
+                                        <dt class="sr-only">Description</dt>
+                                        <dd class="mt-2 w-full flex-none text-base leading-7 text-neutral-600">Our listing websites get thousands of visitors each month and have top search engine rankings.</dd>
+                                        <dt class="sr-only">Description 2</dt>
+                                        <dd class="mt-4 text-base  leading-7 text-neutral-600"><a class="underline-offset-2 underline text-sky-600" href="#">Learn how we get you genuine enquiries</a></dd>
+                                      </dl>
+                                    </li>
+                                  </ul>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <!-- Top Section -->
+
+                        <!-- CTA section-->
+                        <div id="list" class="bg-pink-600 mt-2 mb-16 overflow-hidden sm:rounded-xl">
+                          <div class="px-6 py-24 sm:px-6 sm:py-8 lg:px-8 mx-auto max-w-7xl">
+                            <div class="mx-auto max-w-2xl text-center">
+                              <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Ready To Get Started?<br>Create Your Property Advert Today.</h2>
+                              <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-white">Create your holiday rental property advert on our Greece or Portugal websites today for just &pound;195. </p>
+                              <div class="mt-10 flex items-center justify-center gap-x-6">
+                                <a href="https://ownershq.co.uk/welcome/" class="text-pink-600 font-semibold rounded-md px-3.5 py-2.5 transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 duration-300">List Your Property Now</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- CTA section-->
+
+                        <!-- Further Articles -->
+                        <div class="bg-white pb-12 sm:pb-20">
+                            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                              <div class="mx-auto max-w-2xl lg:mx-0 pb-6 border-b border-gray-200 ">
+                                <h2 class="text-3xl font-bold tracking-tight text-pink-600 sm:text-5xl">Discover More</h2>
+                                <p class="mt-2 text-lg leading-8 text-neutral-600">Learn more on how our listing websites work and how they help you get bookings.</p>
+                              </div>
+                              <div class="mx-auto mt-2 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 pt-10 sm:mt-12 sm:pt-4 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                                <article class="flex max-w-xl flex-col items-start justify-between border-b pb-14 sm:pb-0 sm:border-b-0 border-gray-200 lg:border-r lg:pr-6">
+                                  <div class="group relative">
+                                    <h3 class="mt-3 text-lg font-semibold leading-6 text-pink-600 group-hover:text-sky-600">
+                                      <a href="#">
+                                        <span class="absolute inset-0"></span>
+                                        Which Countries Do We Operate In?
+                                      </a>
+                                    </h3>
+                                    <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600">We don't have listing sites in every country, discover why and see which countries we do operate websites in.</p>
+                                      <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600"><a class="underline-offset-2 underline text-sky-600" href="#">Discover the countries we operate in</a></p>
+                                  </div>
+                                </article>
+                                <article class="flex max-w-xl flex-col items-start justify-between border-b pb-14 sm:pb-0 sm:border-b-0 border-gray-200 lg:border-r lg:pr-6">
+                                    <div class="group relative">
+                                      <h3 class="mt-3 text-lg font-semibold leading-6 text-pink-600 group-hover:text-sky-600">
+                                        <a href="#">
+                                          <span class="absolute inset-0"></span>
+                                          Where Our First Listings Came From
+                                        </a>
+                                      </h3>
+                                      <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600">When you start a listing website you need properties to advertise, learn where our initial property listings came from.</p>
+                                      <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600"><a class="underline-offset-2 underline text-sky-600" href="#">Learn more about our initial listings</a></p>
+                                    </div>
+                                  </article>
+                                  <article class="flex max-w-xl flex-col items-start justify-between border-b pb-14 sm:pb-0 sm:border-b-0 border-gray-200">
+                                    <div class="group relative">
+                                      <h3 class="mt-3 text-lg font-semibold leading-6 text-pink-600 group-hover:text-sky-600 lg:pr-6">
+                                        <a href="#">
+                                          <span class="absolute inset-0"></span>
+                                          All About Availability Calendars
+                                        </a>
+                                      </h3>
+                                      <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600">If you advertise your property on more than one site then manually updating calendars can be a pain, see how we make this easy.</p>
+                                      <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600"><a class="underline-offset-2 underline text-sky-600" href="#">Read more about calendar sync</a></p>
+                                    </div>
+                                  </article>
+                                  <article class="flex max-w-xl flex-col items-start justify-between lg:border-r lg:border-gray-200 lg:pr-6">
+                                    <div class="group relative">
+                                      <h3 class="mt-3 text-lg font-semibold leading-6 text-pink-600 group-hover:text-sky-600">
+                                        <a href="#">
+                                          <span class="absolute inset-0"></span>
+                                          Regional Property Limits
+                                        </a>
+                                      </h3>
+                                      <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600">What are regional property limits, why do we have them, and how do they work to help you get more bookings?</p>
+                                      <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600"><a class="underline-offset-2 underline text-sky-600" href="#">Learn more about regional limits</a></p>
+                                    </div>
+                                  </article>
+                                  <article class="flex max-w-xl flex-col items-start justify-between lg:border-r lg:border-gray-200 lg:pr-6">
+                                    <div class="group relative">
+                                      <h3 class="mt-3 text-lg font-semibold leading-6 text-pink-600 group-hover:text-sky-600">
+                                        <a href="#">
+                                          <span class="absolute inset-0"></span>
+                                          You Are Our Customer
+                                        </a>
+                                      </h3>
+                                      <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600">Unlike some of the big listing sites we see you, the home owner, as our customer, see why this is better for you.</p>
+                                      <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600"><a class="underline-offset-2 underline text-sky-600" href="#">See how we view things differently</a></p>
+                                    </div>
+                                  </article>
+                                  <article class="flex max-w-xl flex-col items-start justify-between border-b pb-14 sm:pb-0 sm:border-b-0 border-gray-200">
+                                    <div class="group relative">
+                                      <h3 class="mt-3 text-lg font-semibold leading-6 text-pink-600 group-hover:text-sky-600 lg:pr-6">
+                                        <a href="#">
+                                          <span class="absolute inset-0"></span>
+                                          Fair Rankings For All Advertisers
+                                        </a>
+                                      </h3>
+                                      <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600">Our property listings are ranked fairly for everyone so you're not always buried at the bottom of the results pages.</p>
+                                      <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600"><a class="underline-offset-2 underline text-sky-600" href="#">View our Fair Ranking policy</a></p>
+                                    </div>
+                                  </article>
+                                  <article class="flex max-w-xl flex-col items-start justify-between lg:border-r lg:border-gray-200 lg:pr-6">
+                                    <div class="group relative">
+                                      <h3 class="mt-3 text-lg font-semibold leading-6 text-pink-600 group-hover:text-sky-600">
+                                        <a href="#">
+                                          <span class="absolute inset-0"></span>
+                                          Price Promise Guarantee
+                                        </a>
+                                      </h3>
+                                      <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600">Our listing price will increase in the future however our guarantee means your listing price will never go up.</p>
+                                      <p class="mt-5 line-clamp-3 text-base leading-7 text-gray-600"><a class="underline-offset-2 underline text-sky-600" href="#">Discover our Price Promise here</a></p>
+                                    </div>
+                                  </article>
+                                <!-- More posts... -->
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Further Articles -->
+                          
+                          <!-- CTA2 section-->
+                          <div id="list" class="bg-pink-600 mt-2 mb-16 overflow-hidden sm:rounded-xl">
+                            <div class="px-6 py-24 sm:px-6 sm:py-12 lg:px-8 mx-auto max-w-7xl">
+                              <div class="mx-auto max-w-2xl text-center">
+                                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Create Your Property Advert Now.</h2>
+                                <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-white">Only &pound;195 for the year, for most owners the commission savings from just 1 booking will cover the annual advertising cost.</p>
+                                <div class="mt-10 flex items-center justify-center gap-x-6">
+                                  <a href="https://ownershq.co.uk/welcome/" class="text-pink-600 font-semibold rounded-md px-3.5 py-2.5 transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 duration-300">List Your Property Now</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- CTA section-->
+            </div>
+        </div>
+            </main>
+            <footer>
+                <div class="mx-auto w-full max-w-7xl lg:px-12">
+                    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:py-16 lg:px-8">
+                  <nav class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
+                    <div class="pb-6">
+                      <a href="#" class="text-sm leading-6 text-neutral-600 transition hover:text-sky-600">Listing Websites</a>
+                    </div>
+                    <div class="pb-6">
+                      <a href="#" class="text-sm leading-6 text-neutral-600 transition hover:text-sky-600">Articles</a>
+                    </div>
+                    <div class="pb-6">
+                      <a href="#" class="text-sm leading-6 text-neutral-600 transition hover:text-sky-600">About</a>
+                    </div>
+                    <div class="pb-6">
+                      <a href="#" class="text-sm leading-6 text-neutral-600 transition hover:text-sky-600">Contact</a>
+                    </div>
+                  </nav>
+
+                  <p class="mt-10 text-center text-xs leading-5 text-neutral-600">&copy; 2024 OwnersHQ.com, Inc. All rights reserved.</p>
+                </div>
+                </div>
+                </div>
+              </footer>
+       </div>
+    </div>
+    
+</body>
+</html>

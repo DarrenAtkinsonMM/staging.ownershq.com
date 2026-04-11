@@ -1,0 +1,160 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|c:\\private\\sites\\staging.ownershq.com\\dist\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|solutionrelative:web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\contact.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|solutionrelative:contact.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|c:\\private\\sites\\staging.ownershq.com\\dist\\building-trust.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|solutionrelative:building-trust.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\master\\main.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|solutionrelative:master\\main.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\master\\top.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|solutionrelative:master\\top.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\contact.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|solutionrelative:contact.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\master\\main.master.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|solutionrelative:master\\main.master.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\become-a-verified-owner.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{0DE32D9C-818E-4E82-90A7-27BC84A830A6}|C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist|solutionrelative:become-a-verified-owner.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\Web.config",
+              "RelativeDocumentMoniker": "Web.config",
+              "ToolTip": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\Web.config",
+              "RelativeToolTip": "Web.config",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACcAAACcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-05-31T06:49:54.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "top.master",
+              "DocumentMoniker": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\master\\top.master",
+              "RelativeDocumentMoniker": "master\\top.master",
+              "ToolTip": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\master\\top.master",
+              "RelativeToolTip": "master\\top.master",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-06-24T14:46:26.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "main.master",
+              "DocumentMoniker": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\master\\main.master",
+              "RelativeDocumentMoniker": "master\\main.master",
+              "ToolTip": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\master\\main.master",
+              "RelativeToolTip": "master\\main.master",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-06-24T14:46:16.927Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "main.master.vb",
+              "DocumentMoniker": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\master\\main.master.vb",
+              "RelativeDocumentMoniker": "master\\main.master.vb",
+              "ToolTip": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\master\\main.master.vb",
+              "RelativeToolTip": "master\\main.master.vb",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADySURBVDhP3ZO/TsMwEIc/Z/Rj9CHYulgZrSLohtIJqXOeIrNHVLEh9QkyWp37NoCoTgLaHlODnSZQVj7phjvfH93POiMiygjWWtOP9SnSpOVqi12sWa62AIiI9i0tHkyqwkaZP2oVNioi6pxT55w2TTPYxIiI2sU6jXVU0wkP91fMrmcAlGVJXdeQrFfkJT8TYySEkMUKAHm666yaTiCZvt8fsoIYY\u002BZDokO6/\u002B5tpy/Pr2fmnMt0MH1RAI6H49nkE7fzG9q2/dbAWmtOjveej/fP0eIh/iTiEP\u002BgQXcHIqLe\u002B/x1hPQXsgZZ1i9ccqkX8QU\u002BxqrYkn/1oQAAAABJRU5ErkJggg==",
+              "WhenOpened": "2024-06-24T14:46:16.974Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "building-trust.aspx",
+              "DocumentMoniker": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\building-trust.aspx",
+              "RelativeDocumentMoniker": "building-trust.aspx",
+              "ToolTip": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\building-trust.aspx",
+              "RelativeToolTip": "building-trust.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-06-13T10:09:04.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "contact.aspx.vb",
+              "DocumentMoniker": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\contact.aspx.vb",
+              "RelativeDocumentMoniker": "contact.aspx.vb",
+              "ToolTip": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\contact.aspx.vb",
+              "RelativeToolTip": "contact.aspx.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-06-25T13:51:45.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "contact.aspx",
+              "DocumentMoniker": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\contact.aspx",
+              "RelativeDocumentMoniker": "contact.aspx",
+              "ToolTip": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\contact.aspx",
+              "RelativeToolTip": "contact.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-06-13T10:06:52.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "become-a-verified-owner.aspx",
+              "DocumentMoniker": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\become-a-verified-owner.aspx",
+              "RelativeDocumentMoniker": "become-a-verified-owner.aspx",
+              "ToolTip": "C:\\Private\\Sites\\Staging.OwnersHQ.com\\dist\\become-a-verified-owner.aspx",
+              "RelativeToolTip": "become-a-verified-owner.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF\u002BSURBVDhPnZO7TgJBFIa/5dLMimJBIQUmNBRCZYFSW2KMUJDQWPMCCk\u002BA8QUsiQ2dF3RbCxujRisqGxJIRBMSxaiTKJe1wJ3AyCbGr5mZ/\u002Bz5c/LPrIGGlNLWtWkIIQwAQy9IKe10Oq3Limg0SrlcxjRNhBCGq8HR4bFeIpPdBM3Eo3/0FxqNBqVSCeB/BvyYMJ7BeHj1ep34UpzhcMhgMHTkCTLZTSzLGk0gpbSb731y5x1EpUnydhbzoEX\u002B4pn2Fxi/o1J4nOaV2iOpkB\u002BAbj4MQCrkZ/X0iYdP95v1AGxfv1BMBCjEzIliIWZSTATYueni9U6Py5BS2qLS1PVffGxF6PX66qwyaL6PxG4\u002BrEYfX529G57FGR8AwWqbYLWt9rrmhiGltHPnHVIhP4WYSbDappsPq3X//oPLTo\u002B1xgm1Wm2i2bKskYFzC8VEgNLdqzIoL8\u002BxW3/jamMBZ1Idg7F3sH39wllLquJ6RLCXnGdxxqf\u002BPp2pL1HHrRngG9tBrSGFjvkwAAAAAElFTkSuQmCC",
+              "WhenOpened": "2024-06-13T09:21:44.133Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

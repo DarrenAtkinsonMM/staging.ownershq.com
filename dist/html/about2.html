@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="flex h-full bg-gray-100">
+    
+    
+    <div class="flex w-full">
+       <div class="fixed inset-0 flex justify-center sm:px-8">
+            <div class="flex w-full max-w-7xl lg:px-8">
+                <div class="w-full bg-white ring-1 ring-zinc-200">
+                </div>
+            </div>
+        </div>
+        <div class="relative flex w-full flex-col">
+            <header class="w-full max-w-7xl mx-auto sm:px-8" x-data="{ open: false }">
+                <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-16" aria-label="Global">
+
+                        <div class="flex lg:flex-1">
+                        <a href="#" class="-m-1.5 p-1.5">
+                            <span class="sr-only">Your Company</span>
+                            <img class="h-8 w-auto sm:h-10" src="../images/ohq-icon-text.png" alt="">
+                        </a>
+                        </div>
+                        <div class="flex lg:hidden">
+                        <button @click="open = !open" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                            <span class="sr-only">Open main menu</span>
+                            <svg x-show="!open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                            <svg x-show="open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        </div>
+                        <div class="hidden lg:flex lg:gap-x-12">
+                        <a href="#" class="text-sm font-semibold leading-6 text-pink-600 transition hover:text-sky-600">Listing Websites</a>
+                        <a href="#" class="text-sm font-semibold leading-6 text-pink-600 transition hover:text-sky-600">Articles</a>
+                        <a href="#" class="text-sm font-semibold leading-6 text-pink-600 transition hover:text-sky-600">About</a>
+                        <a href="#" class="text-sm font-semibold leading-6 text-pink-600 transition hover:text-sky-600">Contact</a>
+                        </div>
+                        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                        <a href="#" class="text-sm font-semibold leading-6 text-neutral-600 transition hover:text-sky-600">Log in <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+
+                </nav>
+                <!-- Mobile menu, show/hide based on menu open state. -->
+                <div x-cloak x-show="open"
+                    x-transition:enter="transition ease-out duration-100"
+                    x-transition:enter-start="transform opacity-0 translate-y-[-100%]"
+                    x-transition:enter-end="transform opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-100"
+                    x-transition:leave-start="transform opacity-100 translate-y-0"
+                    x-transition:leave-end="transform opacity-0 translate-y-[-100%]"
+                    class="lg:hidden" role="dialog" aria-modal="true">
+                    <!-- Background backdrop, show/hide based on slide-over state. -->
+                    <div class="fixed inset-0 z-10"></div>
+                    <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                    <div class="flex items-center justify-between">
+                        <a href="#" class="-m-1.5 p-1.5">
+                        <span class="sr-only">Your Company</span>
+                        <img class="h-8 w-auto" src="../images/ohq-icon-text.png" alt="">
+                        </a>
+                        <button @click="open = false" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                        <span class="sr-only">Close menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        </button>
+                    </div>
+                    <div class="mt-6 flow-root">
+                        <div class="-my-6 divide-y divide-gray-500/10">
+                        <div class="space-y-2 py-6">
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Listing Websites</a>
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Articles</a>
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">About</a>
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Contact</a>
+                        </div>
+                        <div class="py-6">
+                            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-neutral-600 hover:bg-gray-50">Log in</a>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </header>
+            <div class="flex-none" style="height: var(--content-offset);"></div>
+            <main class="flex-auto">
+                
+                <div class="mx-auto w-full max-w-7xl lg:px-12">
+                    <div class="mx-auto max-w-7xl sm:px-8 lg:px-8 xl:px-2">
+                        <!-- Article -->
+                        <div class="xl:relative pt-12 px-6 sm:pt-28">
+                            <div class="mx-auto max-w-2xl">
+                                <article>
+                                    <header class="flex flex-col">
+                                        <h1 class="mt-6 mb-5 text-4xl sm:text-5xl font-bold tracking-tight text-pink-600 ">About Owners HQ</h1>
+                                    </header>
+                                    <div class="mt-8 text-lg leading-7 text-neutral-600">
+                                        <p class="mb-6">We have one goal, helping holiday home owners keep more of their rental income.</p>
+                                        <p class="mb-6">To do this we use a mix of modern technology and an ultra-lean business model that allows us to massively reduce costs for holiday home owners like you.</p>
+                                        <h2 class="text-3xl font-bold mt-12 mb-8 sm:text-5xl text-pink-600">Who are we?</h2>
+                                        <div class="float-right ml-4 my-2">
+                                            <img src="../images/headshot.jpg" class="rounded-md border mb-2 border-gray-300 shadow-md" alt="Darren Atkinson" title="Darren Atkinson" />
+                                            <p class="text-center text-sm font-semibold text-neutral-600">Darren Atkinson</p>
+                                        </div>
+                                        
+                                        <p class="mb-6">We are an ultra-small, ultra-focussed, and independent team led by myself, Darren Atkinson.</p>
+                                        <p class="mb-6">My background is in technology and Internet marketing, I founded and run a successful ecommerce for over 15 years, and I've also been involved in the holiday rental business for over 12 years now.</p>
+                                        <p class="mb-6">At Owners HQ we don't have a set of investors looking for a continuously increasing return, this allows us to run a profitable business without needing to claim an ever-increasing slice of your rental income.</p>
+                                        <p class="mb-6">Our team may be small but we are efficient, and we use the latest tech advances to massively reduce the cost of developing and supplying money and time saving solutions to holiday home owners.</p>
+                                        <p class="mb-6"><a class="underline text-sky-600 font-semibold" href="#">Learn more about our backstory here</a>.</p>
+                                        <h2 class="text-3xl font-bold mt-12 mb-8 sm:text-5xl text-pink-600">Listing Websites</h2>
+                                        <p class="mb-6">Home owners looking to rent out their property need guests, listing websites like AirBnB and VRBO can supply enquiries and guests.</p>
+                                        <p class="mb-6">The main issue with these large listing sites is that they demand an always increasing slice of your rental income. </p>
+                                        <p class="mb-6">Many home owners have become too reliant on them for bookings despite thinking that being charged 15% - 20% of their income for an advert is unfair.</p>
+                                        <p class="mb-6"><span class="font-semibold">Our Solution:</span> We have our own listing websites, these have been running for over 10 years and receive thousands of views each month.  Collectively they have driven thousands of bookings for holiday home owners.</p>
+                                        <p class="mb-6">Instead of claiming a percentage of your income we simply charge a low annual fee, no commissions, no guest fees, and no nasty surprises.</p>
+                                        <p class="mb-6"><a class="underline text-sky-600 font-semibold" href="#">Learn more about our listing websites here</a>.</p>
+                                        <h2 class="text-3xl font-bold mt-12 mb-8 sm:text-5xl text-pink-600">The Future</h2>
+                                        <p class="mb-6">Our listing websites will genuinely save our customers thousands of pounds per year, but they are just the start.</p>
+                                        <p class="mb-6">Over the longer term I believe holiday home owners need to become more independent and take greater control over their properties and guests if they want to survive and thrive.</p>
+                                        <p class="mb-6">Our focus is on building the tools that will enable this.</p>
+                                        <p class="mb-6">Look out for more on this soon.</p>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                        <!-- Article -->
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <div class="mx-auto w-full max-w-7xl lg:px-12">
+                    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:py-16 lg:px-8">
+                    <div class="mx-auto max-w-2xl border-b border-gray-900/10 mb-10"></div>
+                    <nav class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
+                        <div class="pb-6">
+                          <a href="#" class="text-sm leading-6 text-pink-600 transition hover:text-sky-600">Listing Websites</a>
+                        </div>
+                        <div class="pb-6">
+                          <a href="#" class="text-sm leading-6 text-pink-600 transition hover:text-sky-600">Articles</a>
+                        </div>
+                        <div class="pb-6">
+                          <a href="#" class="text-sm leading-6 text-pink-600 transition hover:text-sky-600">About</a>
+                        </div>
+                        <div class="pb-6">
+                          <a href="#" class="text-sm leading-6 text-pink-600 transition hover:text-sky-600">Contact</a>
+                        </div>
+                      </nav>
+
+                  <p class="mt-10 text-center text-xs leading-5 text-neutral-600">&copy; 2024 OwnersHQ.com, Inc. All rights reserved.</p>
+                </div>
+                </div>
+                </div>
+              </footer>
+       </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,162 @@
+<%@ Master Language="VB" MasterPageFile="~/master/top.master" AutoEventWireup="false" CodeFile="main.master.vb" Inherits="main" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="cphHead" Runat="Server">
+    <asp:ContentPlaceHolder id="cphMainHead" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        /* Scroll-triggered reveal animations */
+        .reveal-on-scroll { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal-on-scroll.revealed { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* Hero entrance animations */
+        @keyframes hero-fade-up { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes hero-fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes dashboard-rise { 0% { opacity: 0; transform: translateY(60px) scale(0.96); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+        .hero-animate-1 { animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
+        .hero-animate-2 { animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
+        .hero-animate-3 { animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both; }
+        .hero-animate-4 { animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both; }
+        .dashboard-animate { animation: dashboard-rise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both; }
+
+        /* Subtle grain texture overlay */
+        .grain::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Counter animation */
+        .count-up { font-variant-numeric: tabular-nums; }
+    </style>
+</asp:Content>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphMain" Runat="Server">
+
+<div class="flex w-full font-sans">
+    <div class="flex w-full flex-col min-h-screen">
+
+        <!-- Navigation -->
+        <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" x-data="{ open: false, scrolled: false }" @scroll.window="scrolled = (window.scrollY > 20)">
+            <div :class="scrolled ? 'bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.05)]' : 'bg-navy-900 grain'" class="transition-all duration-300">
+                <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8 lg:px-8" aria-label="Global">
+                    <div class="flex lg:flex-1">
+                        <a href="/" class="-m-1.5 p-1.5 flex items-center gap-3">
+                            <span class="sr-only">Owners HQ</span>
+                            <img class="h-8 w-auto sm:h-10 transition-all duration-300" :class="scrolled ? '' : 'brightness-125'" src="../images/ohq-icon-text.png" alt="Owners HQ">
+                        </a>
+                    </div>
+                    <div class="flex lg:hidden">
+                        <button @click="open = !open" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5" :class="scrolled ? 'text-gray-700' : 'text-white'">
+                            <span class="sr-only">Open main menu</span>
+                            <svg x-show="!open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+                            <svg x-show="open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                    </div>
+                    <div class="hidden lg:flex lg:gap-x-10">
+                        <a href="/features/" class="text-sm font-medium transition" :class="scrolled ? 'text-neutral-600 hover:text-sky-600' : 'text-white/80 hover:text-white'">Features</a>
+                        <a href="/pricing/" class="text-sm font-medium transition" :class="scrolled ? 'text-neutral-600 hover:text-sky-600' : 'text-white/80 hover:text-white'">Pricing</a>
+                        <a href="/about/" class="text-sm font-medium transition" :class="scrolled ? 'text-neutral-600 hover:text-sky-600' : 'text-white/80 hover:text-white'">About</a>
+                        <a href="/contact/" class="text-sm font-medium transition" :class="scrolled ? 'text-neutral-600 hover:text-sky-600' : 'text-white/80 hover:text-white'">Contact</a>
+                    </div>
+                    <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5 lg:items-center">
+                        <a href="https://manage.ownershq.com/login/" class="text-sm font-medium transition" :class="scrolled ? 'text-neutral-600 hover:text-sky-600' : 'text-white/80 hover:text-white'">Log in</a>
+                        <a href="https://manage.ownershq.com/register/" class="rounded-lg bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">Start Free</a>
+                    </div>
+                </nav>
+
+                <!-- Mobile menu -->
+                <div x-cloak x-show="open"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 -translate-y-4"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 -translate-y-4"
+                    class="lg:hidden bg-white border-t border-gray-100 shadow-lg">
+                    <div class="px-6 py-4 space-y-1">
+                        <a href="/features/" class="block rounded-lg px-3 py-2.5 text-base font-medium text-neutral-700 hover:bg-warm-50">Features</a>
+                        <a href="/pricing/" class="block rounded-lg px-3 py-2.5 text-base font-medium text-neutral-700 hover:bg-warm-50">Pricing</a>
+                        <a href="/about/" class="block rounded-lg px-3 py-2.5 text-base font-medium text-neutral-700 hover:bg-warm-50">About</a>
+                        <a href="/contact/" class="block rounded-lg px-3 py-2.5 text-base font-medium text-neutral-700 hover:bg-warm-50">Contact</a>
+                        <div class="pt-3 mt-3 border-t border-gray-100 flex flex-col gap-2">
+                            <a href="https://manage.ownershq.com/login/" class="block rounded-lg px-3 py-2.5 text-base font-medium text-neutral-700 hover:bg-warm-50">Log in</a>
+                            <a href="https://manage.ownershq.com/register/" class="block rounded-lg bg-sky-600 px-3 py-2.5 text-center text-base font-semibold text-white hover:bg-sky-700">Start Free</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <main class="flex-auto">
+            <asp:ContentPlaceHolder id="cphMainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-warm-50 border-t border-white/5">
+            <div class="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-8">
+                <div class="md:flex md:items-start md:justify-between">
+                    <div class="mb-8 md:mb-0 md:max-w-xs">
+                        <a href="/" class="inline-block">
+                            <img class="h-8 w-auto" src="../images/ohq-icon-text.png" alt="Owners HQ">
+                        </a>
+                        <p class="mt-4 text-sm leading-6 text-gray-500">Booking and payment management for holiday rental owners. Simple, fair, and transparent.</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-8 sm:grid-cols-3">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-500">Product</h3>
+                            <ul role="list" class="mt-4 space-y-3">
+                                <li><a href="/features/" class="text-sm text-gray-500 transition hover:text-sky-600">Features</a></li>
+                                <li><a href="/pricing/" class="text-sm text-gray-500 transition hover:text-sky-600">Pricing</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-500">Company</h3>
+                            <ul role="list" class="mt-4 space-y-3">
+                                <li><a href="/about/" class="text-sm text-gray-500 transition hover:text-sky-600">About</a></li>
+                                <li><a href="/contact/" class="text-sm text-gray-500 transition hover:text-sky-600">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-500">Legal</h3>
+                            <ul role="list" class="mt-4 space-y-3">
+                                <li><a href="/terms/" class="text-sm text-gray-500 transition hover:text-sky-600">Terms &amp; Conditions</a></li>
+                                <li><a href="/privacy/" class="text-sm text-gray-500 transition hover:text-sky-600">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-10 border-t border-white/5 pt-8">
+                    <p class="text-xs text-gray-500">&copy; 2026 Owners HQ Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+<!-- Scroll reveal script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal-on-scroll').forEach(function(el) { observer.observe(el); });
+});
+</script>
+
+</asp:Content>

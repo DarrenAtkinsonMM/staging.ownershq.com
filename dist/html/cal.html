@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Month Calendar with Overlapping Booking Indicators</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        .booking-start::before,
+        .booking-end::after,
+        .booking-start-end::before,
+        .booking-start-end::after,
+        .selected-start::before,
+        .selected-start-booking-start::after,
+        .selected-end::after,
+        .selected-start-end::before,
+        .selected-start-end::after {
+            content: '';
+            position: relative;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .booking-start::before
+        {
+            border-width: 0 0 40px 45px;
+            border-color: transparent transparent rgba(252, 165, 165, 0.3) transparent;
+        }
+        .booking-end::after {
+            border-width: 40px 45px 0 0;
+            border-color: rgba(252, 165, 165, 0.3) transparent transparent transparent;
+        }
+        .booking-start-end::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px !important;
+            border-width: 0 0 38px 43px;  /* Slightly smaller */
+            border-style: solid;
+            border-color: transparent transparent rgba(252, 165, 165, 0.3) transparent;
+        }
+        .booking-start-end::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-width: 38px 43px 0 0;  /* Slightly smaller */
+            border-style: solid;
+            border-color: rgba(252, 165, 165, 0.3) transparent transparent transparent;
+        }
+        .selected-start::before {
+            left: 0;
+            border-width: 0 0 40px 45px;
+            border-color: transparent transparent rgba(252, 165, 165, 0.4) transparent;
+        }
+        .selected-end::after,
+        .selected-start-booking-start::after {
+            right: 0;
+            border-width: 40px 45px 0 0;
+            border-color: rgba(252, 165, 165, 0.4) transparent transparent transparent;
+        }
+        .selected-start-end::before {
+            top: 2px;
+            left: 2px !important;
+            border-width: 0 0 38px 43px;
+            border-color: transparent transparent rgba(252, 165, 165, 0.3) transparent;
+        }
+        .selected-start-end::after {
+            top: 0;
+            left: 0;
+            border-width: 38px 43px 0 0;
+            border-color: rgba(252, 165, 165, 0.3) transparent transparent transparent;
+        }
+        .selected-start::before,
+        .selected-end::after,
+        .selected-start-booking-start::after,
+        .selected-start-end::before,
+        .selected-start-end::after {
+            border-color: rgba(79, 70, 229, 0.3) transparent transparent transparent;
+        }
+        .selected-start::before,
+        .selected-start-end::before {
+            border-color: transparent transparent rgba(79, 70, 229, 0.3) transparent;
+        }
+        .day-cell {
+            position: relative;
+        }
+        .day-cell::before,
+        .day-cell::after {
+            content: '';
+            position: absolute;
+            
+            width: 50%;
+            z-index: 1;
+        }
+        .day-cell::before {
+            left: 0;
+        }
+        .day-cell::after {
+            right: 0;
+        }
+        .selected-date {
+            background-color: rgba(79, 70, 229, 0.2) !important;
+        }
+        
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <input type="hidden" id="hfBookID" name="hfBookID" x-model="bookID">
+    <div class="container mx-auto" x-data="calendar()">
+        <div class="flex flex-col items-center">
+            <div class="flex flex-wrap justify-center gap-8 mb-6">
+                <template x-for="(month, index) in months" :key="index">
+                    <section class="text-center w-80">
+                        <div class="flex items-center justify-between mb-2 relative">
+                            <button @click.prevent="navigateMonths(-1)" class="p-2 rounded-full  bg-gray-100 hover:bg-gray-200 flex items-center justify-center absolute left-0" x-show="index === 0">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                                </svg>
+                                <span class="sr-only">Previous</span>
+                            </button>
+                            <h2 class="text-medium font-semibold text-gray-900 flex-grow text-center" x-text="month.name"></h2>
+                            <button @click.prevent="navigateMonths(1)" class="p-2 rounded-full  bg-gray-100 hover:bg-gray-200 flex items-center justify-center absolute right-0" x-show="index === months.length - 1">
+                                <span class="sr-only">Next</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="mt-6 grid grid-cols-7 text-xs leading-6 text-gray-500">
+                            <div>M</div>
+                            <div>T</div>
+                            <div>W</div>
+                            <div>T</div>
+                            <div>F</div>
+                            <div>S</div>
+                            <div>S</div>
+                        </div>
+                        <div class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
+                            <template x-for="(day, dayIndex) in month.days" :key="dayIndex">
+                                <div 
+                                    class="day-cell relative"
+                                    @click="handleDayClick($event, day)"
+                                    :data-has-booking="day.isBooked.toString()"
+                                    :data-is-booking-start="day.isBookingStart.toString()"
+                                    :data-is-booking-end="day.isBookingEnd.toString()"
+                                    :data-booking-ids="JSON.stringify(day.bookingIds)"
+                                    :class="{
+                                        'relative py-1.5': true,
+                                        'hover:bg-gray-100': day.isCurrentMonth && !day.isNotSelectable && !day.highlightLeft && !day.highlightRight,
+                                        'bg-white': day.isCurrentMonth && (!day.isBooked || day.isBookingStart || day.isBookingEnd),
+                                        'bg-gray-50 text-gray-400': !day.isCurrentMonth,
+                                        'bg-red-100': day.isCurrentMonth && day.isBooked && !day.isBookingStart && !day.isBookingEnd && !day.highlightFull,
+                                        'booking-start': day.isCurrentMonth && day.isBookingStart && !day.isBookingEnd,
+                                        'booking-end': day.isCurrentMonth && day.isBookingEnd && !day.isBookingStart,
+                                        'booking-start-end': day.isCurrentMonth && day.isBookingStart && day.isBookingEnd,
+                                        'selected-start': day.isSelected && day.date === fromDate && day.date !== toDate && !day.isBookingStart,
+                                        'selected-start-booking-start': day.isSelected && day.date === fromDate && day.date !== toDate && day.isBookingStart,
+                                        'selected-end': day.isSelected && day.date === toDate && day.date !== fromDate,
+                                        'selected-start-end': day.isSelected && day.date === fromDate && day.date === toDate,
+                                        'selected-date': day.isSelected && day.date !== fromDate && day.date !== toDate,
+                                        'not-selectable': day.isNotSelectable,
+                                        'rounded-tl-lg': dayIndex === 0,
+                                        'rounded-tr-lg': dayIndex === 6,
+                                        'rounded-bl-lg': dayIndex === month.days.length - 7,
+                                        'rounded-br-lg': dayIndex === month.days.length - 1
+                                    }">
+                                    <time :datetime="day.date" 
+                                        class="mx-auto flex h-7 w-7 items-center justify-center"
+                                        x-text="day.isCurrentMonth ? day.dayOfMonth : ''"></time>
+                                    <div x-show="day.isBookingStart && !day.isBookingEnd" class="halfcell absolute inset-y-0 right-0 w-1/2 opacity-50"></div>
+                                    <div x-show="day.isBookingEnd && !day.isBookingStart" class="halfcell absolute inset-y-0 left-0 w-1/2 opacity-50"></div>
+                                </div>
+                            </template>
+                        </div>
+                    </section>
+                </template>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calendar() {
+            return {
+                months: [],
+                startDate: new Date(),
+                bookings: [],
+                fromDate: '',
+                toDate: '',
+                selectedDates: [],
+                errorMessage: '',
+                init() {
+                    this.parseBookings();
+                    this.generateMonths();
+                },
+                parseBookings() {
+                    const bookingsString = "({455}, 2024-08-11, 2024-08-12, 2024-08-13, 2024-08-14, 2024-08-15), ({461}, 2024-08-21, 2024-08-22, 2024-08-23, 2024-08-24), ({465}, 2024-08-24, 2024-08-25, 2024-08-26, 2024-08-27, 2024-08-28, 2024-08-29, 2024-08-30, 2024-08-31, 2024-09-01, 2024-09-02, 2024-09-03), ({475}, 2024-09-11, 2024-09-12, 2024-09-13), ({535}, 2024-09-13, 2024-09-14, 2024-09-15)";
+                    const bookingsArray = bookingsString.match(/\((.*?)\)/g);
+                    if (bookingsArray) {
+                        this.bookings = bookingsArray.map(booking => {
+                            const [idPart, ...dateParts] = booking.slice(1, -1).split(', ');
+                            const id = idPart.match(/\{(\d+)\}/)[1];
+                            const dates = dateParts.sort();
+                            return {
+                                id: id,
+                                dates: new Set(dates.map(date => this.toLocalDate(date))),
+                                start: this.toLocalDate(dates[0]),
+                                end: this.toLocalDate(dates[dates.length - 1])
+                            };
+                        });
+                    }
+                },
+                generateMonths() {
+                    this.months = [];
+                    for (let i = 0; i < 4; i++) {
+                        const monthDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth() + i, 1);
+                        this.months.push(this.generateMonth(monthDate));
+                    }
+                },
+                generateMonth(date) {
+                    const month = {
+                        name: date.toLocaleString('default', { month: 'long', year: 'numeric' }),
+                        days: []
+                    };
+                    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+                    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+                    // Add days from previous month
+                    for (let i = 1; i < firstDay.getDay() || i === 7; i++) {
+                        const prevDate = new Date(date.getFullYear(), date.getMonth(), 1 - i);
+                        month.days.unshift(this.createDayObject(prevDate, false));
+                    }
+
+                    // Add days of current month
+                    for (let i = 1; i <= lastDay.getDate(); i++) {
+                        const currentDate = new Date(date.getFullYear(), date.getMonth(), i);
+                        month.days.push(this.createDayObject(currentDate, true));
+                    }
+
+                    // Add days from next month
+                    const daysToAdd = 42 - month.days.length;
+                    for (let i = 1; i <= daysToAdd; i++) {
+                        const nextDate = new Date(date.getFullYear(), date.getMonth() + 1, i);
+                        month.days.push(this.createDayObject(nextDate, false));
+                    }
+
+                    return month;
+                },
+                createDayObject(date, isCurrentMonth) {
+                    const dateString = this.formatDate(date);
+                    const relevantBookings = this.bookings.filter(b => b.dates.has(dateString));
+                    const isBookingStart = isCurrentMonth && relevantBookings.some(b => dateString === b.start);
+                    const isBookingEnd = isCurrentMonth && relevantBookings.some(b => dateString === b.end);
+                    const isBooked = isCurrentMonth && relevantBookings.length > 0;
+                    const isNotSelectable = isBooked && !(isBookingStart || isBookingEnd) || (isBookingStart && isBookingEnd) || (!isCurrentMonth);
+                    
+                    return {
+                        date: dateString,
+                        dayOfMonth: date.getDate(),
+                        isCurrentMonth: isCurrentMonth,
+                        isToday: this.isSameDay(date, new Date()),
+                        isBooked: isBooked,
+                        bookingIds: isCurrentMonth ? relevantBookings.map(b => b.id) : [],
+                        isBookingStart: isBookingStart,
+                        isBookingEnd: isBookingEnd,
+                        bookingStartIds: isCurrentMonth ? relevantBookings.filter(b => dateString === b.start).map(b => b.id) : [],
+                        bookingEndIds: isCurrentMonth ? relevantBookings.filter(b => dateString === b.end).map(b => b.id) : [],
+                        highlightLeft: false,
+                        highlightRight: false,
+                        highlightFull: false,
+                        isSelected: false,
+                        isNotSelectable: isNotSelectable
+                    };
+                },
+                formatDate(date) {
+                    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                },
+                toLocalDate(dateString) {
+                    const [year, month, day] = dateString.split('-').map(Number);
+                    return this.formatDate(new Date(year, month - 1, day));
+                },
+                isSameDay(d1, d2) {
+                    return this.formatDate(d1) === this.formatDate(d2);
+                },
+                navigateMonths(direction) {
+                    this.startDate = new Date(this.startDate.getFullYear(), this.startDate.getMonth() + direction, 1);
+                    this.generateMonths();
+                    this.$nextTick(() => {
+                        this.applySelectedStyles();
+                    });
+                },
+                selectDate(day) {
+                    if (day.isNotSelectable) {
+                        return;
+                    }
+
+                    if (this.selectedDates.length === 2) {
+                        this.resetSelection();
+                    }
+                    
+                    this.selectedDates.push(day.date);
+                    
+                    if (this.selectedDates.length === 2) {
+                        this.selectedDates.sort();
+                        
+                        if (this.hasBookingConflict(this.selectedDates[0], this.selectedDates[1])) {
+                            this.errorMessage = "Selected range overlaps with an existing booking. Please choose a different range.";
+                            this.resetSelection();
+                        } else {
+                            this.fromDate = this.selectedDates[0];
+                            this.toDate = this.selectedDates[1];
+                            this.errorMessage = '';
+                            this.applySelectedStyles();
+                        }
+                    } else if (this.selectedDates.length === 1) {
+                        this.fromDate = day.date;
+                        this.toDate = '';
+                        this.errorMessage = '';
+                        this.applySelectedStyles();
+                    }
+                },
+                resetSelection() {
+                    this.selectedDates = [];
+                    this.fromDate = '';
+                    this.toDate = '';
+                    this.applySelectedStyles();
+                },
+                clearSelection() {
+                    this.selectedDates = [];
+                    this.fromDate = '';
+                    this.toDate = '';
+                    this.errorMessage = '';
+                    this.applySelectedStyles();
+                },
+                applySelectedStyles() {
+                    this.months.forEach(month => {
+                        month.days.forEach(day => {
+                            if (day.isCurrentMonth) {
+                                if (this.selectedDates.length === 1) {
+                                    day.isSelected = day.date === this.fromDate;
+                                } else if (this.selectedDates.length === 2) {
+                                    day.isSelected = day.date >= this.fromDate && day.date <= this.toDate && !day.isNotSelectable;
+                                } else {
+                                    day.isSelected = false;
+                                }
+                            }
+                        });
+                    });
+                },
+                handleDayClick(event, day) {
+                    const rect = event.target.getBoundingClientRect();
+                    const x = event.clientX - rect.left;
+                    const isRightSide = x > rect.width / 2;
+                    const dayCell = event.target.closest('.day-cell');
+                    const isHalfcell = event.target.classList.contains('halfcell');
+                    const bookingIds = isHalfcell 
+                        ? JSON.parse(event.target.dataset.bookingIds || '[]')
+                        : JSON.parse(dayCell.dataset.bookingIds || '[]');
+
+                    if (day.isBookingStart && day.isBookingEnd) {
+                        this.handleBookingStartEndDay(event, day, isRightSide);
+                    } else if (day.isBookingStart) {
+                        if (isRightSide) {
+                            this.clearSelection();
+                        } else {
+                            this.selectDate(day);
+                        }
+                    } else if (day.isBookingEnd) {
+                        if (!isRightSide) {
+                            this.clearSelection();
+                        } else {
+                            this.selectDate(day);
+                        }
+                    } else if (day.isBooked) {
+                        this.clearSelection();
+                    } else if (!day.isCurrentMonth) {
+                        this.clearSelection();
+                    } else if (day.isSelected) {
+                        this.clearSelection();
+                    } else {
+                        this.selectDate(day);
+                    }
+                },
+                handleBookingStartEndDay(event, day, isRightSide) {
+                    const dayCell = event.target.closest('.day-cell');
+                    const bookingIds = JSON.parse(dayCell.dataset.bookingIds || '[null,null]');
+                    const selectedBookingId = isRightSide ? bookingIds[1] : bookingIds[0];
+                    this.selectedBookingId = this.getBookingIdForDate(day.date, isRightSide ? 'start' : 'end');
+                },
+                handleBookingStartDay(day, isRightSide) {
+                    if (isRightSide) {
+                        this.selectedBookingId = this.getBookingIdForDate(day.date, 'start');
+                    } else {
+                        this.selectDate(day);
+                    }
+                },
+                handleBookingEndDay(day, isRightSide) {
+                    if (isRightSide) {
+                        this.selectDate(day);
+                    } else {
+                        this.selectedBookingId = this.getBookingIdForDate(day.date, 'end');
+                    }
+                },
+                getBookingIdForDate(date, type) {
+                    const booking = this.bookings.find(b => 
+                        (type === 'start' && b.start === date) || 
+                        (type === 'end' && b.end === date)
+                    );
+                    return booking ? booking.id : null;
+                },
+                hasBookingConflict(startDate, endDate) {
+                    return this.bookings.some(booking => {
+                        const bookingStart = new Date(booking.start);
+                        const bookingEnd = new Date(booking.end);
+                        const selectionStart = new Date(startDate);
+                        const selectionEnd = new Date(endDate);
+
+                        return (
+                            (selectionStart >= bookingStart && selectionStart < bookingEnd) ||
+                            (selectionEnd > bookingStart && selectionEnd <= bookingEnd) ||
+                            (selectionStart <= bookingStart && selectionEnd >= bookingEnd)
+                        );
+                    });
+                },
+            };
+        }
+    </script>
+
+
+</body>
+</html>

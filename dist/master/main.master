@@ -67,8 +67,8 @@
                         <a href="/contact/" class="text-sm font-medium transition" :class="scrolled ? 'text-neutral-600 hover:text-sky-600' : 'text-white/80 hover:text-white'">Contact</a>
                     </div>
                     <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5 lg:items-center">
-                        <a href="https://manage.ownershq.com/login/" class="text-sm font-medium transition" :class="scrolled ? 'text-neutral-600 hover:text-sky-600' : 'text-white/80 hover:text-white'">Log in</a>
-                        <a href="https://manage.ownershq.com/register/" class="rounded-lg bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">Start Free</a>
+                        <a href="https://manager.ownershq.com/login/" class="text-sm font-medium transition" :class="scrolled ? 'text-neutral-600 hover:text-sky-600' : 'text-white/80 hover:text-white'">Log in</a>
+                        <a href="https://manager.ownershq.com/register/" class="rounded-lg bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500">Start Free</a>
                     </div>
                 </nav>
 
@@ -87,8 +87,8 @@
                         <a href="/about/" class="block rounded-lg px-3 py-2.5 text-base font-medium text-neutral-700 hover:bg-warm-50">About</a>
                         <a href="/contact/" class="block rounded-lg px-3 py-2.5 text-base font-medium text-neutral-700 hover:bg-warm-50">Contact</a>
                         <div class="pt-3 mt-3 border-t border-gray-100 flex flex-col gap-2">
-                            <a href="https://manage.ownershq.com/login/" class="block rounded-lg px-3 py-2.5 text-base font-medium text-neutral-700 hover:bg-warm-50">Log in</a>
-                            <a href="https://manage.ownershq.com/register/" class="block rounded-lg bg-sky-600 px-3 py-2.5 text-center text-base font-semibold text-white hover:bg-sky-700">Start Free</a>
+                            <a href="https://manager.ownershq.com/login/" class="block rounded-lg px-3 py-2.5 text-base font-medium text-neutral-700 hover:bg-warm-50">Log in</a>
+                            <a href="https://manager.ownershq.com/register/" class="block rounded-lg bg-sky-600 px-3 py-2.5 text-center text-base font-semibold text-white hover:bg-sky-700">Start Free</a>
                         </div>
                     </div>
                 </div>

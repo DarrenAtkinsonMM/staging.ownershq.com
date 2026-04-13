@@ -19,16 +19,20 @@
 <file name="about.aspx.vb" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="133474014977194616" remote="134183331740000000" Dst="1" />
 <file name="contact.aspx" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134203963977637952" remote="134203963920000000" Dst="2" />
 <file name="contact.aspx.vb" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="133931478774194485" remote="134183331740000000" Dst="1" />
-<file name="default.aspx" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134203959678738123" remote="134203959670000000" Dst="2" />
+<file name="default.aspx" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134205616864397952" remote="134205616810000000" Dst="2" />
 <file name="default.aspx.vb" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="133473725433418116" remote="134183331740000000" Dst="1" />
 <file name="features.aspx" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134203895502469731" remote="134203895450000000" Dst="2" />
 <file name="features.aspx.vb" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134183328913812775" remote="134183331740000000" Dst="1" />
 <file name="pricing.aspx" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134203922703052739" remote="134203922660000000" Dst="2" />
 <file name="pricing.aspx.vb" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134183328923981974" remote="134183331740000000" Dst="1" />
-<file name="style.css" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134203956615751949" remote="134203959670000000" Dst="2" />
-<file name="terms.aspx" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134184143236173985" remote="134184143490000000" Dst="1" />
+<file name="style.css" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134205627988134227" remote="134205628180000000" Dst="2" />
+<file name="terms.aspx" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134205627245207435" remote="134205627210000000" Dst="2" />
 <file name="terms.aspx.vb" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="133529031789593924" remote="134184143500000000" Dst="1" />
-<file name="privacy.aspx" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134184144162624991" remote="134184146350000000" Dst="1" />
+<file name="privacy.aspx" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134205609373468405" remote="134205610210000000" Dst="2" />
 <file name="privacy.aspx.vb" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="133529035086222497" remote="134184146360000000" Dst="1" />
 <file name="Web.config" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134189922446840256" remote="134189922440000000" Dst="1" />
+<file name="cookies.aspx" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134205610184216905" remote="134205610210000000" Dst="2" />
+<file name="cookies.aspx.vb" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134205608271875316" remote="134205609380000000" Dst="2" />
+<file name="dpa.aspx" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134205627987137443" remote="134205628180000000" Dst="2" />
+<file name="dpa.aspx.vb" server="18.130.132.39//C:/inetpub/wwwroot/Staging.OwnersHQ.com/" local="134205626895674703" remote="134205628180000000" Dst="2" />
 </dwsync>

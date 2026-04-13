@@ -64,7 +64,7 @@
                             </div>
                             <div class="h-6 w-48 rounded-md bg-gray-100 flex items-center px-2">
                                 <svg class="h-3 w-3 text-gray-400 mr-1.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
-                                <span class="text-xs text-gray-400">manage.ownershq.com</span>
+                                <span class="text-xs text-gray-400">manager.ownershq.com</span>
                             </div>
                         </div>
                     </div>
